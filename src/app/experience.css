@@ -135,43 +135,34 @@
   height: auto;
   display: block;
   overflow: visible;
+  transform: perspective(900px) rotateX(calc(var(--orbit-y, 0) * -10deg))
+    rotateY(calc(var(--orbit-x, 0) * 14deg));
+  transition: transform 450ms ease-out;
 }
-.orbit-tabs {
-  display: flex;
-  gap: 5px;
-  border-block: 1px solid var(--border);
-  padding-block: 10px;
+.orbit-instrument [data-orbit-system] {
+  animation: orbit-wheel-spin 55s linear infinite;
 }
-.orbit-tabs button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  flex: 1;
-  padding: 10px 8px;
-  background: transparent;
-  border: 0;
-  color: #93908b;
-  font-size: 10px;
-  transition:
-    color 0.25s,
-    background 0.25s;
+.orbit-instrument [data-orbit-core] {
+  animation: orbit-wheel-spin 28s linear infinite reverse;
 }
-.orbit-tabs button > span {
-  font-size: 8px;
-  color: #766751;
+.orbital-explorer[data-orbit-active="false"] [data-orbit-system],
+.orbital-explorer[data-orbit-active="false"] [data-orbit-core] {
+  animation-play-state: paused;
 }
-.orbit-tabs button[aria-selected="true"] {
-  background: #c6a16b10;
-  color: #e2c28f;
+@keyframes orbit-wheel-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
-.orbit-caption {
-  font-size: 11px;
-  line-height: 1.9;
-  color: #a59b8e;
-  min-height: 52px;
-  padding: 16px 10px 0;
-  max-width: 420px;
+@media (prefers-reduced-motion: reduce) {
+  .orbit-instrument {
+    transform: none;
+    transition: none;
+  }
+  .orbit-instrument [data-orbit-system],
+  .orbit-instrument [data-orbit-core] {
+    animation: none;
+  }
 }
 .journal-index {
   padding-bottom: 100px;
@@ -731,11 +722,6 @@
   .about-grid {
     gap: 35px;
   }
-  .orbit-tabs button {
-    font-size: 9px;
-    padding-inline: 6px;
-    gap: 5px;
-  }
   .journal-grid {
     gap: 20px;
   }
@@ -820,13 +806,6 @@
   }
   .orbit-kicker {
     font-size: 6px;
-  }
-  .orbit-tabs button {
-    font-size: 10px;
-  }
-  .orbit-caption {
-    font-size: 11px;
-    min-height: 60px;
   }
   .journal-grid,
   .article-page .journal-grid {
@@ -1023,9 +1002,6 @@
   }
   .journal-card h3 {
     font-size: 24px;
-  }
-  .orbit-tabs button {
-    font-size: 9px;
   }
   .journal-meta > span:last-child {
     font-size: 6px;

@@ -1,5 +1,12 @@
 # Validación — 26 de octubre de 2026
 
+## Rueda orbital libre
+
+- Eliminadas las pestañas Estrategia, Diseño y Código y su descripción asociada.
+- Giro continuo de órbitas y núcleo a velocidades distintas; pausa mediante IntersectionObserver y visibilidad de documento.
+- Verificados en navegador: cero pestañas orbitales, animación en estado running y transformación 3D que cambia al mover el puntero sobre el SVG.
+- TypeScript aprobado. Conserva el dibujo inicial con Anime.js, movimiento reducido y limpieza de escuchadores/observadores.
+
 ## Construcción del hero con líneas
 
 - 37 glifos del titular convertidos en rutas SVG de Geist 400; comprobado visualmente el dibujo progresivo y posterior relleno. El título HTML original permanece para semántica y SEO.

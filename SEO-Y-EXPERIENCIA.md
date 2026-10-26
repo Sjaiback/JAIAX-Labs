@@ -2,7 +2,7 @@
 
 ## Lo implementado
 
-- Pieza orbital en “Nosotros” con dibujo SVG al entrar en pantalla y tres enfoques seleccionables: Estrategia, Diseño y Código. Soporta clic, flechas, Home y End.
+- Pieza orbital en “Nosotros” con dibujo SVG al entrar en pantalla, giro continuo e inclinación que responde al mouse. Sin pestañas ni texto de modos; pausa fuera de pantalla y cuando la pestaña no está visible. Respeta movimiento reducido.
 - Luz contextual y movimiento suave de tarjetas en dispositivos con puntero preciso. Botones con respuesta magnética y un pulso al hacer clic.
 - Barra de progreso de página y de lectura, índice activo de artículos y botón para volver al inicio.
 - Blog `/blog` con tres guías originales, búsqueda tolerante a tildes, categorías, estados vacíos y enlaces relacionados.

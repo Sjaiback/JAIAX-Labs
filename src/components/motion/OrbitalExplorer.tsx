@@ -1,31 +1,9 @@
 "use client";
 import { animate, createScope, onScroll, svg, stagger } from "animejs";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef } from "react";
 
-const modes = [
-  {
-    name: "Estrategia",
-    number: "01",
-    text: "Primero, el porqué. Alineamos cada decisión con un objetivo de tu negocio.",
-    angle: -24,
-  },
-  {
-    name: "Diseño",
-    number: "02",
-    text: "Damos forma a lo complejo. Una experiencia clara, con intención en cada detalle.",
-    angle: 0,
-  },
-  {
-    name: "Código",
-    number: "03",
-    text: "Conectamos las piezas. Construimos una base que puede seguir evolucionando.",
-    angle: 24,
-  },
-];
 export function OrbitalExplorer() {
   const root = useRef<HTMLDivElement>(null);
-  const drawing = useRef<SVGSVGElement>(null);
-  const [mode, setMode] = useState(0);
   const id = useId().replace(/[^a-z0-9_-]/gi, "");
   useEffect(() => {
     const element = root.current;
@@ -69,31 +47,69 @@ export function OrbitalExplorer() {
     };
   }, []);
   useEffect(() => {
-    if (
-      !drawing.current ||
-      matchMedia("(prefers-reduced-motion: reduce)").matches
-    )
-      return;
-    const scope = createScope({ root: drawing.current }).add(() => {
-      animate("[data-orbit-system]", {
-        rotate: modes[mode].angle,
-        duration: 850,
-        ease: "out(4)",
-      });
-      animate("[data-orbit-core]", {
-        scale: [0.85, 1],
-        rotate: mode * 45,
-        duration: 850,
-        ease: "out(4)",
-      });
+    const element = root.current;
+    if (!element) return;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+    const fine = matchMedia("(hover: hover) and (pointer: fine)");
+    let frame = 0;
+    let x = 0,
+      y = 0;
+    let visible = false;
+    const playback = () => {
+      element.dataset.orbitActive = String(
+        visible && !document.hidden && !reduce.matches,
+      );
+    };
+    const reset = () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      element.style.setProperty("--orbit-x", "0");
+      element.style.setProperty("--orbit-y", "0");
+      playback();
+    };
+    const move = (event: PointerEvent) => {
+      if (reduce.matches || !fine.matches || event.pointerType === "touch")
+        return;
+      const box = element.getBoundingClientRect();
+      x = Math.max(
+        -1,
+        Math.min(1, ((event.clientX - box.left) / box.width) * 2 - 1),
+      );
+      y = Math.max(
+        -1,
+        Math.min(1, ((event.clientY - box.top) / box.height) * 2 - 1),
+      );
+      if (!frame)
+        frame = requestAnimationFrame(() => {
+          element.style.setProperty("--orbit-x", String(x));
+          element.style.setProperty("--orbit-y", String(y));
+          frame = 0;
+        });
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      playback();
     });
-    return () => scope.revert();
-  }, [mode]);
+    observer.observe(element);
+    element.addEventListener("pointermove", move, { passive: true });
+    element.addEventListener("pointerleave", reset);
+    document.addEventListener("visibilitychange", playback);
+    reduce.addEventListener("change", reset);
+    fine.addEventListener("change", reset);
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      element.removeEventListener("pointermove", move);
+      element.removeEventListener("pointerleave", reset);
+      document.removeEventListener("visibilitychange", playback);
+      reduce.removeEventListener("change", reset);
+      fine.removeEventListener("change", reset);
+    };
+  }, []);
   return (
-    <div ref={root} className="orbital-explorer">
+    <div ref={root} className="orbital-explorer" data-orbit-active="false">
       <span className="orbit-kicker">EL LABORATORIO / INTERACTIVO</span>
       <svg
-        ref={drawing}
         viewBox="0 0 500 390"
         className="orbit-instrument"
         aria-hidden="true"
@@ -146,46 +162,6 @@ export function OrbitalExplorer() {
         </g>
         <circle cx="250" cy="190" r="8" fill="#e2c28f" />
       </svg>
-      <div
-        className="orbit-tabs"
-        role="tablist"
-        aria-label="Explorar nuestro enfoque"
-      >
-        {modes.map((m, i) => (
-          <button
-            id={`${id}-tab-${i}`}
-            key={m.name}
-            role="tab"
-            aria-selected={mode === i}
-            aria-controls={`${id}-panel`}
-            tabIndex={mode === i ? 0 : -1}
-            onClick={() => setMode(i)}
-            onKeyDown={(e) => {
-              let next = mode;
-              if (e.key === "ArrowRight") next = (mode + 1) % 3;
-              else if (e.key === "ArrowLeft") next = (mode + 2) % 3;
-              else if (e.key === "Home") next = 0;
-              else if (e.key === "End") next = 2;
-              else return;
-              e.preventDefault();
-              setMode(next);
-              document.getElementById(`${id}-tab-${next}`)?.focus();
-            }}
-          >
-            <span>{m.number}</span>
-            {m.name}
-          </button>
-        ))}
-      </div>
-      <p
-        id={`${id}-panel`}
-        role="tabpanel"
-        aria-labelledby={`${id}-tab-${mode}`}
-        tabIndex={0}
-        className="orbit-caption"
-      >
-        {modes[mode].text}
-      </p>
     </div>
   );
 }
