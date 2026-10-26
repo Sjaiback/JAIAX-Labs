@@ -2,7 +2,7 @@
 
 ## Lo implementado
 
-- Pieza orbital en “Nosotros” con dibujo SVG al entrar en pantalla, giro continuo e inclinación que responde al mouse. Sin pestañas ni texto de modos; pausa fuera de pantalla y cuando la pestaña no está visible. Respeta movimiento reducido.
+- Esfera orbital en “Nosotros” con Three.js: diez aros de igual radio y centro, girando sobre distintos ejes y sentidos; ocho partículas y profundidad por intensidad de trazo. Responde al mouse, se carga al acercarse a pantalla y conserva SVG de respaldo. Sin pestañas ni texto de modos; pausa fuera de pantalla y con la pestaña oculta. Respeta movimiento reducido.
 - Luz contextual y movimiento suave de tarjetas en dispositivos con puntero preciso. Botones con respuesta magnética y un pulso al hacer clic.
 - Barra de progreso de página y de lectura, índice activo de artículos y botón para volver al inicio.
 - Blog `/blog` con tres guías originales, búsqueda tolerante a tildes, categorías, estados vacíos y enlaces relacionados.

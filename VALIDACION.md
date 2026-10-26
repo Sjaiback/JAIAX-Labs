@@ -1,5 +1,12 @@
 # Validación — 26 de octubre de 2026
 
+## Esfera orbital Three.js
+
+- Sustituida la simulación plana por una escena WebGL con diez círculos de radio común, ejes de giro independientes y ocho partículas con halo sutil. Conserva el núcleo y la paleta dorada.
+- Verificado en navegador el estado `webgl`, diez aros, loop activo al entrar en pantalla y pausado fuera de ella; el puntero actualiza la inclinación.
+- Revisión a 1280 × 900 y 390 × 844, sin desbordamiento horizontal ni errores de consola. Canvas con tamaño reservado y resolución adaptada a la densidad de pantalla.
+- TypeScript aprobado. Importación diferida; fallback SVG si falla WebGL; limpieza de recursos GPU, observadores y escuchadores al desmontar.
+
 ## Portfolio 3D por scroll
 
 - Eliminadas las flechas y las pestañas de la galería. Tres capítulos se recorren mediante scroll nativo con sección sticky, progreso visual y enlaces a las demos.

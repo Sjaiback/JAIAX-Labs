@@ -123,6 +123,37 @@
   position: relative;
   min-width: 0;
 }
+.orbital-viewport {
+  position: relative;
+  aspect-ratio: 500 / 390;
+}
+.orbital-canvas {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, #c6a16b0c, transparent 63%);
+}
+.orbital-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 450ms;
+}
+.orbit-fallback {
+  transition: opacity 450ms;
+}
+.orbital-explorer[data-orbit-renderer="webgl"] .orbit-fallback {
+  opacity: 0;
+}
+.orbital-explorer[data-orbit-renderer="webgl"] .orbital-canvas canvas {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbit-fallback,
+  .orbital-canvas canvas {
+    transition: none;
+  }
+}
 .orbit-kicker {
   font-size: 7px;
   letter-spacing: 2px;
