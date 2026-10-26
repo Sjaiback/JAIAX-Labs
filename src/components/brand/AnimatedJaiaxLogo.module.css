@@ -1,0 +1,28 @@
+.logo {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 754 / 575;
+  vertical-align: middle;
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+/* The initial server paint already honors the OS preference, before hydration. */
+@media (prefers-reduced-motion: reduce) {
+  .logo {
+    visibility: visible !important;
+  }
+  .logo [data-logo-stroke] {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+  .logo [data-logo-tip] {
+    visibility: hidden !important;
+  }
+}
+
+.logo[data-reduced-motion="true"] [data-logo-tip],
+.logo[data-autoplay="false"] [data-logo-tip] {
+  visibility: hidden !important;
+}
