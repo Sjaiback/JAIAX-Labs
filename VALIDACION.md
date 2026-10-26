@@ -1,5 +1,15 @@
 # Validación — 26 de octubre de 2026
 
+## Galería de páginas de ejemplo
+
+- Nueva sección en portada y Proyectos con laptop y dos móviles, tres conceptos y enlaces a demos navegables.
+- Compilación aprobada: 26 páginas generadas, incluidas Forma, Territorio y Origen. TypeScript aprobado después del ajuste responsive.
+- Verificados clic y flecha derecha para cambiar ejemplo; el enlace de demo cambia con la selección. Apertura de Origen y regreso a la galería comprobados.
+- Revisión visual a 1440 px y 390 px; sin desbordamiento horizontal. Sin errores de consola durante la prueba.
+- SEO aprobado en trece páginas y 404 de una demo inexistente; comprobación de precios y redirección aprobada.
+- Se reutilizan ilustraciones originales como SVG sin textos incrustados; el contenido de las pantallas es HTML compartido con las demos. Sin nuevas dependencias.
+- El servidor de desarrollo permanece activo en 127.0.0.1:3107 por solicitud del usuario.
+
 ## Actualización de planes
 
 - Básica US$ 70, Profesional US$ 120, Negocio US$ 300 y Avanzada a medida, con fuente única en `src/data/pricing.ts`.

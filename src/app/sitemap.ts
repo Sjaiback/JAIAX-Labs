@@ -4,6 +4,7 @@ import { journalPosts } from "@/data/journal";
 import { servicePages } from "@/data/service-pages";
 import { canIndex } from "@/lib/seo";
 import { offerPath } from "@/data/pricing";
+import { examples } from "@/data/examples";
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!canIndex) return [];
   return [
@@ -12,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contacto",
     offerPath,
     "/blog",
+    ...examples.map((example) => `/ejemplos/${example.slug}`),
     ...journalPosts.map((p) => `/blog/${p.slug}`),
     ...servicePages.map((s) => `/servicios/${s.slug}`),
     ...publicProjects.map((p) => `/proyectos/${p.slug}`),

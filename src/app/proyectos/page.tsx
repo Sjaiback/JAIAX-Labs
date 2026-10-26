@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ProjectGrid } from "@/components/projects/project-grid";
 import { FinalCTA } from "@/components/home/sections";
 import { pageMetadata } from "@/lib/seo";
+import { ExampleShowcase } from "@/components/examples/ExampleShowcase";
 export const metadata: Metadata = pageMetadata(
   "Conceptos de diseño y desarrollo web",
   "Explora conceptos de experiencias web, identidad digital y comercio electrónico de JAIAX Labs. Exploraciones del estudio identificadas como demostraciones.",
@@ -29,6 +30,7 @@ export default function Projects() {
           verificar la participación y la autorización.
         </p>
       </div>
+      <ExampleShowcase />
       <FinalCTA />
     </main>
   );
