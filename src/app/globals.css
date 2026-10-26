@@ -228,6 +228,16 @@ section[id] {
   width: max-content;
   line-height: 1;
 }
+.brand-vector {
+  display: block;
+  width: 190px;
+  height: 45px;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+@media (max-width: 700px) {
+  .brand-vector { width: 164px; height: 39px; }
+}
 .brand-word {
   font-size: 26px;
   letter-spacing: -1.8px;

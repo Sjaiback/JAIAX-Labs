@@ -4,14 +4,11 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { navigation } from "@/data/site";
+import { JaiaxBrand } from "@/components/brand/JaiaxBrand";
 export function Logo() {
   return (
     <span className="brand">
-      <span className="brand-word">
-        JAIAX<span className="brand-labs">LABS</span>
-        <span className="brand-mark">✳</span>
-      </span>
-      <span className="brand-caption">DIGITAL STUDIO</span>
+      <JaiaxBrand />
     </span>
   );
 }

@@ -228,7 +228,7 @@ export function AnimatedJaiaxLogo({
               dx="0"
               dy="0"
               stdDeviation="1.5"
-              floodColor="#769eff"
+              floodColor="#c6a16b"
               floodOpacity="0.18"
             />
           </filter>
@@ -248,7 +248,7 @@ export function AnimatedJaiaxLogo({
               strokeWidth={stroke.width}
               stroke={
                 stroke.group === "jaiax"
-                  ? "#f5f5f3"
+                  ? jaiaxLogo.wordColor
                   : `url(#${stroke.group === "symbol" ? symbolId : labsId})`
               }
             />
@@ -260,7 +260,7 @@ export function AnimatedJaiaxLogo({
               data-logo-tip={stroke.key}
               d={stroke.d}
               strokeWidth={stroke.width * 0.27}
-              stroke="#e9faff"
+              stroke="#fff0d5"
               opacity=".8"
               style={{ visibility: "hidden" }}
               aria-hidden="true"

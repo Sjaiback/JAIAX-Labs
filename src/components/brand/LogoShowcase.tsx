@@ -94,7 +94,7 @@ export function LogoShowcase() {
           <span className="eyebrow">EXPLORA EL MOVIMIENTO</span>
           <h2>Precisión en cada línea.</h2>
           <p>
-            Rutas SVG editables. Degradados cian, azul y violeta. Un punto de
+            Rutas SVG editables. Dorado, champán y marfil. Un punto de
             luz recorre cada trazo.
           </p>
           <button className="button button-gold" onClick={play}>

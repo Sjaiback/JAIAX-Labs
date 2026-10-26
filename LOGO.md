@@ -1,5 +1,7 @@
 # Logotipo animado de JAIAX Labs
 
+La versión actual usa la paleta de la web: champán `#e2c28f`, dorado `#c6a16b`, bronce `#a77c46` y marfil `#f0e8db`. Conserva las rutas trazadas del PNG. `JaiaxBrand.tsx` reorganiza esas mismas rutas en una firma horizontal para cabecera y pie. El SVG descargable se actualiza con `node scripts/export-logo.mjs`.
+
 ## Uso en un hero
 
 ```tsx
@@ -52,7 +54,7 @@ La intro usa un `dialog` modal nativo, permite omitir con botón o Escape, resta
 - 16 rutas centrales reales: símbolo JX, JAIAX y LABS. No hay elementos `<text>`, fuentes, PNG, `<image>`, máscaras ni revelado horizontal.
 - Reconstrucción del PNG entregado, originalmente de 1536 × 1024. Se extrajeron las líneas centrales de sus trazos y se ajustaron curvas Bézier. La I se regularizó a una línea vertical usando el centro medido del trazo.
 - La verificación raster del contorno principal sitúa el 99,7 % del núcleo de referencia a no más de un píxel del trazado y todo el núcleo a no más de dos píxeles, usando vecindad de ocho píxeles a la resolución original. Esto comprueba la geometría; no implica recuperar el archivo vectorial maestro ni la textura raster del PNG.
-- Colores cian → azul → violeta muestreados de la referencia, con degradados distintos para símbolo y LABS. JAIAX permanece blanco.
+- Paleta adaptada a la web por petición del usuario: símbolo y LABS en degradado champán → dorado → bronce, con JAIAX en marfil.
 
 Para editar la geometría de la aplicación, cambia los valores `d` en el archivo de datos. Si cambias el SVG estático por separado, actualiza también esos datos para mantener ambas versiones sincronizadas.
 
