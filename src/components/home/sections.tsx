@@ -351,7 +351,7 @@ export function FAQ() {
     ],
     [
       `¿Qué incluye el plan Básica de US$ ${basicPlan.price}?`,
-      "Una landing responsive de una página, hasta cinco secciones, formulario, acceso a WhatsApp, SEO básico y una ronda de ajustes. El precio cubre ese alcance; los adicionales se cotizan por separado.",
+      "Una landing responsive de una página, hasta cinco secciones, formulario, acceso a WhatsApp, optimización para buscadores y una ronda de ajustes. El precio cubre ese alcance; los adicionales se cotizan por separado.",
     ],
     [
       "¿El dominio y hosting están incluidos?",

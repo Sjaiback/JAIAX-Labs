@@ -15,7 +15,7 @@ export const plans: Plan[] = [
       "Hasta cinco secciones",
       "Formulario de contacto",
       "Botón de WhatsApp",
-      "SEO básico",
+      "Optimización para buscadores",
       "Una ronda de ajustes",
     ],
   },

@@ -10,7 +10,7 @@ import { basicPlan, offerPath } from "@/data/pricing";
 import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata(
   `Página web Básica por US$ ${basicPlan.price} en Perú — pago único`,
-  `Tu landing responsive de hasta cinco secciones por US$ ${basicPlan.price}: formulario, WhatsApp y SEO básico. Pago único de desarrollo. Dominio y hosting por separado.`,
+  `Tu landing responsive de hasta cinco secciones por US$ ${basicPlan.price}: formulario, WhatsApp y optimización para buscadores. Pago único de desarrollo. Dominio y hosting por separado.`,
   offerPath,
 );
 export default function BasicLanding() {
@@ -45,7 +45,7 @@ export default function BasicLanding() {
               </span>
               <span>
                 <Check size={15} />
-                Formulario, WhatsApp y SEO básico.
+                Formulario, WhatsApp y optimización para buscadores.
               </span>
               <span>
                 <Check size={15} />
