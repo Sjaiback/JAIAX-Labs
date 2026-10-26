@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { Reveal } from "@/components/ui";
+import { HeroEntrance } from "@/components/motion/HeroEntrance";
 import { AnimatedJaiaxLogo } from "@/components/brand/AnimatedJaiaxLogo";
 import { basicPlan, offerPath } from "@/data/pricing";
 export function Orb({ small = false }: { small?: boolean }) {
@@ -40,9 +40,9 @@ export function Orb({ small = false }: { small?: boolean }) {
 }
 export function Hero() {
   return (
-    <section id="inicio" className="hero">
+    <HeroEntrance>
       <Orb />
-      <div className="hero-coordinate" aria-hidden>
+      <div className="hero-coordinate" aria-hidden data-hero-copy>
         12°02′ S &nbsp; 77°01′ O<br />
         <span>LIMA, PERÚ · ESTUDIO DIGITAL</span>
       </div>
@@ -50,22 +50,24 @@ export function Hero() {
         <div className="hero-brand">
           <AnimatedJaiaxLogo size={156} />
         </div>
-        <Reveal>
-          <span className="eyebrow hero-eyebrow">
+        <div>
+          <span className="eyebrow hero-eyebrow" data-hero-copy>
             <span className="status-dot" /> DESARROLLO WEB · SOFTWARE ·
             INTELIGENCIA ARTIFICIAL
           </span>
           <h1>
-            Creamos tecnología.
+            <span className="hero-title-light" data-hero-ink>
+              Creamos tecnología.
+            </span>
             <br />
-            <span>Impulsamos negocios.</span>
+            <span data-hero-ink>Impulsamos negocios.</span>
           </h1>
-          <p className="hero-description">
+          <p className="hero-description" data-hero-copy>
             Desarrollamos sitios web, sistemas inteligentes y automatizaciones
             <br className="desktop-break" /> que transforman ideas en soluciones
             digitales.
           </p>
-          <div className="hero-offer">
+          <div className="hero-offer" data-hero-copy>
             <span className="tiny-line" /> TU PÁGINA WEB PROFESIONAL POR{" "}
             <strong>US$ {basicPlan.price}</strong>
           </div>
@@ -79,9 +81,9 @@ export function Hero() {
               <ArrowUpRight size={18} />
             </Link>
           </div>
-        </Reveal>
+        </div>
       </div>
-      <div className="hero-bottom container">
+      <div className="hero-bottom container" data-hero-copy>
         <span>ESTRATEGIA. DISEÑO. CÓDIGO.</span>
         <Link href="#proyectos">
           DESLIZA PARA EXPLORAR
@@ -89,6 +91,6 @@ export function Hero() {
         </Link>
         <span>INDEPENDIENTES POR NATURALEZA.</span>
       </div>
-    </section>
+    </HeroEntrance>
   );
 }

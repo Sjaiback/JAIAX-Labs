@@ -1,5 +1,14 @@
 # Validación — 26 de octubre de 2026
 
+## Construcción del hero con líneas
+
+- 37 glifos del titular convertidos en rutas SVG de Geist 400; comprobado visualmente el dibujo progresivo y posterior relleno. El título HTML original permanece para semántica y SEO.
+- Órbitas, horizonte y marcos de botones comparten la secuencia de Anime.js. Duración observada: 3291 ms.
+- Estado final comprobado: se retira la capa de dibujo; título, descripción, oferta y botones quedan visibles. La comprobación de precios y redirección sigue aprobada.
+- El componente respeta movimiento reducido y finaliza al recibir foco o al redimensionar. Revierte la instancia, retira escuchadores y elimina la capa SVG al desmontar.
+- Compilación de producción y TypeScript aprobados. SEO verificado en trece páginas en producción; el H1 y los metadatos permanecen en el HTML inicial.
+- Vista a 390 px comprobada sin desbordamiento; el redimensionado conserva el estado completo y elimina la capa de dibujo.
+
 ## Galería de páginas de ejemplo
 
 - Nueva sección en portada y Proyectos con laptop y dos móviles, tres conceptos y enlaces a demos navegables.

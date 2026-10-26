@@ -54,6 +54,8 @@ Las variables `NEXT_PUBLIC_` son públicas y se incorporan a la compilación. Re
 
 ## Editar contenido
 
+El hero completo se construye con una secuencia de líneas de 3,3 segundos: órbitas, horizonte, letras SVG del titular y marcos de botones. `HeroEntrance.tsx` coordina Anime.js y `createDrawable`; al finalizar entrega la vista al HTML semántico original. Los glifos Geist 400 se generan con `node scripts/export-hero-glyphs.mjs` usando el lector que ya incluye Next, sin dependencias de ejecución adicionales. Movimiento reducido, foco por teclado o redimensionar muestran la versión final; se limpian instancias y capas al desmontar.
+
 La portada (`/#ejemplos`) y Proyectos incluyen una galería interactiva con laptop y móviles. `src/data/examples.ts` define los tres conceptos navegables en `/ejemplos/forma`, `/ejemplos/territorio` y `/ejemplos/origen`. `ExampleSite` comparte la composición entre las vistas de dispositivos y las demos. `ExampleShowcase` gestiona selección por clic, flechas, Home/End y transición con Anime.js; respeta movimiento reducido y limpia las instancias. Las demos tienen enlaces a su colección y al cotizador, sin compras o reservas simuladas.
 
 Los planes actuales son **Básica US$ 70**, **Profesional US$ 120**, **Negocio US$ 300** y **Avanzada a medida**. Los tres primeros tienen un pago único de desarrollo para el alcance publicado. Dominio, hosting, mantenimiento, licencias e impuestos aplicables se detallan por separado. Avanzada se cotiza según requerimientos.

@@ -1,0 +1,59 @@
+.hero [data-hero-ink] {
+  --hero-ink: #d4c0a1;
+  color: var(--hero-ink);
+}
+.hero[data-hero-state="pending"] .orbit-lines {
+  visibility: hidden;
+}
+.hero [data-hero-ink].hero-title-light {
+  --hero-ink: #f5f5f3;
+}
+.hero:not([data-hero-state="complete"]) [data-hero-ink] {
+  color: transparent;
+}
+.hero:not([data-hero-state="complete"]) [data-hero-copy],
+.hero:not([data-hero-state="complete"]) .orb,
+.hero:not([data-hero-state="complete"]) .orb-glow {
+  opacity: 0;
+}
+.hero:not([data-hero-state="complete"]) .hero-actions .button {
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+  transition: none;
+}
+.hero:not([data-hero-state="complete"]) .orb {
+  box-shadow: none;
+  border-color: transparent;
+}
+.hero-drawing-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  pointer-events: none;
+  z-index: 4;
+  overflow: visible;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero [data-hero-ink] {
+    color: var(--hero-ink) !important;
+  }
+  .hero [data-hero-copy],
+  .hero .orb,
+  .hero .orb-glow {
+    opacity: 1 !important;
+  }
+  .hero .hero-actions .button {
+    color: #f0e8db !important;
+    border-color: #c6a16b !important;
+  }
+  .hero .hero-actions .button-gold {
+    background: #c6a16b !important;
+    color: #13100c !important;
+  }
+  .hero-drawing-layer {
+    display: none;
+  }
+}
