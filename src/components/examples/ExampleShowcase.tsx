@@ -1,61 +1,234 @@
 "use client";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef } from "react";
 import Link from "next/link";
-import {
-  ArrowLeft,
-  ArrowRight,
-  ArrowUpRight,
-  Monitor,
-  Smartphone,
-} from "lucide-react";
-import { animate, createScope, stagger } from "animejs";
+import { ArrowDown, ArrowUpRight, Monitor, Smartphone } from "lucide-react";
+import { createScope, createTimeline } from "animejs";
 import { examples } from "@/data/examples";
 import { ExampleSite } from "./ExampleSite";
 import styles from "./examples.module.css";
 
 export function ExampleShowcase() {
-  const [selected, setSelected] = useState(0);
-  const root = useRef<HTMLDivElement>(null);
+  const root = useRef<HTMLElement>(null);
+  const progress = useRef<HTMLSpanElement>(null);
   const id = useId();
-  const example = examples[selected];
-  const neighbor = examples[(selected + 1) % examples.length];
   useEffect(() => {
-    if (!root.current) return;
+    const element = root.current;
+    if (!element) return;
     const media = matchMedia("(prefers-reduced-motion: reduce)");
-    if (media.matches) return;
-    const scope = createScope({ root: root.current }).add(() => {
-      animate("[data-example-device]", {
-        opacity: [0.5, 1],
-        y: [18, 0],
-        duration: 650,
-        delay: stagger(70),
-        ease: "out(3)",
+    const scenes = [
+      ...element.querySelectorAll<HTMLElement>("[data-example-scene]"),
+    ];
+    let scope: ReturnType<typeof createScope> | undefined;
+    let timeline: ReturnType<typeof createTimeline> | undefined;
+    let frame = 0;
+    let previous = -1;
+    let selected = -1;
+    const total = 2800;
+    const render = () => {
+      frame = 0;
+      if (!timeline) return;
+      const top = element.getBoundingClientRect().top;
+      const distance = Math.max(1, element.offsetHeight - innerHeight + 80);
+      const value = Math.max(0, Math.min(1, (80 - top) / distance));
+      if (Math.abs(value - previous) < 0.0001) return;
+      previous = value;
+      timeline.seek(value * total, true);
+      const ease = (x: number) => {
+        const t = Math.max(0, Math.min(1, x));
+        return t * t * (3 - 2 * t);
+      };
+      scenes.forEach((scene, index) => {
+        const local = value * total - index * 900;
+        const enter = ease(local / 200);
+        const exit =
+          index === scenes.length - 1 ? 1 : 1 - ease((local - 820) / 200);
+        scene.style.opacity = String(enter * exit);
       });
-    });
-    const change = () => {
-      if (media.matches) scope.revert();
+      element.dataset.scrollProgress = value.toFixed(3);
+      if (progress.current)
+        progress.current.style.transform = `scaleX(${value})`;
+      const next = Math.min(
+        examples.length - 1,
+        Math.max(0, Math.floor((value * total - 50) / 900)),
+      );
+      if (next !== selected) {
+        selected = next;
+        scenes.forEach((scene, index) => {
+          scene.inert = index !== next;
+          scene.setAttribute("aria-hidden", String(index !== next));
+          scene.dataset.active = String(index === next);
+        });
+        element
+          .querySelectorAll("[data-example-index]")
+          .forEach((link, index) => {
+            if (index === next) link.setAttribute("aria-current", "true");
+            else link.removeAttribute("aria-current");
+          });
+      }
     };
-    media.addEventListener("change", change);
+    const scroll = () => {
+      if (!frame) frame = requestAnimationFrame(render);
+    };
+    const configure = () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      timeline = undefined;
+      scope?.revert();
+      delete element.dataset.scrollShowcase;
+      scenes.forEach((scene) => {
+        scene.style.removeProperty("opacity");
+        scene.inert = false;
+        scene.removeAttribute("aria-hidden");
+        delete scene.dataset.active;
+      });
+      element
+        .querySelectorAll("[data-example-index]")
+        .forEach((link) => link.removeAttribute("aria-current"));
+      if (media.matches || innerHeight < 560) return;
+      const amplitude = innerWidth < 700 ? 0.5 : 1;
+      element.dataset.scrollShowcase = "true";
+      scope = createScope({ root: element }).add(() => {
+        timeline = createTimeline({
+          autoplay: false,
+          defaults: { ease: "inOut(2)" },
+        });
+        scenes.forEach((scene, index) => {
+          const at = index * 900;
+          const laptop = scene.querySelector<HTMLElement>(
+            "[data-device=laptop]",
+          )!;
+          const lid = scene.querySelector<HTMLElement>("[data-device=lid]")!;
+          const left = scene.querySelector<HTMLElement>("[data-device=left]")!;
+          const right = scene.querySelector<HTMLElement>(
+            "[data-device=right]",
+          )!;
+          timeline!.add(
+            laptop,
+            {
+              x: [110 * amplitude, 0],
+              y: [90 * amplitude, 0],
+              z: [-400 * amplitude, 0],
+              rotateX: [48, 0],
+              rotateY: [-24, 0],
+              scale: [0.74, 1],
+              duration: 300,
+              ease: "out(3)",
+            },
+            at,
+          );
+          timeline!.add(
+            lid,
+            { rotateX: [-42, 0], duration: 380, ease: "out(3)" },
+            at,
+          );
+          timeline!.add(
+            left,
+            {
+              x: [-170 * amplitude, 0],
+              y: [110 * amplitude, 0],
+              z: [180 * amplitude, 38],
+              rotateY: [45, -10],
+              rotateZ: [-24, -4],
+              scale: [0.8, 1],
+              duration: 360,
+              ease: "out(3)",
+            },
+            at + 45,
+          );
+          timeline!.add(
+            right,
+            {
+              x: [180 * amplitude, 0],
+              y: [-80 * amplitude, 0],
+              z: [250 * amplitude, 65],
+              rotateY: [-45, 10],
+              rotateZ: [23, 4],
+              scale: [0.8, 1],
+              duration: 380,
+              ease: "out(3)",
+            },
+            at + 90,
+          );
+          timeline!.add(
+            laptop,
+            {
+              rotateY: [0, 5],
+              rotateX: [0, -3],
+              duration: 430,
+              ease: "linear",
+            },
+            at + 340,
+          );
+          timeline!.add(
+            left,
+            {
+              y: [0, -14 * amplitude],
+              rotateY: [-10, 0],
+              duration: 380,
+              ease: "linear",
+            },
+            at + 410,
+          );
+          timeline!.add(
+            right,
+            {
+              y: [0, 13 * amplitude],
+              rotateY: [10, 0],
+              duration: 380,
+              ease: "linear",
+            },
+            at + 470,
+          );
+          if (index < scenes.length - 1) {
+            timeline!.add(
+              laptop,
+              {
+                x: -100 * amplitude,
+                z: -260 * amplitude,
+                rotateY: -20,
+                scale: 0.86,
+                duration: 250,
+              },
+              at + 790,
+            );
+            timeline!.add(
+              left,
+              { x: -120 * amplitude, rotateY: -35, duration: 220 },
+              at + 810,
+            );
+            timeline!.add(
+              right,
+              { x: 130 * amplitude, rotateY: 35, duration: 220 },
+              at + 810,
+            );
+          }
+        });
+        timeline.add({ duration: 1 }, total);
+      });
+      previous = -1;
+      selected = -1;
+      render();
+    };
+    configure();
+    window.addEventListener("scroll", scroll, { passive: true });
+    window.addEventListener("resize", configure);
+    media.addEventListener("change", configure);
     return () => {
-      media.removeEventListener("change", change);
-      scope.revert();
+      cancelAnimationFrame(frame);
+      scope?.revert();
+      window.removeEventListener("scroll", scroll);
+      window.removeEventListener("resize", configure);
+      media.removeEventListener("change", configure);
     };
-  }, [selected]);
-  const choose = (index: number, focus = false) => {
-    const next = (index + examples.length) % examples.length;
-    setSelected(next);
-    if (focus)
-      root.current
-        ?.querySelector<HTMLButtonElement>(`[data-example-tab="${next}"]`)
-        ?.focus();
-  };
+  }, []);
   return (
     <section
+      ref={root}
       id="ejemplos"
       className={styles.showcase}
       aria-labelledby={`${id}-title`}
     >
-      <div className="container" ref={root}>
+      <div className={`${styles.scrollFrame} container`}>
         <div className={styles.heading}>
           <div>
             <span className="eyebrow">
@@ -65,129 +238,103 @@ export function ExampleShowcase() {
             <h2 id={`${id}-title`}>
               Tu próxima página.
               <br />
-              <span>Ya puedes imaginarla.</span>
+              <span>En otra dimensión.</span>
             </h2>
           </div>
           <p>
-            Explora distintas formas de presentar un negocio. El mismo diseño,
-            pensado para sentirse bien en cada pantalla.
+            Una idea. Todas las pantallas.
+            <br />
+            <span className={styles.scrollHint}>
+              Desliza para explorar <ArrowDown size={14} />
+            </span>
           </p>
         </div>
-        <div
-          className={styles.selector}
-          role="tablist"
-          aria-label="Elegir página de ejemplo"
-        >
-          {examples.map((item, i) => (
-            <button
-              key={item.slug}
-              data-example-tab={i}
-              type="button"
-              role="tab"
-              id={`${id}-tab-${i}`}
-              aria-controls={`${id}-panel`}
-              aria-selected={selected === i}
-              tabIndex={selected === i ? 0 : -1}
-              onClick={() => choose(i)}
-              onKeyDown={(e) => {
-                if (
-                  ["ArrowRight", "ArrowLeft", "Home", "End"].includes(e.key)
-                ) {
-                  e.preventDefault();
-                  choose(
-                    e.key === "Home"
-                      ? 0
-                      : e.key === "End"
-                        ? examples.length - 1
-                        : selected + (e.key === "ArrowRight" ? 1 : -1),
-                    true,
-                  );
-                }
-              }}
+        <div className={styles.sceneStack}>
+          {examples.map((example, index) => (
+            <article
+              className={styles.scene}
+              data-example-scene
+              key={example.slug}
+              aria-label={`${example.name}: ${example.category}`}
             >
-              <span>0{i + 1}</span>
-              {item.category}
-            </button>
-          ))}
-        </div>
-        <div
-          role="tabpanel"
-          id={`${id}-panel`}
-          aria-labelledby={`${id}-tab-${selected}`}
-          tabIndex={0}
-          className={styles.panel}
-        >
-          <div className={styles.stage} aria-hidden="true" inert>
-            <div
-              className={`${styles.phone} ${styles.phoneLeft}`}
-              data-example-device
-            >
-              <div className={styles.phoneScreen}>
-                <ExampleSite example={neighbor} preview mobile />
-              </div>
-            </div>
-            <div className={styles.laptop} data-example-device>
-              <div className={styles.laptopLid}>
-                <div className={styles.camera} />
-                <div className={styles.desktopScreen}>
-                  <ExampleSite example={example} preview />
+              <div className={styles.stage} aria-hidden="true" inert>
+                <div
+                  className={`${styles.phone} ${styles.phoneLeft}`}
+                  data-device="left"
+                >
+                  <div className={styles.phoneScreen}>
+                    <ExampleSite example={example} preview mobile />
+                  </div>
+                </div>
+                <div className={styles.laptop} data-device="laptop">
+                  <div className={styles.laptopLid} data-device="lid">
+                    <div className={styles.camera} />
+                    <div className={styles.desktopScreen}>
+                      <ExampleSite example={example} preview />
+                    </div>
+                  </div>
+                  <div className={styles.laptopBase}>
+                    <span />
+                  </div>
+                </div>
+                <div
+                  className={`${styles.phone} ${styles.phoneRight}`}
+                  data-device="right"
+                >
+                  <div className={styles.phoneScreen}>
+                    <ExampleSite
+                      example={examples[(index + 1) % examples.length]}
+                      preview
+                      mobile
+                    />
+                  </div>
                 </div>
               </div>
-              <div className={styles.laptopBase}>
-                <span />
+              <div className={styles.caption}>
+                <div className={styles.exampleInfo}>
+                  <span className={styles.count}>
+                    0{index + 1} / 0{examples.length}
+                  </span>
+                  <div>
+                    <h3>
+                      {example.name}
+                      <span> / {example.category}</span>
+                    </h3>
+                    <p>{example.detail}</p>
+                  </div>
+                </div>
+                <Link
+                  className="button button-gold"
+                  href={`/ejemplos/${example.slug}`}
+                >
+                  Explorar demo <ArrowUpRight size={16} />
+                </Link>
               </div>
-            </div>
-            <div
-              className={`${styles.phone} ${styles.phoneRight}`}
-              data-example-device
-            >
-              <div className={styles.phoneScreen}>
-                <ExampleSite example={example} preview mobile />
-              </div>
-            </div>
-          </div>
-          <div className={styles.caption}>
-            <div className={styles.exampleInfo}>
-              <span className={styles.count}>
-                0{selected + 1} / 0{examples.length}
-              </span>
-              <div>
-                <h3>
-                  {example.name}
-                  <span> / {example.category}</span>
-                </h3>
-                <p>{example.detail}</p>
-              </div>
-            </div>
-            <Link
-              className="button button-gold"
-              href={`/ejemplos/${example.slug}`}
-            >
-              Explorar demo <ArrowUpRight size={16} />
-            </Link>
-          </div>
+            </article>
+          ))}
+        </div>
+        <div className={styles.scrollProgress} aria-hidden="true">
+          <span ref={progress} />
         </div>
         <div className={styles.bottom}>
           <span>
             <Monitor size={14} />
-            <Smartphone size={13} /> Diseño responsive · Conceptos de estudio
+            <Smartphone size={13} /> Conceptos de estudio
           </span>
-          <div>
-            <button
-              type="button"
-              aria-label="Ejemplo anterior"
-              onClick={() => choose(selected - 1)}
-            >
-              <ArrowLeft size={18} />
-            </button>
-            <button
-              type="button"
-              aria-label="Siguiente ejemplo"
-              onClick={() => choose(selected + 1)}
-            >
-              <ArrowRight size={18} />
-            </button>
-          </div>
+          <nav
+            className={styles.chapterLinks}
+            aria-label="Abrir demos de los proyectos"
+          >
+            {examples.map((example, index) => (
+              <Link
+                key={example.slug}
+                href={`/ejemplos/${example.slug}`}
+                data-example-index
+              >
+                <span>0{index + 1}</span> {example.name}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </section>

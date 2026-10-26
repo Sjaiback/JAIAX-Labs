@@ -1,5 +1,13 @@
 # Validación — 26 de octubre de 2026
 
+## Portfolio 3D por scroll
+
+- Eliminadas las flechas y las pestañas de la galería. Tres capítulos se recorren mediante scroll nativo con sección sticky, progreso visual y enlaces a las demos.
+- Anime.js mantiene una timeline pausada; el scroll controla apertura de tapa, traslación en profundidad, rotaciones y escala de cada dispositivo. Sin nuevas dependencias ni interceptar la rueda.
+- Comprobados avance Forma → Territorio → Origen y regreso a Forma, con transformaciones 3D y proyecto activo coherentes.
+- Revisión a 390 × 844 y 1280 × 900: sin desbordamiento horizontal, CTA visible y una sola escena opaca durante la pausa. Corregido el solapamiento y la opacidad al redimensionar.
+- Sin errores de consola en la revisión final. Movimiento reducido y ventanas de poca altura reciben los tres proyectos en flujo normal.
+
 ## Rueda orbital libre
 
 - Eliminadas las pestañas Estrategia, Diseño y Código y su descripción asociada.

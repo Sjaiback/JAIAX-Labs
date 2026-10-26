@@ -2,7 +2,7 @@
   padding: 100px 0 75px;
   background: #090e0d;
   border-block: 1px solid #c5a16b21;
-  overflow: hidden;
+  overflow: clip;
   scroll-margin-top: 78px;
 }
 .heading {
@@ -665,5 +665,182 @@
 @media (prefers-reduced-motion: reduce) {
   .selector button {
     transition: none;
+  }
+}
+
+/* Scroll chapters: a paused Anime.js timeline is scrubbed by native scrolling. */
+.scene {
+  position: relative;
+}
+.scene + .scene {
+  margin-top: 55px;
+}
+.scrollHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #c6a16b;
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-top: 12px;
+}
+.scrollProgress {
+  height: 1px;
+  background: #ffffff17;
+  margin: 10px 0 18px;
+}
+.scrollProgress > span {
+  display: block;
+  height: 100%;
+  background: #c6a16b;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.chapterLinks {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+.showcase .bottom {
+  padding-right: 50px;
+}
+.chapterLinks a {
+  color: #87978c;
+  font-size: 10px;
+  padding-block: 8px;
+}
+.chapterLinks a span {
+  font-size: 8px;
+  margin-right: 5px;
+}
+.chapterLinks a[aria-current],
+.chapterLinks a:hover {
+  color: #e2c28f;
+}
+.showcase[data-scroll-showcase="true"] {
+  height: 360svh;
+  padding: 0;
+}
+.showcase[data-scroll-showcase="true"] .scrollFrame {
+  position: sticky;
+  top: 80px;
+  height: calc(100svh - 80px);
+  padding-block: 25px 18px;
+  display: flex;
+  flex-direction: column;
+}
+.showcase[data-scroll-showcase="true"] .heading {
+  flex-shrink: 0;
+}
+.showcase[data-scroll-showcase="true"] .heading h2 {
+  font-size: clamp(30px, 3.3vw, 48px);
+  margin-top: 12px;
+  line-height: 1.08;
+}
+.showcase[data-scroll-showcase="true"] .heading > p {
+  font-size: 11px;
+  line-height: 1.7;
+}
+.showcase[data-scroll-showcase="true"] .sceneStack {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+.showcase[data-scroll-showcase="true"] .scene {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+}
+.showcase[data-scroll-showcase="true"] .scene[data-active="true"] {
+  pointer-events: auto;
+}
+.showcase[data-scroll-showcase="true"] .stage {
+  width: min(100%, calc((100svh - 360px) * 2.05), 1100px);
+  flex-shrink: 0;
+  margin: 0 auto;
+  perspective: 1100px;
+}
+.showcase[data-scroll-showcase="true"] [data-device] {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+.showcase[data-scroll-showcase="true"] .laptopLid {
+  transform-origin: center bottom;
+}
+.showcase[data-scroll-showcase="true"] .phone {
+  rotate: none;
+}
+.showcase[data-scroll-showcase="true"] .caption {
+  padding: 18px 0;
+  flex-shrink: 0;
+}
+.showcase[data-scroll-showcase="true"] .exampleInfo h3 {
+  font-size: 20px;
+}
+.showcase[data-scroll-showcase="true"] .bottom {
+  flex-shrink: 0;
+}
+@media (max-width: 700px) {
+  .showcase[data-scroll-showcase="true"] {
+    height: 330svh;
+  }
+  .showcase[data-scroll-showcase="true"] .scrollFrame {
+    padding-block: 20px 12px;
+  }
+  .showcase[data-scroll-showcase="true"] .heading {
+    display: flex;
+    align-items: start;
+    gap: 12px;
+  }
+  .showcase[data-scroll-showcase="true"] .heading h2 {
+    font-size: 29px;
+    letter-spacing: -1.4px;
+  }
+  .showcase[data-scroll-showcase="true"] .heading .eyebrow {
+    font-size: 6px;
+    letter-spacing: 1px;
+  }
+  .showcase[data-scroll-showcase="true"] .heading > p {
+    display: none;
+  }
+  .showcase[data-scroll-showcase="true"] .stage {
+    width: 100%;
+    margin: 0;
+    aspect-ratio: 1.3;
+  }
+  .showcase[data-scroll-showcase="true"] .caption {
+    padding: 15px 0 7px;
+  }
+  .showcase[data-scroll-showcase="true"] .caption > a {
+    margin-top: 14px;
+    min-height: 44px;
+  }
+  .showcase[data-scroll-showcase="true"] .exampleInfo p {
+    font-size: 10px;
+    line-height: 1.6;
+    margin-top: 5px;
+  }
+  .showcase[data-scroll-showcase="true"] .exampleInfo h3 {
+    font-size: 19px;
+  }
+  .chapterLinks {
+    gap: 12px;
+  }
+  .chapterLinks a {
+    font-size: 9px;
+  }
+  .chapterLinks a span {
+    display: none;
+  }
+  .bottom > span {
+    font-size: 7px;
+  }
+  .scrollProgress {
+    margin: 4px 0 8px;
   }
 }
