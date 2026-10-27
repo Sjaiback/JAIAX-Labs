@@ -1,26 +1,15 @@
 import type { Metadata } from "next";
 import { Check, Code2, MessageCircle } from "lucide-react";
 import { QuoteForm } from "@/components/forms/quote-form";
-import { plans, services } from "@/data/site";
-import { normalizePlanId } from "@/data/pricing";
+import { Suspense } from "react";
+import { ContactQueryForm } from "@/components/forms/contact-query-form";
 import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata(
   "Cotiza desarrollo web, software o automatización",
   "Cuéntanos tu idea y prepara una solicitud de desarrollo web, software o automatización en Perú. Alcance y propuesta claros desde el inicio.",
   "/contacto",
 );
-export default async function Contact({
-  searchParams,
-}: {
-  searchParams: Promise<{ plan?: string; tipo?: string }>;
-}) {
-  const params = await searchParams;
-  const plan = normalizePlanId(params.plan);
-  const projectType = services.some((s) => s.title === params.tipo)
-    ? params.tipo
-    : plans.some((p) => p.id === plan && p.id !== "avanzada")
-      ? "Desarrollo de páginas web"
-      : "";
+export default function Contact() {
   return (
     <main id="main" className="inner-main container">
       <div className="contact-grid">
@@ -60,11 +49,7 @@ export default async function Contact({
             compartirla.
           </div>
         </div>
-        <QuoteForm
-          key={`${plan}-${projectType}`}
-          plan={plan}
-          projectType={projectType}
-        />
+        <Suspense fallback={<QuoteForm />}><ContactQueryForm /></Suspense>
       </div>
     </main>
   );

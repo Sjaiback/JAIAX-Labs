@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Image from "@/components/ui/site-image";
 import { useState } from "react";
 import { publicProjects } from "@/data/site";
 import { Reveal } from "@/components/ui";

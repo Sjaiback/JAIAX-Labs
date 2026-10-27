@@ -1,6 +1,8 @@
 # JAIAX Labs
 
-Repositorio: [Sjaiback/JAIAX-Labs](https://github.com/Sjaiback/JAIAX-Labs) (privado).
+Repositorio público: [Sjaiback/JAIAX-Labs](https://github.com/Sjaiback/JAIAX-Labs).
+
+Web: https://sjaiback.github.io/JAIAX-Labs/ — publicación estática automática desde `main` mediante GitHub Actions. El panel `/admin` y su código se han eliminado.
 
 Frontend en español para un estudio de desarrollo web, software, IA y automatización. Next.js App Router, React, TypeScript estricto, Tailwind CSS 4, Motion, Anime.js v4, Lucide, React Hook Form y Zod.
 
@@ -14,7 +16,7 @@ Copy-Item .env.example .env.local
 npm run dev -- --port 3107
 ```
 
-Abre http://localhost:3107. La demo administrativa está en http://localhost:3107/admin **solo durante desarrollo**. El servidor se limita a la interfaz local por defecto.
+Abre http://localhost:3107. El servidor se limita a la interfaz local por defecto.
 
 ```powershell
 npm run lint
@@ -23,7 +25,7 @@ npm run build
 npm run start -- --port 3108
 ```
 
-En producción, `/admin` devuelve **404**, incluso aunque se cambien variables de entorno. No existe una contraseña ni una autenticación ficticia. Para habilitar una administración real se deberá implementar autenticación y autorización en el servidor antes de modificar esta protección.
+`npm run build` exporta HTML, CSS, JavaScript e imágenes a `out/`. `npm run start` sirve esos archivos estáticos. Para reproducir Pages, establece `NEXT_PUBLIC_BASE_PATH=/JAIAX-Labs` y `NEXT_PUBLIC_SITE_URL=https://sjaiback.github.io/JAIAX-Labs` tanto al compilar como al iniciar la vista previa. Las imágenes no requieren el optimizador de servidor de Next.js. El formulario lee plan y tipo de proyecto en el navegador. Las rutas antiguas redirigen mediante JavaScript conservando query y hash; ofrecen un enlace de respaldo sin JavaScript.
 
 ## Configuración
 
@@ -49,8 +51,7 @@ Las variables `NEXT_PUBLIC_` son públicas y se incorporan a la compilación. Re
 | `/contacto?plan=basica`                           | Cotizador con plan preseleccionado. Admite `profesional`, `negocio` y `avanzada`.                                    |
 | `/web-desde-70`                                   | Landing comercial con formulario corto, alcance, exclusiones, proceso, FAQ y CTA móvil.                              |
 | `/privacidad`                                     | Aviso específico de esta demo; requiere completar datos del responsable antes de captar leads reales.                |
-| `/admin`                                          | Diez módulos de gestión simulada, solo desarrollo.                                                                   |
-| `/sitemap.xml`, `/robots.txt`, `/opengraph-image` | SEO técnico y tarjeta social.                                                                                        |
+| `/sitemap.xml`, `/robots.txt`, `/social/*.png` | SEO técnico y tarjetas sociales generados durante la compilación.                                                                            |
 
 ## Editar contenido
 
@@ -62,7 +63,7 @@ La portada (`/#ejemplos`) y Proyectos incluyen una experiencia de portfolio 3D p
 
 Los planes actuales son **Básica US$ 70**, **Profesional US$ 120**, **Negocio US$ 300** y **Avanzada a medida**. Los tres primeros tienen un pago único de desarrollo para el alcance publicado. Dominio, hosting, mantenimiento, licencias e impuestos aplicables se detallan por separado. Avanzada se cotiza según requerimientos.
 
-`/web-desde-100` redirige permanentemente (308) a `/web-desde-70`, conservando los parámetros de campaña. Los identificadores antiguos `starter`, `business` y `advanced` se interpretan como `basica`, `negocio` y `avanzada`. El cotizador sincroniza plan y presupuesto. Con el servidor iniciado, ejecutar `npm run pricing:check` y `npm run seo:check` para comprobar enlaces, redirección y SEO.
+`/web-desde-100` redirige en el navegador a `/web-desde-70`, conservando los parámetros de campaña. Los identificadores antiguos `starter`, `business` y `advanced` se interpretan como `basica`, `negocio` y `avanzada`. El cotizador sincroniza plan y presupuesto. Con el servidor iniciado, ejecutar `npm run pricing:check -- URL_BASE` y `npm run seo:check -- URL_BASE` para comprobar enlaces y SEO. Las redirecciones de navegador se comprueban en la vista previa.
 
 - `src/data/pricing.ts`: cuatro planes, precios, presupuestos y compatibilidad con enlaces anteriores.
 - `src/data/site.ts`: servicios, pasos, proyectos, testimonios y configuración pública.
@@ -118,17 +119,11 @@ El botón de WhatsApp abre una conversación con texto prellenado; el visitante 
 
 ## Demos del portafolio
 
-- `/ejemplos/control-logistico`: NODO, panel de envíos con búsqueda, estados, seguimiento, incidencias, creación de registros, analítica y exportación CSV.
-- `/ejemplos/ecommerce`: SOMA, catálogo con variantes, favoritos, cantidades, bolsa, cupón `SOMA10` y pedido de demostración.
-- `/ejemplos/blog-editorial`: UMBRAL, revista con seis artículos originales, búsqueda, temas, biblioteca, modo nocturno y lector con tamaño de texto ajustable.
+- `/ejemplos/control-logistico`: PULSO, panel de envíos con búsqueda, estados, seguimiento, incidencias, creación de registros, analítica y exportación CSV.
+- `/ejemplos/ecommerce`: ÁUREA, catálogo con variantes, favoritos, cantidades, bolsa, cupón `SOMA10` y pedido de demostración.
+- `/ejemplos/blog-editorial`: LÚMINA, revista con seis artículos originales, búsqueda, temas, biblioteca, modo nocturno y lector con tamaño de texto ajustable.
 
 Las tres experiencias usan datos ficticios y estado en memoria. No realizan cobros, entregas, suscripciones ni conexiones a servicios externos. Sus capturas de escritorio y móvil alimentan las pantallas del portafolio animado. Las rutas anteriores de ejemplos redirigen a estas demos.
-
-## Panel administrativo
-
-Dashboard, proyectos, servicios, precios, testimonios, solicitudes, contenido, imágenes, configuración y SEO. Se pueden crear, editar, previsualizar, buscar, filtrar y eliminar registros. El Dashboard permite restablecer los datos iniciales. Las imágenes de la demo se seleccionan de los activos locales disponibles; no hay almacenamiento de archivos.
-
-Los cambios se guardan **solo en memoria**, se pierden al recargar y no modifican la configuración del sitio público. Los valores reales del sitio se editan en el código o en `.env.local`. No ingreses datos personales reales en los registros de prueba.
 
 ## Eventos preparados
 

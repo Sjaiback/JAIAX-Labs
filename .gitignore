@@ -1,5 +1,7 @@
 node_modules/
 .next/
+out/
+public/social/
 .env*
 !.env.example
 *.tsbuildinfo

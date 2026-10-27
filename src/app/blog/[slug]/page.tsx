@@ -23,7 +23,7 @@ export async function generateMetadata({
     p.description,
     `/blog/${p.slug}`,
     "article",
-    `/blog/${p.slug}/opengraph-image`,
+    `/social/${p.slug}.png`,
   );
   return {
     ...base,
@@ -63,7 +63,7 @@ export default async function Article({
               url: `${site.url}/#nosotros`,
             },
             publisher: { "@id": `${site.url}/#organization` },
-            image: [`${site.url}/blog/${p.slug}/opengraph-image`],
+            image: [`${site.url}/social/${p.slug}.png`],
           }}
         />
         <JsonLd

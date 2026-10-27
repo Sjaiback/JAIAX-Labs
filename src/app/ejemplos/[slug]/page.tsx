@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { permanentRedirect } from "next/navigation";
+import { StaticRedirect } from "@/components/ui/static-redirect";
 import Link from "next/link";
 import { examples, legacyExamples } from "@/data/examples";
 import { LogisticsDemo } from "@/components/demos/LogisticsDemo";
@@ -9,7 +9,7 @@ import styles from "@/components/examples/examples.module.css";
 import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return examples.map(({ slug }) => ({ slug }));
+  return [...examples.map(({ slug }) => ({ slug })), ...Object.keys(legacyExamples).map((slug) => ({ slug }))];
 }
 export async function generateMetadata({
   params,
@@ -32,7 +32,7 @@ export default async function ExamplePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (legacyExamples[slug]) permanentRedirect(`/ejemplos/${legacyExamples[slug]}`);
+  if (legacyExamples[slug]) return <StaticRedirect to={`/ejemplos/${legacyExamples[slug]}/`} />;
   const example = examples.find((e) => e.slug === slug);
   if (!example) notFound();
   return (

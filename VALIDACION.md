@@ -129,3 +129,14 @@ No se verificó la composición global de la web contra una captura de referenci
 - Las tres demos comprobadas a 390 px sin desbordamiento horizontal; capturas de escritorio y móvil incorporadas al portafolio.
 - Datos simulados en memoria; sin cobros, suscripciones ni seguimiento real.
 
+
+## Publicación estática en GitHub Pages — 27/10/2026
+
+- Panel /admin y componente administrativo eliminados. La ruta devuelve 404 y no se exporta.
+- Exportación Next.js completada sin servidor; 26 archivos HTML y 858 referencias locales verificados con el prefijo /JAIAX-Labs.
+- SEO, tarjetas sociales PNG y precios comprobados sobre los archivos exportados.
+- Contacto con plan=negocio preselecciona Negocio y US$ 300 tras hidratar en el navegador.
+- Redirección estática de web-desde-100 conserva utm_campaign y valores repetidos tag=a&tag=b.
+- Workflow Pages compila en Node 22, valida referencias y publica desde main.
+- Repositorio hecho público con autorización expresa del propietario.
+

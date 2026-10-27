@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Image from "@/components/ui/site-image";
 import { Check } from "lucide-react";
 import { Orb } from "@/components/home/hero";
 import { QuoteForm } from "@/components/forms/quote-form";

@@ -3,8 +3,8 @@ export const examples = [
     slug: "control-logistico",
     name: "PULSO",
     category: "Control logístico",
-    image: "/images/demo-logistica-desktop.png",
-    mobileImage: "/images/demo-logistica-mobile.png",
+    image: "/images/preview-pulso-desktop.png",
+    mobileImage: "/images/preview-pulso-mobile.png",
     detail:
       "Una operación conectada: rutas, seguimiento, incidencias y analítica en un dashboard interactivo.",
   },
@@ -12,8 +12,8 @@ export const examples = [
     slug: "ecommerce",
     name: "ÁUREA",
     category: "Ecommerce de diseño",
-    image: "/images/demo-ecommerce-desktop.png",
-    mobileImage: "/images/demo-ecommerce-mobile.png",
+    image: "/images/preview-aurea-desktop.png",
+    mobileImage: "/images/preview-aurea-mobile.png",
     detail:
       "Una tienda para descubrir, elegir y comprar: variantes, favoritos, carrito y pedido de demostración.",
   },
@@ -21,8 +21,8 @@ export const examples = [
     slug: "blog-editorial",
     name: "LÚMINA",
     category: "Revista digital",
-    image: "/images/demo-blog-desktop.png",
-    mobileImage: "/images/demo-blog-mobile.png",
+    image: "/images/preview-lumina-desktop.png",
+    mobileImage: "/images/preview-lumina-mobile.png",
     detail:
       "Ideas que invitan a quedarse: búsqueda, temas, biblioteca personal y una experiencia editorial de lectura.",
   },

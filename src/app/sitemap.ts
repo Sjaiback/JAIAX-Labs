@@ -5,6 +5,7 @@ import { servicePages } from "@/data/service-pages";
 import { canIndex } from "@/lib/seo";
 import { offerPath } from "@/data/pricing";
 import { examples } from "@/data/examples";
+export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!canIndex) return [];
   return [

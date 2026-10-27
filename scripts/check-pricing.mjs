@@ -13,20 +13,14 @@ for (const [id, price] of [
   )?.[0];
   assert.ok(card, `Missing ${id} card`);
   assert.ok(card.includes(price), `Wrong ${id} price`);
-  assert.ok(card.includes(`/contacto?plan=${id}`), `Wrong ${id} destination`);
+  assert.ok(card.includes(`/contacto/?plan=${id}`), `Wrong ${id} destination`);
 }
-const legacy = await fetch(
-  `${base}/web-desde-100?utm_source=demo&utm_campaign=revision&tag=a&tag=b`,
-  { redirect: "manual" },
-);
-assert.equal(legacy.status, 308);
-const target = new URL(legacy.headers.get("location"), base);
-assert.equal(target.pathname, "/web-desde-70");
-assert.equal(target.searchParams.get("utm_campaign"), "revision");
-assert.deepEqual(target.searchParams.getAll("tag"), ["a", "b"]);
-const offer = await fetch(target);
+const legacy = await fetch(`${base}/web-desde-100/?utm_source=demo&utm_campaign=revision&tag=a&tag=b`);
+assert.equal(legacy.status, 200);
+assert.ok((await legacy.text()).includes('/web-desde-70/'), 'Static redirect fallback');
+const offer = await fetch(`${base}/web-desde-70/`);
 assert.equal(offer.status, 200);
 assert.ok((await offer.text()).includes("70"));
 console.log(
-  "Pricing OK: four plans, contact links and permanent redirect preserving campaign parameters.",
+  "Pricing OK: four plans, contact links, static legacy fallback and offer page.",
 );

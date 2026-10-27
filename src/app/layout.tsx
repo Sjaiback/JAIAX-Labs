@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: "JAIAX Labs — Creamos tecnología. Impulsamos negocios.",
     description: site.description,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+    images: [{ url: `${site.url}/social/site.png`, width: 1200, height: 630 }],
   },
   twitter: { card: "summary_large_image" },
   verification: { google: process.env.GOOGLE_SITE_VERIFICATION || undefined },

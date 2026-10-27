@@ -56,7 +56,7 @@ const results = await Promise.all(
       /<link[^>]+rel="canonical"[^>]+href="([^"]+)"/,
     );
     assert(canonical, `Canonical: ${path}`);
-    assert.equal(new URL(canonical[1]).pathname, path.split("?")[0]);
+    assert.equal(new URL(canonical[1]).pathname.replace(/\/$/, ""), `${new URL(base).pathname.replace(/\/$/, "")}${path.split("?")[0]}`.replace(/\/$/, ""));
     assert.equal(
       (html.match(/<link[^>]+rel="canonical"/g) || []).length,
       1,
@@ -121,7 +121,7 @@ assert.equal(
 const sitemap = await (await fetch(base + "/sitemap.xml")).text();
 assert.equal(sitemap.includes("<loc>"), indexable, "Sitemap publication gate");
 for (const slug of articleSlugs) {
-  const response = await fetch(`${base}/blog/${slug}/opengraph-image`);
+  const response = await fetch(`${base}/social/${slug}.png`);
   assert.equal(response.status, 200);
   assert(response.headers.get("content-type")?.includes("image/png"));
   const bytes = new Uint8Array(await response.arrayBuffer());
@@ -132,6 +132,7 @@ for (const path of [
   "/blog/no-existe",
   "/servicios/no-existe",
   "/ejemplos/no-existe",
+  "/admin/",
 ])
   assert.equal((await fetch(base + path)).status, 404, path);
 console.log(

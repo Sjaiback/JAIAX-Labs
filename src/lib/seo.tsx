@@ -11,22 +11,22 @@ export function pageMetadata(
   description: string,
   path: string,
   type: "website" | "article" = "website",
-  image = "/opengraph-image",
+  image = "/social/site.png",
 ): Metadata {
   return {
     title: { absolute: `${title} | JAIAX Labs` },
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: `${site.url}${path}` },
     openGraph: {
       type,
       title,
       description,
-      url: path,
+      url: `${site.url}${path}`,
       locale: "es_PE",
       siteName: site.name,
       images: [
         {
-          url: image,
+          url: `${site.url}${image}`,
           width: 1200,
           height: 630,
           alt: "JAIAX Labs — Desarrollo web, software y automatización en Perú",
@@ -37,7 +37,7 @@ export function pageMetadata(
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [`${site.url}${image}`],
     },
   };
 }

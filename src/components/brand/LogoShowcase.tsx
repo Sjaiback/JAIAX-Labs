@@ -5,6 +5,7 @@ import { ArrowUpRight, RotateCcw } from "lucide-react";
 import { AnimatedJaiaxLogo } from "./AnimatedJaiaxLogo";
 import { JaiaxLogoIntro } from "./JaiaxLogoIntro";
 import styles from "./LogoShowcase.module.css";
+import { assetPath } from "@/lib/paths";
 
 export function LogoShowcase() {
   const [run, setRun] = useState(0);
@@ -177,7 +178,7 @@ export function LogoShowcase() {
           </p>
         </div>
         <AnimatedJaiaxLogo size={100} autoplay={false} />
-        <a href="/images/jaiax-logo.svg" download className="text-link">
+        <a href={assetPath("/images/jaiax-logo.svg")} download className="text-link">
           Descargar SVG editable <ArrowUpRight size={16} />
         </a>
       </div>

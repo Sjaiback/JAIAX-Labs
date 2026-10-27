@@ -53,13 +53,11 @@ export function ExampleShowcase() {
       const value = clamp((80 - top) / distance);
 
       const entrance = smooth(value / 0.1);
-      const screenScroll = smooth((value - 0.1) / 0.34);
       const morph = smooth((value - 0.5) / 0.22);
       const settle = smooth((value - 0.72) / 0.18);
 
       phone.style.opacity = String(1 - smooth((value - 0.58) / 0.14));
       phone.style.transform = `translate(-50%, -50%) scale(${0.82 + entrance * 0.18 + morph * 0.55}) rotateY(${-morph * 8}deg)`;
-      phonePage.style.transform = `translateY(${-37.5 * screenScroll}%)`;
 
       laptop.style.opacity = String(morph);
       laptop.style.transform = `translate(-50%, -50%) scale(${0.58 + morph * 0.42 + settle * 0.025}) rotateX(${(1 - morph) * 22 - settle * 2}deg)`;
@@ -146,9 +144,6 @@ export function ExampleShowcase() {
                 <div className={styles.phonePanel}>
                   <ExampleSite example={featured} preview mobile />
                 </div>
-                <div className={`${styles.phonePanel} ${styles.phonePanelDetail}`}>
-                  <ExampleSite example={featured} preview />
-                </div>
               </div>
             </div>
           </div>
@@ -166,7 +161,7 @@ export function ExampleShowcase() {
           </div>
 
           <div className={styles.phaseLabel}>
-            <span data-step="mobile">01 · RECORRE LA VISTA MÓVIL</span>
+            <span data-step="mobile">01 · DISEÑADO PARA TU MÓVIL</span>
             <span data-step="morph">02 · CAMBIA DE DIMENSIÓN</span>
             <span data-step="desktop">03 · CONTINÚA EN ESCRITORIO</span>
           </div>
