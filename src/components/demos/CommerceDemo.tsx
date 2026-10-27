@@ -186,10 +186,10 @@ export function CommerceDemo() {
         <span>Una tienda de demostración por JAIAX Labs ↗</span>
       </div>
       <header className={s.shopHeader}>
-        <a href="#soma-inicio" className={s.somaLogo} aria-label="SOMA, inicio">
-          soma<span>®</span>
+        <a href="#soma-inicio" className={s.somaLogo} aria-label="ÁUREA, inicio">
+          áurea<span>®</span>
         </a>
-        <nav aria-label="Tienda SOMA">
+        <nav aria-label="Tienda ÁUREA">
           <button
             onClick={() => {
               setFavoritesOnly(false);
@@ -445,7 +445,7 @@ export function CommerceDemo() {
         </h2>
         <p>
           Creemos en elegir con calma. En los objetos que se usan, se disfrutan
-          y encuentran su lugar. SOMA es una exploración de cómo el diseño puede
+          y encuentran su lugar. ÁUREA es una exploración de cómo el diseño puede
           hacer un poco mejor lo cotidiano.
         </p>
         <div>
@@ -558,7 +558,7 @@ export function CommerceDemo() {
               </span>
               <h3>Bien elegido.</h3>
               <p>
-                Pedido de demostración <strong>SOMA-0001</strong> creado. No se
+                Pedido de demostración <strong>AUREA-0001</strong> creado. No se
                 ha realizado ningún cargo ni envío.
               </p>
               <button
@@ -646,7 +646,7 @@ export function CommerceDemo() {
                 <>
                   <div className={s.coupon}>
                     <label htmlFor="soma-coupon">
-                      ¿Tienes un código? Prueba SOMA10.
+                      ¿Tienes un código? Prueba AUREA10.
                     </label>
                     <div>
                       <input
@@ -658,12 +658,12 @@ export function CommerceDemo() {
                       <button
                         onClick={() => {
                           const valid =
-                            coupon.trim().toUpperCase() === "SOMA10";
+                            coupon.trim().toUpperCase() === "AUREA10";
                           setDiscount(valid);
                           setCouponNote(
                             valid
                               ? "Listo: 10% aplicado a tus piezas."
-                              : "Ese código no está disponible. Prueba SOMA10.",
+                              : "Ese código no está disponible. Prueba AUREA10.",
                           );
                         }}
                       >
@@ -704,7 +704,7 @@ export function CommerceDemo() {
                 </div>
                 {discount && (
                   <div>
-                    <dt>Tu código SOMA10</dt>
+                    <dt>Tu código AUREA10</dt>
                     <dd>−{money(subtotal * 0.1)}</dd>
                   </div>
                 )}

@@ -1,7 +1,7 @@
 export const examples = [
   {
     slug: "control-logistico",
-    name: "NODO",
+    name: "PULSO",
     category: "Control logístico",
     image: "/images/demo-logistica-desktop.png",
     mobileImage: "/images/demo-logistica-mobile.png",
@@ -10,7 +10,7 @@ export const examples = [
   },
   {
     slug: "ecommerce",
-    name: "SOMA",
+    name: "ÁUREA",
     category: "Ecommerce de diseño",
     image: "/images/demo-ecommerce-desktop.png",
     mobileImage: "/images/demo-ecommerce-mobile.png",
@@ -19,7 +19,7 @@ export const examples = [
   },
   {
     slug: "blog-editorial",
-    name: "UMBRAL",
+    name: "LÚMINA",
     category: "Revista digital",
     image: "/images/demo-blog-desktop.png",
     mobileImage: "/images/demo-blog-mobile.png",

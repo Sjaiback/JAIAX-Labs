@@ -34,19 +34,27 @@ const icons = [
 export function FeaturedProjects() {
   return (
     <section id="proyectos" className="projects-section container section">
-      <div className="section-row">
-        <span className="eyebrow">
-          <span className="tiny-line" />
-          PROYECTOS DESTACADOS
-        </span>
-        <Link href="/proyectos" className="text-link">
-          Ver todos los proyectos <ArrowUpRight size={16} />
-        </Link>
+      <div className="projects-heading">
+        <div>
+          <span className="eyebrow">
+            <span className="tiny-line" />
+            PROYECTOS DESTACADOS
+          </span>
+          <h2>
+            Ideas con dirección.
+            <br />
+            <span>Diseño con presencia.</span>
+          </h2>
+        </div>
+        <p>
+          Tres conceptos creados para mostrar cómo una buena idea puede sentirse
+          clara, propia y lista para crecer.
+        </p>
       </div>
       <ProjectGrid />
       <p className="section-note">
-        Exploraciones de diseño del estudio. No representan trabajos contratados
-        ni resultados de clientes.
+        Exploraciones visuales del estudio. No representan trabajos contratados
+        ni resultados comerciales de clientes.
       </p>
     </section>
   );

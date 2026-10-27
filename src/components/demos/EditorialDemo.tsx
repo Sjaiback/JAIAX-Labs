@@ -242,7 +242,7 @@ function EditorialArt({
         fontSize="12"
         letterSpacing="4"
       >
-        UMBRAL / ESTUDIOS VISUALES 0{variant + 1}
+        LÚMINA / ESTUDIOS VISUALES 0{variant + 1}
       </text>
     </svg>
   );
@@ -309,7 +309,7 @@ export function EditorialDemo() {
           <span>OCTUBRE, 2026</span>
         </div>
         <a className={s.umbralLogo} href="#umbral-inicio">
-          UMBRAL<span>®</span>
+          LÚMINA<span>®</span>
         </a>
         <div className={s.editorialHeaderActions}>
           <button
@@ -331,7 +331,7 @@ export function EditorialDemo() {
           </button>
         </div>
       </header>
-      <nav className={s.editorialNav} aria-label="Revista UMBRAL">
+      <nav className={s.editorialNav} aria-label="Revista LÚMINA">
         <span>UNA REVISTA PARA MIRAR DISTINTO.</span>
         <div>
           <button
@@ -468,7 +468,7 @@ export function EditorialDemo() {
                 Seguir la idea <ArrowUpRight size={16} />
               </button>
               <span className={s.storyIndex}>
-                UMBRAL / {String(index + 1).padStart(2, "0")}
+                LÚMINA / {String(index + 1).padStart(2, "0")}
               </span>
             </article>
           ))}
@@ -505,7 +505,7 @@ export function EditorialDemo() {
           <br />
           una forma de <em>estar presente.</em>”
         </blockquote>
-        <span>EL EQUIPO DE UMBRAL / MANIFIESTO 001</span>
+        <span>EL EQUIPO DE LÚMINA / MANIFIESTO 001</span>
       </section>
       <section className={s.newsletter}>
         <div>
@@ -561,7 +561,7 @@ export function EditorialDemo() {
         </form>
       </section>
       <footer className={s.editorialFooter}>
-        <strong>UMBRAL®</strong>
+        <strong>LÚMINA®</strong>
         <span>
           Una revista de demostración creada por JAIAX Labs.
           <br />
@@ -571,7 +571,7 @@ export function EditorialDemo() {
       </footer>
       <DemoDialog
         open={!!article}
-        title="Lectura / UMBRAL"
+        title="Lectura / LÚMINA"
         onClose={() => setArticle(null)}
         wide
       >
@@ -627,7 +627,7 @@ export function EditorialDemo() {
               <EditorialArt variant={article.art} className={s.readerArt} />
               <article className={s.readerBody}>
                 <span className={s.editorialEyebrow}>
-                  POR EL EQUIPO UMBRAL / EDICIÓN 001
+                  POR EL EQUIPO LÚMINA / EDICIÓN 001
                 </span>
                 <h2>{article.title}</h2>
                 <p className={s.readerLead}>{article.lead}</p>

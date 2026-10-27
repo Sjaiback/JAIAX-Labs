@@ -1,7 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { publicProjects } from "@/data/site";
 import { Reveal } from "@/components/ui";
@@ -29,32 +27,37 @@ export function ProjectGrid({ filterable = false }: { filterable?: boolean }) {
           .filter((p) => filter === "Todos" || p.category === filter)
           .map((p, i) => (
             <Reveal key={p.id} delay={i * 0.08}>
-              <Link className="project-card" href={`/proyectos/${p.slug}`}>
+              <article
+                className={`project-card ${i === 0 ? "project-card--lead" : ""}`}
+                aria-labelledby={`project-${p.id}`}
+              >
                 <div className="project-cover">
                   <Image
                     src={p.cover}
-                    alt={`Exploración visual de ${p.name}`}
-                    width={900}
-                    height={650}
-                    sizes="(max-width: 700px) 90vw, 33vw"
-                    loading="eager"
+                    alt={`Vista del concepto digital ${p.name}`}
+                    width={1440}
+                    height={900}
+                    sizes={
+                      i === 0
+                        ? "(max-width: 800px) 92vw, 63vw"
+                        : "(max-width: 800px) 92vw, 37vw"
+                    }
+                    priority={i === 0}
                   />
-                  <span className="concept-badge">CONCEPTO DE ESTUDIO</span>
-                  <span className="project-arrow">
-                    <ArrowUpRight size={23} />
-                  </span>
                 </div>
-                <div className="project-meta">
-                  <h3>{p.name}</h3>
-                  <span>{p.category}</span>
+                <div className="project-copy">
+                  <div className="project-meta">
+                    <span>0{i + 1} / 03 · {p.category}</span>
+                    <h3 id={`project-${p.id}`}>{p.name}</h3>
+                  </div>
+                  <p>{p.description}</p>
+                  <div className="tech-tags" aria-label="Áreas del concepto">
+                    {p.technologies.map((t) => (
+                      <span key={t}>{t}</span>
+                    ))}
+                  </div>
                 </div>
-                <p>{p.description}</p>
-                <div className="tech-tags">
-                  {p.technologies.map((t) => (
-                    <span key={t}>{t}</span>
-                  ))}
-                </div>
-              </Link>
+              </article>
             </Reveal>
           ))}
       </div>

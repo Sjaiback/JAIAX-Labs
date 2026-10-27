@@ -227,7 +227,7 @@ export function LogisticsDemo() {
     );
     const a = document.createElement("a");
     a.href = url;
-    a.download = "nodo-envios-demo.csv";
+    a.download = "pulso-envios-demo.csv";
     a.click();
     URL.revokeObjectURL(url);
     setNotice("CSV de los envíos visibles descargado.");
@@ -236,7 +236,7 @@ export function LogisticsDemo() {
     <div className={`${s.demoRoot} ${s.logistics}`} data-demo-app="logistica">
       <aside className={s.logSidebar}>
         <div className={s.nodoLogo}>
-          <Box size={27} /> NODO<span>®</span>
+          <Box size={27} /> PULSO<span>®</span>
         </div>
         <p className={s.sidebarLabel}>WORKSPACE / OPERACIONES</p>
         <nav aria-label="Panel logístico">
