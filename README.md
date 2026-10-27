@@ -116,7 +116,15 @@ Para integrar Supabase, PostgreSQL u otro servicio:
 
 El botón de WhatsApp abre una conversación con texto prellenado; el visitante debe enviarlo en WhatsApp. Abrir la conversación no se contabiliza como entrega.
 
-## Demo administrativa
+## Demos del portafolio
+
+- `/ejemplos/control-logistico`: NODO, panel de envíos con búsqueda, estados, seguimiento, incidencias, creación de registros, analítica y exportación CSV.
+- `/ejemplos/ecommerce`: SOMA, catálogo con variantes, favoritos, cantidades, bolsa, cupón `SOMA10` y pedido de demostración.
+- `/ejemplos/blog-editorial`: UMBRAL, revista con seis artículos originales, búsqueda, temas, biblioteca, modo nocturno y lector con tamaño de texto ajustable.
+
+Las tres experiencias usan datos ficticios y estado en memoria. No realizan cobros, entregas, suscripciones ni conexiones a servicios externos. Sus capturas de escritorio y móvil alimentan las pantallas del portafolio animado. Las rutas anteriores de ejemplos redirigen a estas demos.
+
+## Panel administrativo
 
 Dashboard, proyectos, servicios, precios, testimonios, solicitudes, contenido, imágenes, configuración y SEO. Se pueden crear, editar, previsualizar, buscar, filtrar y eliminar registros. El Dashboard permite restablecer los datos iniciales. Las imágenes de la demo se seleccionan de los activos locales disponibles; no hay almacenamiento de archivos.
 

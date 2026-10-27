@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 import Link from "next/link";
-import { examples } from "@/data/examples";
-import { ExampleSite } from "@/components/examples/ExampleSite";
+import { examples, legacyExamples } from "@/data/examples";
+import { LogisticsDemo } from "@/components/demos/LogisticsDemo";
+import { CommerceDemo } from "@/components/demos/CommerceDemo";
+import { EditorialDemo } from "@/components/demos/EditorialDemo";
 import styles from "@/components/examples/examples.module.css";
 import { pageMetadata } from "@/lib/seo";
 
@@ -14,12 +17,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const example = examples.find((e) => e.slug === slug);
+  const canonical = legacyExamples[slug] || slug;
+  const example = examples.find((e) => e.slug === canonical);
   if (!example) return {};
   return pageMetadata(
     `Demo ${example.name}: ${example.category}`,
     `${example.detail} Concepto navegable de JAIAX Labs.`,
-    `/ejemplos/${slug}`,
+    `/ejemplos/${canonical}`,
   );
 }
 export default async function ExamplePage({
@@ -28,6 +32,7 @@ export default async function ExamplePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  if (legacyExamples[slug]) permanentRedirect(`/ejemplos/${legacyExamples[slug]}`);
   const example = examples.find((e) => e.slug === slug);
   if (!example) notFound();
   return (
@@ -39,7 +44,13 @@ export default async function ExamplePage({
           Quiero una web así ↗
         </Link>
       </div>
-      <ExampleSite example={example} />
+      {slug === "control-logistico" ? (
+        <LogisticsDemo />
+      ) : slug === "ecommerce" ? (
+        <CommerceDemo />
+      ) : (
+        <EditorialDemo />
+      )}
     </main>
   );
 }

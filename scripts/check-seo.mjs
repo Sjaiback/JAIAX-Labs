@@ -40,7 +40,9 @@ const paths = [
   "/blog",
   "/contacto?plan=negocio",
   "/web-desde-70",
-  ...["forma", "territorio", "origen"].map((s) => `/ejemplos/${s}`),
+  ...["control-logistico", "ecommerce", "blog-editorial"].map(
+    (s) => `/ejemplos/${s}`,
+  ),
   ...articleSlugs.map((s) => `/blog/${s}`),
   ...serviceSlugs.map((s) => `/servicios/${s}`),
 ];
@@ -126,7 +128,11 @@ for (const slug of articleSlugs) {
   assert.deepEqual([...bytes.slice(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
   console.log("PNG social card: " + slug);
 }
-for (const path of ["/blog/no-existe", "/servicios/no-existe", "/ejemplos/no-existe"])
+for (const path of [
+  "/blog/no-existe",
+  "/servicios/no-existe",
+  "/ejemplos/no-existe",
+])
   assert.equal((await fetch(base + path)).status, 404, path);
 console.log(
   "OK: publication policy, metadata, JSON-LD, canonical URLs, sitemap, PNG cards and 404s.",

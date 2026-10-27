@@ -118,3 +118,14 @@ No se verificó la composición global de la web contra una captura de referenci
 - FAQ de servicio abierto con Enter; cotizador recibe “Automatización inteligente” preseleccionado al seguir su CTA.
 - Home, blog, artículo, servicio y contacto revisados a 1440, 1024, 768, 390 y 360 px; sin desbordamiento horizontal en las 25 combinaciones.
 - No se añadieron dependencias. No se midió un puntaje Lighthouse ni posiciones reales en buscadores. No se verificó ni publicó un dominio porque todavía no hay uno confirmado.
+
+## Demos NODO, SOMA y UMBRAL — 26/10/2026
+
+- Build de producción y TypeScript completados; las tres nuevas rutas generadas correctamente.
+- SEO y precios: scripts aprobados contra el servidor de producción local.
+- NODO: búsqueda, seguimiento, resolución de incidencia y creación de envío comprobados en navegador.
+- SOMA: apertura de producto y adición a la bolsa comprobadas.
+- UMBRAL: lectura de artículo y ajuste del tamaño del texto comprobados.
+- Las tres demos comprobadas a 390 px sin desbordamiento horizontal; capturas de escritorio y móvil incorporadas al portafolio.
+- Datos simulados en memoria; sin cobros, suscripciones ni seguimiento real.
+

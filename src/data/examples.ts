@@ -1,53 +1,35 @@
 export const examples = [
   {
-    slug: "forma",
-    name: "Forma",
-    category: "Arquitectura",
-    theme: "stone",
-    label: "ARQUITECTURA & ESPACIO",
-    title: "Diseñar para habitar.",
-    description:
-      "Espacios que se sienten. Arquitectura que conecta tu manera de vivir con el lugar que habitas.",
-    action: "Explorar espacios",
-    image: "/images/forma-art.svg",
+    slug: "control-logistico",
+    name: "NODO",
+    category: "Control logístico",
+    image: "/images/demo-logistica-desktop.png",
+    mobileImage: "/images/demo-logistica-mobile.png",
     detail:
-      "Una web editorial para estudios que quieren dar protagonismo a sus proyectos.",
-    items: [
-      "Arquitectura residencial",
-      "Diseño de interiores",
-      "Espacios comerciales",
-    ],
+      "Una operación conectada: rutas, seguimiento, incidencias y analítica en un dashboard interactivo.",
   },
   {
-    slug: "territorio",
-    name: "Territorio",
-    category: "Viajes & experiencias",
-    theme: "earth",
-    label: "OTRA FORMA DE EXPLORAR",
-    title: "El viaje empieza aquí.",
-    description:
-      "Rutas con historia, paisajes que se quedan contigo y tiempo para descubrir algo nuevo.",
-    action: "Descubrir destinos",
-    image: "/images/territorio-art.svg",
+    slug: "ecommerce",
+    name: "SOMA",
+    category: "Ecommerce de diseño",
+    image: "/images/demo-ecommerce-desktop.png",
+    mobileImage: "/images/demo-ecommerce-mobile.png",
     detail:
-      "Una experiencia inmersiva para descubrir destinos y convertir curiosidad en conversaciones.",
-    items: ["Rutas de naturaleza", "Cultura y territorio", "Viajes a tu ritmo"],
+      "Una tienda para descubrir, elegir y comprar: variantes, favoritos, carrito y pedido de demostración.",
   },
   {
-    slug: "origen",
-    name: "Origen",
-    category: "Tienda & catálogo",
-    theme: "clay",
-    label: "MENOS, PERO MEJOR",
-    title: "Objetos para quedarse.",
-    description:
-      "Materiales honestos, formas simples. Una selección de piezas para disfrutar lo cotidiano.",
-    action: "Ver la colección",
-    image: "/images/origen-art.svg",
+    slug: "blog-editorial",
+    name: "UMBRAL",
+    category: "Revista digital",
+    image: "/images/demo-blog-desktop.png",
+    mobileImage: "/images/demo-blog-mobile.png",
     detail:
-      "Un catálogo cálido y ordenado para marcas de objetos, decoración y diseño.",
-    items: ["Cerámica esencial", "Objetos de madera", "Textiles naturales"],
+      "Ideas que invitan a quedarse: búsqueda, temas, biblioteca personal y una experiencia editorial de lectura.",
   },
 ] as const;
 export type Example = (typeof examples)[number];
-
+export const legacyExamples: Record<string, string> = {
+  forma: "control-logistico",
+  origen: "ecommerce",
+  territorio: "blog-editorial",
+};
