@@ -197,3 +197,11 @@ No se verificó la composición global de la web contra una captura de referenci
 - Profundidad de dispositivos al mover el mouse con retorno amortiguado; touch mantiene su scroll normal.
 - Celulares con movimientos de distinta duración, solo en el panel activo y cerca de la pantalla. Reduced motion desactiva movimiento continuo, transiciones y respuesta al mouse.
 - Build/TypeScript, exportación, idiomas y precios correctos; lint de los archivos modificados sin avisos ni errores. Teclado y movimiento comprobados en navegador; 320/390 px sin desbordamiento.
+
+## 2026-10-28 — Menú móvil compacto
+- Panel flotante con cuatro enlaces, contacto e idioma; se retiran numeración, flechas repetidas y el CTA grande del menú anterior.
+- Botón Menú/Cerrar con área táctil de 44 px; filas de 70 px, selección actual discreta, apertura breve y reduced motion.
+- Diálogo nativo para aislar el foco y evitar interactuar con el contenido de fondo; cierre por botón, Escape, toque exterior, navegación y cambio a escritorio.
+- Desplazamiento del fondo bloqueado solo mientras está abierto y restaurado al cerrar/desmontar; el panel puede desplazarse en horizontal de poca altura.
+- Verificado ES a 390 px, DE a 320 px y horizontal 568x320; sin desbordamientos, footer e idioma accesibles. Escape devuelve el foco al disparador; navegación a Precios cierra y libera la página.
+- Build/TypeScript, lint de Header/MobileMenu, exportación estática, idiomas, precios/WhatsApp y SEO correctos.

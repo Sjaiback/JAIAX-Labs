@@ -2,9 +2,10 @@
 import Link from "@/components/ui/site-link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 import { JaiaxBrand } from "@/components/brand/JaiaxBrand";
+import { MobileMenu, menuWords } from "./MobileMenu";
 import { LanguageSelector } from "@/components/i18n/LanguageSelector";
 import { copy } from "@/i18n/copy";
 import { localePath, type Locale } from "@/i18n/config";
@@ -42,47 +43,15 @@ export function Header({ locale = "es" }: { locale?: Locale }) {
     return () => observer.disconnect();
   }, [path]);
   useEffect(() => {
-    if (!open) return;
-    const old = document.body.style.overflow;
-    const main = document.querySelector("main");
-    const footer = document.querySelector("footer");
-    document.body.style.overflow = "hidden";
-    main?.setAttribute("inert", "");
-    footer?.setAttribute("inert", "");
-    const toggle = document.getElementById("menu-toggle");
-    const links = Array.from(
-      document.querySelectorAll<HTMLAnchorElement>("#mobile-nav a"),
-    );
-    links[0]?.focus();
-    const key = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpen(false);
-        toggle?.focus();
-      }
-      if (e.key === "Tab") {
-        const last = links[links.length - 1];
-        if (e.shiftKey && document.activeElement === toggle) {
-          e.preventDefault();
-          last?.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          toggle?.focus();
-        }
-      }
-    };
-    const resize = () => {
-      if (window.innerWidth > 1000) setOpen(false);
-    };
-    document.addEventListener("keydown", key);
+    const resize = () => { if (window.innerWidth > 1000) setOpen(false); };
     window.addEventListener("resize", resize);
-    return () => {
-      document.body.style.overflow = old;
-      main?.removeAttribute("inert");
-      footer?.removeAttribute("inert");
-      document.removeEventListener("keydown", key);
-      window.removeEventListener("resize", resize);
-    };
-  }, [open]);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
+  const menuLinks = navigation.map(([id, label]) => ({
+    id, label,
+    href: id === "blog" ? "/blog/" : id === "proyectos" ? "/proyectos/" : id === "precios" ? localePath(locale, "/planes/") : `${localePath(locale)}#servicios`,
+    current: id === "blog" ? path.startsWith("/blog") : id === "proyectos" ? path.startsWith("/proyectos") : id === "precios" ? path.replace(/\/$/, "").endsWith("/planes") : (isHome && active === "servicios") || path.includes("/servicios/") || path.replace(/\/$/, "").endsWith("/sistemas"),
+  }));
   return (
     <>
       <a href="#main" className="skip-link">
@@ -127,43 +96,19 @@ export function Header({ locale = "es" }: { locale?: Locale }) {
           <LanguageSelector locale={locale} />
           <button
             id="menu-toggle"
-            className="menu-toggle"
+            className="menu-trigger"
+            type="button"
+            aria-haspopup="dialog"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? text.close : text.open}
             onClick={() => setOpen(!open)}
           >
-            {open ? <X /> : <Menu />}
+            {menuWords[locale].open}<span className="menu-bars" aria-hidden="true"><i/><i/></span>
           </button>
         </div>
       </header>
-      {open && (
-        <nav
-          id="mobile-nav"
-          className="mobile-nav"
-          aria-label={text.mobile}
-        >
-          {navigation.map(([id, label], i) => (
-            <Link
-              key={id}
-              href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : id === "proyectos" ? "/proyectos/" : id === "precios" ? localePath(locale, "/planes/") : `${localePath(locale)}#${id}`}
-              onClick={() => setOpen(false)}
-            >
-              <span>0{i + 1}</span>
-              {label}
-              <ArrowUpRight size={22} />
-            </Link>
-          ))}
-          <Link
-            className="button button-gold"
-            href={`/contacto?lang=${locale}`}
-            onClick={() => setOpen(false)}
-          >
-            {text.talk}
-            <ArrowUpRight size={18} />
-          </Link>
-        </nav>
-      )}
+      <MobileMenu open={open} locale={locale} links={menuLinks} onClose={() => setOpen(false)} />
     </>
   );
 }

@@ -1,0 +1,43 @@
+.menu-trigger { display:none; }
+.mobile-menu-dialog { width:100%; max-width:none; height:100dvh; max-height:none; margin:0; padding:0; border:0; background:transparent; color:var(--white); overflow:hidden; overscroll-behavior:contain; }
+.mobile-menu-dialog::backdrop { background:#0009; backdrop-filter:blur(5px); animation:menu-scrim-in .18s ease-out; }
+.mobile-menu-dialog[open] { display:block; }
+.mobile-menu-top { height:80px; padding:0 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; background:#080907; border-bottom:1px solid #ffffff0a; }
+.mobile-menu-top .brand-vector { width:164px; }
+.mobile-menu-card { width:calc(100% - 32px); max-width:480px; margin:12px 16px 0 auto; padding:12px 22px 18px; background:linear-gradient(145deg,#191a16,#10110e); border:1px solid #ffffff1a; border-radius:22px; box-shadow:0 22px 65px #0008; max-height:calc(100dvh - 110px - env(safe-area-inset-bottom)); overflow:auto; overscroll-behavior:contain; scrollbar-width:thin; transform-origin:top right; }
+.mobile-menu-dialog[open] .mobile-menu-card { animation:menu-card-in .24s cubic-bezier(.2,.8,.2,1) both; }
+.mobile-menu-card nav { display:flex; flex-direction:column; }
+.mobile-menu-card nav>a { display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:70px; padding:12px 2px; font-size:clamp(25px,6vw,31px); line-height:1.2; letter-spacing:-.04em; font-weight:400; border-bottom:1px solid #ffffff0c; color:#e8e7df; transition:color .18s, padding .18s; }
+.mobile-menu-card nav>a:last-child { border:0; }
+.mobile-menu-card nav>a[aria-current] { color:#dfc28e; }
+.menu-current-dot { width:6px; height:6px; border-radius:50%; background:#d3b27d; opacity:0; flex-shrink:0; }
+.mobile-menu-card nav>a[aria-current] .menu-current-dot { opacity:1; }
+.mobile-menu-footer { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; margin-top:12px; padding-top:16px; border-top:1px solid #ffffff14; }
+.menu-contact { display:flex; align-items:center; justify-content:center; gap:9px; min-height:44px; color:#dfc28e; font-size:13px; white-space:nowrap; }
+.mobile-menu-footer .language-selector { display:flex; margin:0; }
+.mobile-menu-footer .language-selector select { width:90px; min-height:44px; font-size:12px; border-color:#ffffff1a; border-radius:9px; }
+.mobile-menu-footer .language-selector>svg { display:none; }
+.mobile-menu-card a:focus-visible,.mobile-menu-top a:focus-visible,.menu-trigger:focus-visible { outline:2px solid #d3b27d; outline-offset:4px; border-radius:8px; }
+.menu-bars { width:18px; height:18px; position:relative; display:block; }
+.menu-bars i { position:absolute; width:18px; height:1px; background:currentColor; left:0; top:6px; }
+.menu-bars i:last-child { top:12px; width:12px; left:auto; right:0; }
+.is-open .menu-bars i { top:9px; transform:rotate(45deg); }
+.is-open .menu-bars i:last-child { width:18px; top:9px; transform:rotate(-45deg); }
+@keyframes menu-card-in { from {opacity:0; transform:translateY(-8px) scale(.98);} to {opacity:1; transform:none;} }
+@keyframes menu-scrim-in { from {opacity:0;} to {opacity:1;} }
+@media(max-width:1000px) {
+  .header .language-selector { display:none; }
+  .menu-trigger { display:flex; align-items:center; justify-content:center; gap:12px; min-height:44px; padding:10px 15px; border:1px solid #ffffff24; border-radius:100px; color:#dedbd2; background:#151610; font-size:12px; line-height:1; cursor:pointer; }
+  .header .nav-wrap { gap:16px; }
+}
+@media(max-width:380px) {
+  .mobile-menu-top { padding-inline:16px; }
+  .mobile-menu-top .brand-vector { width:142px; }
+  .mobile-menu-card { padding-inline:18px; }
+  .mobile-menu-footer { gap:8px; }
+  .menu-contact { gap:7px; font-size:12px; }
+  .mobile-menu-footer .language-selector select { width:82px; }
+}
+@media(max-height:520px) { .mobile-menu-card nav>a { min-height:52px; font-size:24px; padding-block:10px; } }
+@media(hover:hover) { .mobile-menu-card nav>a:hover { color:#dfc28e; padding-left:8px; } .menu-contact:hover { color:#f5dfb4; } }
+@media(prefers-reduced-motion:reduce) { .mobile-menu-dialog::backdrop,.mobile-menu-dialog[open] .mobile-menu-card { animation:none; } .mobile-menu-card nav>a { transition:none; } }
