@@ -2,7 +2,7 @@
 
 Repositorio público: [Sjaiback/JAIAX-Labs](https://github.com/Sjaiback/JAIAX-Labs).
 
-Web: https://sjaiback.github.io/JAIAX-Labs/ — publicación estática automática desde `main` mediante GitHub Actions. El panel `/admin` y su código se han eliminado.
+Web: https://jaiax.com/ — dominio registrado en Cloudflare y alojamiento estático en GitHub Pages, con publicación automática desde `main` mediante GitHub Actions. El panel `/admin` y su código se han eliminado.
 
 Frontend en español para un estudio de desarrollo web, software, IA y automatización. Next.js App Router, React, TypeScript estricto, Tailwind CSS 4, Motion, Anime.js v4, Lucide, React Hook Form y Zod.
 
@@ -25,7 +25,7 @@ npm run build
 npm run start -- --port 3108
 ```
 
-`npm run build` exporta HTML, CSS, JavaScript e imágenes a `out/`. `npm run start` sirve esos archivos estáticos. Para reproducir Pages, establece `NEXT_PUBLIC_BASE_PATH=/JAIAX-Labs` y `NEXT_PUBLIC_SITE_URL=https://sjaiback.github.io/JAIAX-Labs` tanto al compilar como al iniciar la vista previa. Las imágenes no requieren el optimizador de servidor de Next.js. El formulario lee plan y tipo de proyecto en el navegador. Las rutas antiguas redirigen mediante JavaScript conservando query y hash; ofrecen un enlace de respaldo sin JavaScript.
+`npm run build` exporta HTML, CSS, JavaScript e imágenes a `out/`. `npm run start` sirve esos archivos estáticos. En producción se usa `NEXT_PUBLIC_BASE_PATH` vacío y `NEXT_PUBLIC_SITE_URL=https://jaiax.com`. En local, usa `http://localhost:3107` y deja el prefijo vacío. Las imágenes no requieren el optimizador de servidor de Next.js. El formulario lee plan y tipo de proyecto en el navegador. Las rutas antiguas redirigen mediante JavaScript conservando query y hash; ofrecen un enlace de respaldo sin JavaScript.
 
 ## Configuración
 
@@ -100,7 +100,7 @@ Ejemplos de integración, cronología, procedencia de la geometría y pruebas en
 
 La sección Nosotros incluye una pieza orbital seleccionable, las tarjetas y botones responden al puntero y los artículos incorporan progreso de lectura e índice activo. No se añadieron dependencias para esta ampliación.
 
-El dominio **jaiax.com es solo una opción prevista, todavía sin confirmar**. La web publicada e indexable usa `https://sjaiback.github.io/JAIAX-Labs/` en sus canónicas y sitemap. En local se mantiene `noindex`. Las demos de productos quedan fuera del sitemap y llevan `noindex` para concentrar la búsqueda en JAIAX Labs y sus servicios. La guía [SEO-Y-EXPERIENCIA.md](SEO-Y-EXPERIENCIA.md) explica el alta en Search Console y el cambio futuro de dominio. Ninguna configuración garantiza posiciones en Google.
+El dominio **jaiax.com** fue registrado por el propietario en Cloudflare. La web usa `https://jaiax.com/` en sus canónicas, alternancias de idioma y sitemap. En local se mantiene `noindex`. Las demos de productos quedan fuera del sitemap y llevan `noindex` para concentrar la búsqueda en JAIAX Labs y sus servicios. La guía [SEO-Y-EXPERIENCIA.md](SEO-Y-EXPERIENCIA.md) explica el alta en Search Console. Ninguna configuración garantiza posiciones en Google.
 
 Los enlaces comerciales a `/contacto` pasan por `SiteLink` y abren WhatsApp con un borrador contextual. Los planes incluyen nombre y precio; las páginas de servicio incluyen el tipo de proyecto. Los enlaces de navegación, demos y lectura conservan su comportamiento. El visitante decide cuándo enviar el mensaje; abrir WhatsApp no demuestra recepción ni venta.
 

@@ -33,15 +33,15 @@ La estructura sigue la [guía de SEO de Google](https://developers.google.com/se
 
 El SEO técnico ayuda a que un buscador comprenda y rastree el contenido. No garantiza el primer lugar, una fecha de indexación ni resultados enriquecidos. Los efectos visuales tampoco son una garantía de posicionamiento.
 
-## Dominio pendiente
+## Dominio propio
 
-El usuario indicó **jaiax.com como dominio previsto**, todavía sin reservar ni confirmar. No se ha utilizado como una propiedad verificada ni se ha publicado el sitio allí.
+El propietario registró **jaiax.com** en Cloudflare. Se comprobó el contacto registrante existente y se verificó la propiedad del dominio en la cuenta de GitHub.
 
-La web pública está en `https://sjaiback.github.io/JAIAX-Labs/`. Su workflow activa `NEXT_PUBLIC_INDEXABLE=true`, genera el sitemap comercial y usa esa URL real en las canónicas. En desarrollo local se mantiene `NEXT_PUBLIC_INDEXABLE=false`. Las demos interactivas no se incluyen en el sitemap y conservan `noindex`.
+La web pública está en `https://jaiax.com/`. Su workflow activa `NEXT_PUBLIC_INDEXABLE=true`, genera el sitemap comercial y usa esa URL real en las canónicas. En desarrollo local se mantiene `NEXT_PUBLIC_INDEXABLE=false`. Las demos interactivas no se incluyen en el sitemap y conservan `noindex`.
 
 El contenido comercial se centra en desarrollo web para negocios en Perú, tiendas online, captación de clientes y automatización. La página `/servicios/tiendas-online-peru/` describe catálogo, recorrido de compra, pedidos por WhatsApp y las dependencias reales de pagos e inventario, sin prometer ventas ni posiciones. Los botones de cotización abren +51 924 488 034 con el plan o servicio seleccionado.
 
-Search Console todavía requiere verificar una propiedad de prefijo de URL: `https://sjaiback.github.io/JAIAX-Labs/`. Después se puede enviar `https://sjaiback.github.io/JAIAX-Labs/sitemap.xml` y solicitar inspección de las páginas principales. El despliegue no constituye verificación ni garantiza que Google ya las haya indexado.
+Search Console todavía requiere verificar una propiedad de prefijo de URL: `https://jaiax.com/`. Después se puede enviar `https://jaiax.com/sitemap.xml` y solicitar inspección de las páginas principales. El despliegue no constituye verificación ni garantiza que Google ya las haya indexado.
 
 Las portadas indexables son `/es/`, `/en/`, `/de/` y `/it/`. La raíz actúa como entrada de idioma con `noindex` y canónica española `/es/`. Las páginas comerciales traducidas tienen `hreflang` recíproco ES/EN/DE/IT y `x-default`, HTML con su idioma desde el servidor y canónicas independientes. El sitemap incluye las portadas y doce páginas internacionales de servicio, además de las cuatro españolas. Las URLs explícitas no cambian según la ubicación ni la preferencia del visitante. Artículos y demos conservan su idioma original, indicado en sus enlaces.
 

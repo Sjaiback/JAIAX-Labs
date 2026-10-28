@@ -15,8 +15,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_BASE_PATH: /JAIAX-Labs
-      NEXT_PUBLIC_SITE_URL: https://sjaiback.github.io/JAIAX-Labs
+      NEXT_PUBLIC_BASE_PATH: ''
+      NEXT_PUBLIC_SITE_URL: https://jaiax.com
       NEXT_PUBLIC_INDEXABLE: 'true'
       NEXT_PUBLIC_WHATSAPP_NUMBER: '51924488034'
     steps:

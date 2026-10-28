@@ -162,3 +162,12 @@ No se verificó la composición global de la web contra una captura de referenci
 - Ajustadas tarjetas y altura del hero para el texto alemán; se conservan el dibujo del logo y las interacciones.
 - Demos, artículos y páginas originales auxiliares conservan español, indicado en los enlaces internacionales. No se usa geolocalización IP ni servicios de traducción externos.
 
+
+## Dominio propio jaiax.com — 28/10/2026
+
+- Contacto registrante existente en Cloudflare comprobado a nombre del propietario; no se modificaron datos personales.
+- Propiedad verificada en GitHub mediante TXT, conservado en DNS.
+- Dominio personalizado guardado en Pages. Cuatro A oficiales para el apex y CNAME www a sjaiback.github.io, todos DNS only.
+- Exportación sin basePath y con canónicas, idiomas, imágenes sociales y sitemap en https://jaiax.com.
+- Build, 43 HTML, 1291 referencias locales, idiomas, mensajes WhatsApp, SEO y precios aprobados en la vista previa de archivos estáticos.
+
