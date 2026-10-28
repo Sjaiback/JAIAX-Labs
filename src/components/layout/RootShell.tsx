@@ -6,6 +6,7 @@ import { site } from "@/data/site";
 import "@/app/globals.css";
 import "@/app/experience.css";
 import "@/components/home/focused.css";
+import "@/components/home/showroom.css";
 import "@/components/i18n/language.css";
 import { LanguageEntry } from "@/components/i18n/LanguageEntry";
 import { copy } from "@/i18n/copy";

@@ -11,25 +11,6 @@
 .focus-section { padding-block:64px; scroll-margin-top:90px; }
 .focus-heading { margin-bottom:30px; }
 .focus-heading h2 { font-size:clamp(30px,3.8vw,48px); line-height:1.12; letter-spacing:-.045em; margin-top:12px; font-weight:400; }
-.solution-grid,.demo-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
-.solution-card { display:flex; flex-direction:column; min-width:0; padding:30px; border:1px solid #353027; background:linear-gradient(145deg,#17140f,#0b0b09 72%); border-radius:14px; transition:transform .25s,border-color .25s,background .25s; }
-.solution-top { display:flex; align-items:center; justify-content:space-between; color:var(--gold); margin-bottom:34px; }
-.solution-top>span { font-size:11px; letter-spacing:2px; color:#9b8b75; }
-.solution-card h3 { font-size:clamp(22px,2.1vw,29px); line-height:1.2; letter-spacing:-.035em; font-weight:400; }
-.solution-card p { color:#b9b4ab; font-size:15px; line-height:1.65; margin:14px 0 22px; max-width:29ch; }
-.solution-meta { font-size:12px; color:#d5bb93; margin-top:auto; line-height:1.5; }
-.solution-action { display:flex; align-items:center; justify-content:space-between; gap:12px; border-top:1px solid #332e25; padding-top:20px; margin-top:24px; font-size:13px; }
-.solution-action svg { flex-shrink:0; }
-.solution-card:focus-visible,.demo-card:focus-visible { outline:2px solid var(--gold); outline-offset:5px; }
-@media(hover:hover) { .solution-card:hover { transform:translateY(-6px); border-color:var(--gold); } .demo-card:hover img { transform:scale(1.035); } }
-.demo-section { border-top:1px solid #26241f; }
-.demo-card { display:block; min-width:0; }
-.demo-preview { border:1px solid #353027; border-radius:12px; overflow:hidden; aspect-ratio:1.6; background:#171612; }
-.demo-preview img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform .4s; }
-.demo-caption { display:flex; justify-content:space-between; gap:10px; padding:20px 2px 0; align-items:center; }
-.demo-caption>div>span { color:#b5ada0; font-size:12px; }
-.demo-caption h3 { font-size:21px; letter-spacing:.02em; margin-top:6px; font-weight:400; }
-.demo-open { display:flex; align-items:center; gap:9px; font-size:12px; color:var(--gold-light); }
 .focus-note { font-size:13px; line-height:1.8; color:#aaa397; margin-top:28px; max-width:85ch; }
 .focus-contact { display:flex; align-items:center; justify-content:space-between; gap:30px; padding-block:55px; border-top:1px solid #302b24; margin-top:30px; margin-bottom:35px; }
 .focus-contact h2 { font-size:clamp(27px,3vw,40px); font-weight:400; letter-spacing:-.035em; line-height:1.2; }
@@ -53,7 +34,7 @@
 .focus-steps h2 { font-weight:400; font-size:25px; margin:14px 0; }
 .focus-steps p { color:#bdb7ad; line-height:1.65; font-size:15px; }
 .studio-orbit { max-width:550px; margin:auto; }
-@media(max-width:900px) { .solution-card { padding:23px; } .solution-grid,.demo-grid { gap:14px; } .solution-card h3 { font-size:24px; } .demo-caption { flex-wrap:wrap; } }
+
 @media(max-width:680px) {
   .focused-home .hero { padding:105px 0 44px; }
   .focused-home .hero-brand { margin-bottom:24px; }
@@ -67,14 +48,6 @@
   .focus-section { padding-block:36px; }
   .focus-heading { margin-bottom:24px; }
   .focus-heading .eyebrow { font-size:9px; letter-spacing:1.5px; line-height:1.6; }
-  .solution-grid,.demo-grid { grid-template-columns:1fr; gap:16px; }
-  .solution-card { padding:24px; }
-  .solution-top { margin-bottom:22px; }
-  .solution-card h3 { font-size:26px; }
-  .solution-card p { max-width:none; margin-bottom:18px; }
-  .solution-action { margin-top:18px; padding-top:17px; font-size:14px; }
-  .demo-grid { gap:30px; }
-  .demo-caption { flex-wrap:nowrap; padding-top:15px; }
   .focus-note { margin-top:22px; font-size:12px; }
   .focus-contact { flex-direction:column; align-items:stretch; padding-block:35px; gap:24px; margin-top:22px; margin-bottom:10px; }
   .focus-contact .button { width:100%; justify-content:space-between; font-size:12px; min-height:50px; }
@@ -92,3 +65,5 @@
 @media(prefers-reduced-motion:reduce) { .solution-card,.demo-preview img { transition:none; } }
 
 .service-plans-link { display:flex; width:fit-content; margin-top:24px; padding-block:10px; }
+
+

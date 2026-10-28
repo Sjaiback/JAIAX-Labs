@@ -101,7 +101,7 @@ export function Header({ locale = "es" }: { locale?: Locale }) {
             {navigation.map(([id, label]) => (
               <Link
                 key={id}
-                href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : id === "precios" ? localePath(locale, "/planes/") : `${localePath(locale)}#${id}`}
+                href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : id === "proyectos" ? "/proyectos/" : id === "precios" ? localePath(locale, "/planes/") : `${localePath(locale)}#${id}`}
                 className={
                   (isHome && active === id) ||
                   (id === "blog" && path.startsWith("/blog"))
@@ -146,7 +146,7 @@ export function Header({ locale = "es" }: { locale?: Locale }) {
           {navigation.map(([id, label], i) => (
             <Link
               key={id}
-              href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : id === "precios" ? localePath(locale, "/planes/") : `${localePath(locale)}#${id}`}
+              href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : id === "proyectos" ? "/proyectos/" : id === "precios" ? localePath(locale, "/planes/") : `${localePath(locale)}#${id}`}
               onClick={() => setOpen(false)}
             >
               <span>0{i + 1}</span>

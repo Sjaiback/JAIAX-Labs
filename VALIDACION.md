@@ -180,3 +180,12 @@ No se verificó la composición global de la web contra una captura de referenci
 - Revisión de navegador a 320 px (DE), 390 px (ES) y escritorio 1280 px: sin desbordamiento horizontal; menú móvil y recorrido web → planes comprobados.
 - Build estático y TypeScript correctos. SEO, exportación, idiomas y precios correctos. ESLint: sin errores, tres avisos preexistentes en LanguageSelector, RootShell y SiteImage.
 - ESLint excluye out/ para revisar fuentes y evitar analizar archivos generados.
+
+## 2026-10-28 — Escaparate visual y referencias recuperadas
+- Se recuperan NODO, SOMA y UMBRAL en una composición de laptop y celulares inspirada en la referencia del usuario.
+- Un selector accesible muestra web, ecommerce o sistemas/ERP de uno en uno; soporte para flechas, Home y End.
+- Imágenes y destinos de servicio/demo cambian juntos. Los conceptos visuales y las demos relacionadas se identifican por separado.
+- Entrada con profundidad por scroll, sin sección fijada ni recorrido obligatorio; respeta reduced motion.
+- Se eliminan las tarjetas duplicadas de servicios y demos y se acorta la cabecera para dar prioridad a las imágenes.
+- Comprobación visual a 390 px, ancho a 320 px y escritorio; imágenes cargadas, un solo panel visible y sin desbordamiento horizontal.
+- Build/TypeScript, exportación estática, idiomas, SEO y enlaces de precios/WhatsApp correctos. Lint sin errores (tres avisos previos).
