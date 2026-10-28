@@ -16,7 +16,7 @@ export function localePath(locale: Locale, path = "/"): string {
   const clean = path.replace(/^\/(?:es|en|de|it)(?=\/|$)/, "") || "/";
   return locale === "es" && clean !== "/" ? clean : `/${locale}${clean === "/" ? "/" : clean}`;
 }
-export function translatedPath(path: string): boolean { return path === "/" || /^\/servicios\/[^/]+\/?$/.test(path); }
+export function translatedPath(path: string): boolean { return path === "/" || /^\/(planes|estudio|sistemas)\/?$/.test(path) || /^\/servicios\/[^/]+\/?$/.test(path); }
 export function switchLanguagePath(path: string, locale: Locale): string {
   const clean = path.replace(/^\/(?:es|en|de|it)(?=\/|$)/, "") || "/";
   return localePath(locale, translatedPath(clean) ? clean : "/");

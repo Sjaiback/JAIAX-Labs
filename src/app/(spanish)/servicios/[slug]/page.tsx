@@ -63,9 +63,10 @@ export default async function Service({
             href={`/contacto?tipo=${encodeURIComponent(s.type)}`}
             className="button button-gold"
           >
-            Exploremos tu proyecto
+            Cotizar este servicio
             <ArrowUpRight size={16} />
           </Link>
+          {s.id === "web" && <Link href="/planes/" className="text-link service-plans-link">Ver planes desde US$ 70 <ArrowUpRight size={16}/></Link>}
         </div>
         <JournalArt variant={s.art} />
       </div>
@@ -85,7 +86,7 @@ export default async function Service({
           ))}
         </ul>
       </section>
-      <div className="notice">{s.considerations}</div>
+      <details className="focus-faq"><summary>Alcance y condiciones</summary><p>{s.considerations}</p></details>
       <section className="section faq-layout">
         <SectionTitle
           eyebrow="ANTES DE CONSTRUIR"

@@ -31,7 +31,7 @@ export async function generateMetadata({
       ...base.openGraph,
       publishedTime: `${p.date}T12:00:00-05:00`,
       modifiedTime: `${p.date}T12:00:00-05:00`,
-      authors: [`${site.url}/#nosotros`],
+      authors: [`${site.url}/estudio/`],
       section: p.category,
     },
   };
@@ -60,7 +60,7 @@ export default async function Article({
             author: {
               "@type": "Organization",
               name: site.name,
-              url: `${site.url}/#nosotros`,
+              url: `${site.url}/estudio/`,
             },
             publisher: { "@id": `${site.url}/#organization` },
             image: [`${site.url}/social/${p.slug}.png`],

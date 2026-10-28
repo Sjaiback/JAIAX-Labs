@@ -1,8 +1,8 @@
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "@/components/ui/site-link";
 import { HeroEntrance } from "@/components/motion/HeroEntrance";
 import { AnimatedJaiaxLogo } from "@/components/brand/AnimatedJaiaxLogo";
-import { basicPlan } from "@/data/pricing";
+import { experience } from "@/i18n/experience";
 import { copy } from "@/i18n/copy";
 import { localePath, type Locale } from "@/i18n/config";
 export function Orb({ small = false }: { small?: boolean }) {
@@ -42,20 +42,17 @@ export function Orb({ small = false }: { small?: boolean }) {
 }
 export function Hero({ locale = "es" }: { locale?: Locale }) {
   const text = copy[locale].hero;
+  const compact = experience[locale];
   return (
     <HeroEntrance>
       <Orb />
-      <div className="hero-coordinate" aria-hidden data-hero-copy>
-        12°02′ S &nbsp; 77°01′ O<br />
-        <span>LIMA, PERÚ · JAIAX LABS</span>
-      </div>
       <div className="hero-content container">
         <div className="hero-brand">
-          <AnimatedJaiaxLogo size={156} />
+          <AnimatedJaiaxLogo size={112} />
         </div>
         <div>
           <span className="eyebrow hero-eyebrow" data-hero-copy>
-            <span className="status-dot" /> {text[0]}
+            <span className="status-dot" /> JAIAX LABS · DIGITAL STUDIO
           </span>
           <h1>
             <span className="hero-title-light" data-hero-ink>
@@ -65,31 +62,19 @@ export function Hero({ locale = "es" }: { locale?: Locale }) {
             <span data-hero-ink>{text[2]}</span>
           </h1>
           <p className="hero-description" data-hero-copy>
-            {text[3]}
+            {compact.intro}
           </p>
-          <div className="hero-offer" data-hero-copy>
-            <span className="tiny-line" /> {text[4]}{" "}
-            <strong>US$ {basicPlan.price}</strong>
-          </div>
           <div className="hero-actions">
-            <Link href={`/contacto?plan=basica&lang=${locale}`} className="button button-gold">
-              {text[5]}
+            <Link href={`${localePath(locale)}#servicios`} className="button button-gold">
+              {compact.choose}
               <ArrowUpRight size={18} />
             </Link>
-            <Link href={`${localePath(locale)}#proyectos`} className="button button-outline">
-              {text[6]}
+            <Link href={`/contacto?lang=${locale}`} className="button button-outline">
+              {compact.talk}
               <ArrowUpRight size={18} />
             </Link>
           </div>
         </div>
-      </div>
-      <div className="hero-bottom container" data-hero-copy>
-        <span>{text[9]}</span>
-        <Link href={`${localePath(locale)}#proyectos`}>
-          {text[7]}
-          <ArrowDown size={14} />
-        </Link>
-        <span>{text[8]}</span>
       </div>
     </HeroEntrance>
   );

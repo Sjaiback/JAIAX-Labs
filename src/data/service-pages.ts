@@ -10,7 +10,7 @@ export const servicePages = [
     headline: "Desarrollo web para impulsar tu negocio.",
     art: "web" as const,
     intro:
-      "Desarrollamos páginas web para negocios en Perú que quieren presentar sus servicios, atraer consultas y facilitar el contacto por WhatsApp. Organizamos tu oferta, diseñamos una navegación clara y adaptamos cada pantalla a móvil y escritorio para convertir el interés en una conversación comercial.",
+      "Una web clara para presentar tu negocio y recibir consultas. Diseñada para celular, con contacto directo por WhatsApp.",
     deliverables: [
       "Estructura de contenido y llamadas a la acción acordes al objetivo.",
       "Diseño responsive y navegación accesible.",
@@ -50,7 +50,7 @@ export const servicePages = [
     eyebrow: "ECOMMERCE / TIENDAS ONLINE EN PERÚ",
     headline: "Tu catálogo, convertido en una experiencia de compra.",
     art: "web" as const,
-    intro: "Una tienda online debe ayudar a encontrar el producto, entender su valor y dar el siguiente paso con confianza. Diseñamos ecommerce para negocios en Perú con categorías claras, fichas de producto útiles y recorridos de compra adaptados al celular. Definimos contigo si conviene recibir pedidos por WhatsApp o integrar una pasarela de pago.",
+    intro: "Un catálogo fácil de explorar y una compra clara desde el celular. Recibe pedidos por WhatsApp o integra pagos según tu proyecto.",
     deliverables: [
       "Organización del catálogo, categorías y navegación según tus productos.",
       "Fichas con fotografías, descripción, precio y variantes acordadas.",

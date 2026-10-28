@@ -171,3 +171,12 @@ No se verificó la composición global de la web contra una captura de referenci
 - Exportación sin basePath y con canónicas, idiomas, imágenes sociales y sitemap en https://jaiax.com.
 - Build, 43 HTML, 1291 referencias locales, idiomas, mensajes WhatsApp, SEO y precios aprobados en la vista previa de archivos estáticos.
 
+
+## 2026-10-28 — Portada por intención y móvil
+- Portada breve: tres accesos separados a web, ecommerce y sistemas/ERP; demos directas y contacto.
+- Planes, estudio y sistemas en páginas independientes ES/EN/DE/IT, incluidas en sitemap y hreflang.
+- Eliminada la duplicación de proyectos/demos, servicios, proceso y compromisos en portada. La esfera se conserva en Estudio.
+- Navegación de cuatro enlaces; planes conservan US$ 70, 120, 300 y cotización personalizada y WhatsApp por plan.
+- Revisión de navegador a 320 px (DE), 390 px (ES) y escritorio 1280 px: sin desbordamiento horizontal; menú móvil y recorrido web → planes comprobados.
+- Build estático y TypeScript correctos. SEO, exportación, idiomas y precios correctos. ESLint: sin errores, tres avisos preexistentes en LanguageSelector, RootShell y SiteImage.
+- ESLint excluye out/ para revisar fuentes y evitar analizar archivos generados.

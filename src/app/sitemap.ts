@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   if (!canIndex) return [];
   return [
     ...locales.map(locale => `/${locale}`),
+    ...locales.flatMap(locale => ["planes", "estudio", "sistemas"].map(section => locale === "es" ? `/${section}` : `/${locale}/${section}`)),
     "/proyectos",
     "/contacto",
     offerPath,

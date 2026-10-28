@@ -3,7 +3,7 @@ import Link from "@/components/ui/site-link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { navigation } from "@/data/site";
+
 import { JaiaxBrand } from "@/components/brand/JaiaxBrand";
 import { LanguageSelector } from "@/components/i18n/LanguageSelector";
 import { copy } from "@/i18n/copy";
@@ -17,6 +17,7 @@ export function Logo() {
 }
 export function Header({ locale = "es" }: { locale?: Locale }) {
   const text = copy[locale];
+  const navigation = [["servicios", text.nav[1]], ["proyectos", text.nav[2]], ["precios", text.nav[5]], ["blog", text.nav[6]]];
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("inicio");
@@ -97,10 +98,10 @@ export function Header({ locale = "es" }: { locale?: Locale }) {
             <Logo />
           </Link>
           <nav className="desktop-nav" aria-label={text.navigation}>
-            {navigation.map(([id], index) => (
+            {navigation.map(([id, label]) => (
               <Link
                 key={id}
-                href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : `${localePath(locale)}#${id}`}
+                href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : id === "precios" ? localePath(locale, "/planes/") : `${localePath(locale)}#${id}`}
                 className={
                   (isHome && active === id) ||
                   (id === "blog" && path.startsWith("/blog"))
@@ -115,7 +116,7 @@ export function Header({ locale = "es" }: { locale?: Locale }) {
                       : undefined
                 }
               >
-                {text.nav[index]}
+                {label}
               </Link>
             ))}
           </nav>
@@ -142,14 +143,14 @@ export function Header({ locale = "es" }: { locale?: Locale }) {
           className="mobile-nav"
           aria-label={text.mobile}
         >
-          {navigation.map(([id], i) => (
+          {navigation.map(([id, label], i) => (
             <Link
               key={id}
-              href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : `${localePath(locale)}#${id}`}
+              href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : id === "precios" ? localePath(locale, "/planes/") : `${localePath(locale)}#${id}`}
               onClick={() => setOpen(false)}
             >
               <span>0{i + 1}</span>
-              {text.nav[i]}
+              {label}
               <ArrowUpRight size={22} />
             </Link>
           ))}

@@ -32,8 +32,10 @@ for (const locale of config.locales) {
   assert.equal((html.match(/<h1[\s>]/g)||[]).length,1,`One H1 in ${locale}`);
   assert(html.includes(`aria-label="${copy[locale].language}"`),`Accessible language selector ${locale}`);
   for (const alternate of config.locales) assert(html.includes(`hrefLang="${alternate}"`) || html.includes(`hreflang="${alternate}"`),`Hreflang ${alternate} in ${locale}`);
+  const pricingPath = locale === 'es' ? 'planes' : `${locale}/planes`;
+  const pricingHtml = await readFile(`out/${pricingPath}/index.html`, 'utf8');
   for (const [index,id] of ['basica','profesional','negocio','avanzada'].entries()) {
-    const card = html.match(new RegExp(`<article[^>]*data-plan="${id}"[\\s\\S]*?</article>`))?.[0];
+    const card = pricingHtml.match(new RegExp(`<article[^>]*data-plan="${id}"[\\s\\S]*?</article>`))?.[0];
     assert(card,`${locale} ${id} plan`);
     const href=card.match(/href="(https:\/\/wa\.me\/[^"\s]+)"/)?.[1];
     assert(href,`WhatsApp link ${locale} ${id}`);

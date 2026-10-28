@@ -39,6 +39,7 @@ const serviceSlugs = [
 const paths = [
   "/",
   "/es/",
+  ...["planes", "estudio", "sistemas"].flatMap(section => [`/${section}/`, ...["en","de","it"].map(locale => `/${locale}/${section}/`)]),
   "/en/",
   "/de/",
   "/it/",

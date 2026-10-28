@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 
 const base = (process.argv[2] || "http://127.0.0.1:3107").replace(/\/$/, "");
-const home = await (await fetch(base)).text();
+const home = await (await fetch(`${base}/planes/`)).text();
 for (const [id, price] of [
   ["basica", "70"],
   ["profesional", "120"],
