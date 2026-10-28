@@ -205,3 +205,10 @@ No se verificó la composición global de la web contra una captura de referenci
 - Desplazamiento del fondo bloqueado solo mientras está abierto y restaurado al cerrar/desmontar; el panel puede desplazarse en horizontal de poca altura.
 - Verificado ES a 390 px, DE a 320 px y horizontal 568x320; sin desbordamientos, footer e idioma accesibles. Escape devuelve el foco al disparador; navegación a Precios cierra y libera la página.
 - Build/TypeScript, lint de Header/MobileMenu, exportación estática, idiomas, precios/WhatsApp y SEO correctos.
+
+## 2026-10-28 — Favicon JX
+- Se retira la J con estrella de icon.svg y se reutilizan las cuatro rutas originales del símbolo JX.
+- Variante dorada sólida para legibilidad en 16/32 px, con el mismo degradado de marca y fondo oscuro.
+- Se incluyen favicon.ico (16/32/48 px) y apple-icon.png (180 px); generación reproducible con node scripts/generate-brand-icons.mjs.
+- Build/TypeScript y lint del generador correctos. SVG, ICO y Apple presentes en las cabeceras de ES/EN/DE/IT con URL versionada; archivos exportados y servidos con HTTP 200.
+- Exportación estática e idiomas correctos. Geometría revisada visualmente en el PNG generado.
