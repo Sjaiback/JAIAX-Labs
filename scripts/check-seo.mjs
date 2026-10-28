@@ -32,6 +32,7 @@ const articleSlugs = [
 ];
 const serviceSlugs = [
   "desarrollo-web-peru",
+  "tiendas-online-peru",
   "automatizacion-n8n",
   "inteligencia-artificial",
 ];
@@ -72,7 +73,7 @@ const results = await Promise.all(
     );
     const robots = html.match(/<meta name="robots" content="([^"]+)"/)?.[1];
     assert(robots, `Robots: ${path}`);
-    assert.equal(robots.includes("noindex"), !indexable, `Indexation: ${path}`);
+    assert.equal(robots.includes("noindex"), !indexable || path.startsWith("/ejemplos/"), `Indexation: ${path}`);
     const blocks = [
       ...html.matchAll(
         /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g,

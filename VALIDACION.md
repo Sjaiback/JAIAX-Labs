@@ -140,3 +140,14 @@ No se verificó la composición global de la web contra una captura de referenci
 - Workflow Pages compila en Node 22, valida referencias y publica desde main.
 - Repositorio hecho público con autorización expresa del propietario.
 
+
+## WhatsApp y SEO comercial — 28/10/2026
+
+- Número público +51 924 488 034 conectado a planes y CTA comerciales, con borradores de mensaje según plan/precio o servicio.
+- Exportación completa y TypeScript correctos: 27 HTML y 785 referencias internas verificadas.
+- Comprobados los cuatro enlaces WhatsApp, el destinatario y los mensajes de Básica, Profesional, Negocio y Avanzada.
+- Indexación habilitada en Pages para páginas comerciales; demos navegables mantienen noindex y se excluyen del sitemap.
+- Añadida página de tiendas online en Perú, títulos/descripciones comerciales, canónicas con barra final y contacto estructurado de la organización.
+- SEO, sitemap, robots, tarjetas sociales PNG y precios comprobados en la exportación local.
+- Search Console queda pendiente de verificación por el propietario; habilitar indexación no acredita posiciones ni inclusión actual en Google.
+

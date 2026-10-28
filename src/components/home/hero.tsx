@@ -1,8 +1,8 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import Link from "@/components/ui/site-link";
 import { HeroEntrance } from "@/components/motion/HeroEntrance";
 import { AnimatedJaiaxLogo } from "@/components/brand/AnimatedJaiaxLogo";
-import { basicPlan, offerPath } from "@/data/pricing";
+import { basicPlan } from "@/data/pricing";
 export function Orb({ small = false }: { small?: boolean }) {
   return (
     <div className={`orb-scene ${small ? "orb-small" : ""}`} aria-hidden>
@@ -52,7 +52,7 @@ export function Hero() {
         </div>
         <div>
           <span className="eyebrow hero-eyebrow" data-hero-copy>
-            <span className="status-dot" /> DESARROLLO WEB · SOFTWARE ·
+            <span className="status-dot" /> DESARROLLO WEB EN PERÚ · SOFTWARE ·
             INTELIGENCIA ARTIFICIAL
           </span>
           <h1>
@@ -63,16 +63,16 @@ export function Hero() {
             <span data-hero-ink>Impulsamos negocios.</span>
           </h1>
           <p className="hero-description" data-hero-copy>
-            Desarrollamos sitios web, sistemas inteligentes y automatizaciones
-            <br className="desktop-break" /> que transforman ideas en soluciones
-            digitales.
+            Diseñamos páginas web y tiendas online en Perú para atraer clientes.
+            <br className="desktop-break" /> Tecnología y automatización para
+            convertir visitas en oportunidades de venta.
           </p>
           <div className="hero-offer" data-hero-copy>
             <span className="tiny-line" /> TU PÁGINA WEB PROFESIONAL POR{" "}
             <strong>US$ {basicPlan.price}</strong>
           </div>
           <div className="hero-actions">
-            <Link href={offerPath} className="button button-gold">
+            <Link href="/contacto?plan=basica" className="button button-gold">
               Crear mi página web
               <ArrowUpRight size={18} />
             </Link>

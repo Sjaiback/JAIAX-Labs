@@ -32,9 +32,9 @@ npm run start -- --port 3108
 | Variable                      | Uso                                                                                                                                   |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | `NEXT_PUBLIC_SITE_URL`        | URL absoluta del sitio para metadatos, sitemap y Open Graph. Configurar el dominio definitivo antes de publicar.                      |
-| `NEXT_PUBLIC_INDEXABLE`       | `false` en la demo. Cambiar a `true` y recompilar solo después de conectar y revisar el dominio real con HTTPS.                       |
+| `NEXT_PUBLIC_INDEXABLE`       | `false` en local; `true` en el workflow de la web pública en GitHub Pages. Las demos navegables y `/logo` conservan `noindex`.           |
 | `GOOGLE_SITE_VERIFICATION`    | Token opcional de Search Console para verificación mediante etiqueta. No se ha configurado una propiedad real.                        |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Número del negocio, solo dígitos y con código de país. Sin este valor el botón de WhatsApp aparece deshabilitado y explica el motivo. |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Número público del negocio, solo dígitos y con código de país. Valor configurado: `51924488034` (+51 924 488 034). |
 
 Las variables `NEXT_PUBLIC_` son públicas y se incorporan a la compilación. Reiniciar el servidor de desarrollo o recompilar después de cambiarlas. No guardar claves privadas en ellas.
 
@@ -90,7 +90,9 @@ Ejemplos de integración, cronología, procedencia de la geometría y pruebas en
 
 La sección Nosotros incluye una pieza orbital seleccionable, las tarjetas y botones responden al puntero y los artículos incorporan progreso de lectura e índice activo. No se añadieron dependencias para esta ampliación.
 
-El dominio **jaiax.com es solo una opción prevista, todavía sin confirmar**. La vista previa lleva `noindex`, robots bloqueados y sitemap vacío hasta habilitar la publicación. La guía [SEO-Y-EXPERIENCIA.md](SEO-Y-EXPERIENCIA.md) explica cómo configurar el dominio real, revisar el contenido, conectar Search Console y habilitar la indexación. Ninguna configuración garantiza posiciones en Google.
+El dominio **jaiax.com es solo una opción prevista, todavía sin confirmar**. La web publicada e indexable usa `https://sjaiback.github.io/JAIAX-Labs/` en sus canónicas y sitemap. En local se mantiene `noindex`. Las demos de productos quedan fuera del sitemap y llevan `noindex` para concentrar la búsqueda en JAIAX Labs y sus servicios. La guía [SEO-Y-EXPERIENCIA.md](SEO-Y-EXPERIENCIA.md) explica el alta en Search Console y el cambio futuro de dominio. Ninguna configuración garantiza posiciones en Google.
+
+Los enlaces comerciales a `/contacto` pasan por `SiteLink` y abren WhatsApp con un borrador contextual. Los planes incluyen nombre y precio; las páginas de servicio incluyen el tipo de proyecto. Los enlaces de navegación, demos y lectura conservan su comportamiento. El visitante decide cuándo enviar el mensaje; abrir WhatsApp no demuestra recepción ni venta.
 
 Con el servidor iniciado puedes ejecutar `npm run seo:check -- http://localhost:3107`. Esta comprobación valida metadatos, canónicas, JSON-LD, política de publicación, tarjetas sociales y rutas inexistentes.
 

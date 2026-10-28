@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
+import Link from "@/components/ui/site-link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { journalPosts, postSummaries, publishedDate } from "@/data/journal";
 import { site } from "@/data/site";

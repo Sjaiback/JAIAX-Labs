@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/site-link";
 import { Check, ArrowUpRight, ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { servicePages } from "@/data/service-pages";

@@ -4,6 +4,7 @@ import { QuoteForm } from "@/components/forms/quote-form";
 import { Suspense } from "react";
 import { ContactQueryForm } from "@/components/forms/contact-query-form";
 import { pageMetadata } from "@/lib/seo";
+import Link from "@/components/ui/site-link";
 export const metadata: Metadata = pageMetadata(
   "Cotiza desarrollo web, software o automatización",
   "Cuéntanos tu idea y prepara una solicitud de desarrollo web, software o automatización en Perú. Alcance y propuesta claros desde el inicio.",
@@ -44,10 +45,12 @@ export default function Contact() {
             </div>
           </div>
           <div className="notice">
-            Esta es una demo frontend. El envío al backend todavía no está
-            conectado. Podrás revisar y copiar tu solicitud antes de
-            compartirla.
+            Puedes escribirnos directamente por WhatsApp o preparar aquí un
+            resumen de tu proyecto. Tú revisas el mensaje y decides cuándo enviarlo.
           </div>
+          <Link href="/contacto" className="button button-gold" style={{ marginTop: 24 }}>
+            Escríbenos por WhatsApp <MessageCircle size={16} />
+          </Link>
         </div>
         <Suspense fallback={<QuoteForm />}><ContactQueryForm /></Suspense>
       </div>

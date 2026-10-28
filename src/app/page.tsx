@@ -3,8 +3,8 @@ import { pageMetadata } from "@/lib/seo";
 import { LatestJournal } from "@/components/journal/LatestJournal";
 import { ExampleShowcase } from "@/components/examples/ExampleShowcase";
 export const metadata = pageMetadata(
-  "Desarrollo web, IA y automatización en Perú",
-  "JAIAX Labs: desarrollo de páginas web, software a medida, automatización con n8n e integraciones de IA en Perú. Explora servicios y prepara tu cotización.",
+  "Desarrollo web en Perú para negocios",
+  "Páginas web, tiendas online y automatización para atraer clientes y facilitar ventas. Desarrollo web en Perú desde US$ 70. Cotiza por WhatsApp con JAIAX Labs.",
   "/",
 );
 import {

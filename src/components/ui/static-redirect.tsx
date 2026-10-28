@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/site-link";
 import { assetPath } from "@/lib/paths";
 export function StaticRedirect({ to }: { to: string }) {
   useEffect(() => {

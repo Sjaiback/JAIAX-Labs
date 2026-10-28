@@ -1,7 +1,7 @@
 "use client";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import Link from "@/components/ui/site-link";
 import type { ReactNode } from "react";
 export function Reveal({
   children,

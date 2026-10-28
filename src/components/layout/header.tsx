@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/components/ui/site-link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
@@ -95,7 +95,7 @@ export function Header() {
             {navigation.map(([id, label]) => (
               <Link
                 key={id}
-                href={id === "blog" ? "/blog" : `/#${id}`}
+                href={id === "contacto" ? "/contacto" : id === "blog" ? "/blog" : `/#${id}`}
                 className={
                   (path === "/" && active === id) ||
                   (id === "blog" && path.startsWith("/blog"))
@@ -139,7 +139,7 @@ export function Header() {
           {navigation.map(([id, label], i) => (
             <Link
               key={id}
-              href={id === "blog" ? "/blog" : `/#${id}`}
+              href={id === "contacto" ? "/contacto" : id === "blog" ? "/blog" : `/#${id}`}
               onClick={() => setOpen(false)}
             >
               <span>0{i + 1}</span>

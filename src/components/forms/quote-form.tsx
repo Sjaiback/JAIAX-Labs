@@ -3,7 +3,7 @@ import { useEffect, useId, useState } from "react";
 import { useForm, type FieldPath } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowUpRight, Check, Copy, MessageCircle } from "lucide-react";
-import Link from "next/link";
+import Link from "@/components/ui/site-link";
 import {
   leadSchema,
   mockLeadGateway,
@@ -256,7 +256,7 @@ export function QuoteForm({
         <span>Sin compromiso.</span>
       </div>
       <p className="form-note">
-        Demo frontend: tus datos permanecen en esta pestaña. Preparar la
+        Tus datos permanecen en esta pestaña. Preparar la
         solicitud no la envía ni la guarda.
       </p>
       {summary && (

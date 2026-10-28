@@ -1,7 +1,7 @@
 "use client";
 import { useId } from "react";
-import { Check, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import { Check, MessageCircle } from "lucide-react";
+import Link from "@/components/ui/site-link";
 import { plans } from "@/data/pricing";
 import { Reveal } from "@/components/ui";
 
@@ -51,7 +51,7 @@ export function PricingCards() {
               {plan.id === "avanzada"
                 ? "Definir mi proyecto"
                 : `Elegir ${plan.name.toLowerCase()}`}
-              <ArrowUpRight size={15} />
+              <MessageCircle size={15} aria-hidden="true" />
             </Link>
           </article>
         </Reveal>

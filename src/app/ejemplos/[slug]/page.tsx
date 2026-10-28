@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { StaticRedirect } from "@/components/ui/static-redirect";
-import Link from "next/link";
+import Link from "@/components/ui/site-link";
 import { examples, legacyExamples } from "@/data/examples";
 import { LogisticsDemo } from "@/components/demos/LogisticsDemo";
 import { CommerceDemo } from "@/components/demos/CommerceDemo";
@@ -20,11 +20,11 @@ export async function generateMetadata({
   const canonical = legacyExamples[slug] || slug;
   const example = examples.find((e) => e.slug === canonical);
   if (!example) return {};
-  return pageMetadata(
+  return { ...pageMetadata(
     `Demo ${example.name}: ${example.category}`,
     `${example.detail} Concepto navegable de JAIAX Labs.`,
     `/ejemplos/${canonical}`,
-  );
+  ), robots: { index: false, follow: true } };
 }
 export default async function ExamplePage({
   params,

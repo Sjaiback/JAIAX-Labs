@@ -27,7 +27,7 @@ Los artículos pueden leerse desde el HTML inicial. El cuerpo del artículo no s
 3. JSON-LD de `Organization`, `WebSite`, `Blog`, `BlogPosting`, `Service` y `BreadcrumbList`, coherente con el contenido visible.
 4. Sitemap con páginas, servicios y artículos públicos cuando se habilita la publicación.
 5. Los parámetros del cotizador no crean canónicas diferentes: `/contacto?plan=negocio` apunta a `/contacto`.
-6. `/logo` lleva `noindex` y `/admin` permanece bloqueado en producción. No se inventaron reseñas, direcciones físicas, logotipos de clientes ni resultados de proyectos.
+6. `/logo` y las demos `/ejemplos/*` llevan `noindex`. `/admin` se eliminó. No se inventaron reseñas, direcciones físicas, logotipos de clientes ni resultados de proyectos.
 
 La estructura sigue la [guía de SEO de Google](https://developers.google.com/search/docs/fundamentals/seo-starter-guide), la [guía de contenido útil](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) y la documentación de [datos estructurados de artículos](https://developers.google.com/search/docs/appearance/structured-data/article).
 
@@ -37,7 +37,11 @@ El SEO técnico ayuda a que un buscador comprenda y rastree el contenido. No gar
 
 El usuario indicó **jaiax.com como dominio previsto**, todavía sin reservar ni confirmar. No se ha utilizado como una propiedad verificada ni se ha publicado el sitio allí.
 
-La configuración por defecto es una vista previa: `NEXT_PUBLIC_INDEXABLE=false`. Devuelve `noindex` en metadatos, bloquea el rastreo en `robots.txt` y sirve un sitemap sin URLs publicables. Esto evita tratar una demo como el sitio definitivo.
+La web pública está en `https://sjaiback.github.io/JAIAX-Labs/`. Su workflow activa `NEXT_PUBLIC_INDEXABLE=true`, genera el sitemap comercial y usa esa URL real en las canónicas. En desarrollo local se mantiene `NEXT_PUBLIC_INDEXABLE=false`. Las demos interactivas no se incluyen en el sitemap y conservan `noindex`.
+
+El contenido comercial se centra en desarrollo web para negocios en Perú, tiendas online, captación de clientes y automatización. La página `/servicios/tiendas-online-peru/` describe catálogo, recorrido de compra, pedidos por WhatsApp y las dependencias reales de pagos e inventario, sin prometer ventas ni posiciones. Los botones de cotización abren +51 924 488 034 con el plan o servicio seleccionado.
+
+Search Console todavía requiere verificar una propiedad de prefijo de URL: `https://sjaiback.github.io/JAIAX-Labs/`. Después se puede enviar `https://sjaiback.github.io/JAIAX-Labs/sitemap.xml` y solicitar inspección de las páginas principales. El despliegue no constituye verificación ni garantiza que Google ya las haya indexado.
 
 Cuando el dominio esté bajo tu control y el sitio esté preparado para publicarse:
 

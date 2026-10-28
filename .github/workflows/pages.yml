@@ -17,7 +17,8 @@ jobs:
     env:
       NEXT_PUBLIC_BASE_PATH: /JAIAX-Labs
       NEXT_PUBLIC_SITE_URL: https://sjaiback.github.io/JAIAX-Labs
-      NEXT_PUBLIC_INDEXABLE: 'false'
+      NEXT_PUBLIC_INDEXABLE: 'true'
+      NEXT_PUBLIC_WHATSAPP_NUMBER: '51924488034'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

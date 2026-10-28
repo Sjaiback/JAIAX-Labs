@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Privacidad de la demo",
+  title: "Privacidad y contacto por WhatsApp",
   robots: { index: false, follow: true },
 };
 export default function Privacy() {
@@ -22,7 +22,8 @@ export default function Privacy() {
       </p>
       <h2>Compartir por WhatsApp</h2>
       <p>
-        Si se configura el canal, el botón abre WhatsApp con los datos que
+        Los botones de contacto abren WhatsApp de JAIAX Labs, +51 924 488 034.
+        Si compartes un resumen del formulario, el mensaje incluye los datos que
         ingresaste en el mensaje. Solo se entrega la solicitud cuando tú la
         envías allí. El servicio externo aplica sus propias condiciones y
         política de privacidad. Puedes revisar, editar o cancelar el mensaje
@@ -36,15 +37,9 @@ export default function Privacy() {
       </p>
       <h2>Analítica y publicidad</h2>
       <p>
-        Esta demo no instala píxeles publicitarios ni cookies de analítica. Se
+        Esta web no instala píxeles publicitarios ni cookies de analítica. Se
         preparan eventos locales de interacción y lectura de parámetros UTM sin
         enviarlos a terceros ni añadir información personal.
-      </p>
-      <h2>Administración de demostración</h2>
-      <p>
-        El panel utiliza datos ficticios en memoria y no ofrece autenticación.
-        No está disponible en producción y no debe usarse para almacenar
-        solicitudes reales.
       </p>
     </main>
   );

@@ -8,9 +8,9 @@ export const site = {
     /\/$/,
     "",
   ),
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "51924488034",
   description:
-    "Desarrollo web, software e inteligencia artificial en Perú. Diseñamos soluciones digitales con estrategia, precisión y propósito.",
+    "Desarrollo de páginas web y tiendas online en Perú para atraer clientes y facilitar ventas. Diseño web, software a medida y automatización para negocios.",
 };
 export const navigation = [
   ["inicio", "Inicio"],

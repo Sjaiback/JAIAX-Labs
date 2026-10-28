@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/site-link";
 import { ArrowDown, ArrowUpRight, Monitor, Smartphone } from "lucide-react";
 import { examples } from "@/data/examples";
 import { ExampleSite } from "./ExampleSite";

@@ -13,15 +13,16 @@ export function pageMetadata(
   type: "website" | "article" = "website",
   image = "/social/site.png",
 ): Metadata {
+  const canonical = `${site.url}${path === "/" ? "/" : `${path.replace(/\/$/, "")}/`}`;
   return {
     title: { absolute: `${title} | JAIAX Labs` },
     description,
-    alternates: { canonical: `${site.url}${path}` },
+    alternates: { canonical },
     openGraph: {
       type,
       title,
       description,
-      url: `${site.url}${path}`,
+      url: canonical,
       locale: "es_PE",
       siteName: site.name,
       images: [

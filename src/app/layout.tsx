@@ -61,6 +61,14 @@ export default function RootLayout({
                 url: site.url,
                 logo: `${site.url}/images/jaiax-logo.svg`,
                 description: site.description,
+                telephone: `+${site.whatsapp}`,
+                areaServed: { "@type": "Country", name: "Perú" },
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  telephone: `+${site.whatsapp}`,
+                  contactType: "sales",
+                  availableLanguage: ["es"],
+                },
               },
               {
                 "@type": "WebSite",

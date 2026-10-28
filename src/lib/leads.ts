@@ -44,7 +44,7 @@ export const mockLeadGateway: LeadGateway = {
     return {
       delivered: false,
       message:
-        "Solicitud preparada. No se ha enviado ni almacenado: el servicio de envío todavía no está conectado.",
+        "Tu resumen está listo. Revísalo y abre WhatsApp para compartirlo con JAIAX Labs. Todavía no se ha enviado ningún mensaje.",
     };
   },
 };

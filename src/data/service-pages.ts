@@ -7,10 +7,10 @@ export const servicePages = [
     description:
       "Diseñamos y desarrollamos páginas web para presentar tu negocio, comunicar tus servicios y facilitar el contacto. Landing pages y webs corporativas con alcance claro.",
     eyebrow: "DESARROLLO WEB / PERÚ",
-    headline: "Una web que se siente tuya. Y trabaja para tu negocio.",
+    headline: "Desarrollo web para impulsar tu negocio.",
     art: "web" as const,
     intro:
-      "Tu sitio debe ayudar a las personas a entender lo que haces y dar el siguiente paso. Partimos de tu objetivo, organizamos el contenido y construimos una experiencia que se adapta a móvil y escritorio.",
+      "Desarrollamos páginas web para negocios en Perú que quieren presentar sus servicios, atraer consultas y facilitar el contacto por WhatsApp. Organizamos tu oferta, diseñamos una navegación clara y adaptamos cada pantalla a móvil y escritorio para convertir el interés en una conversación comercial.",
     deliverables: [
       "Estructura de contenido y llamadas a la acción acordes al objetivo.",
       "Diseño responsive y navegación accesible.",
@@ -24,7 +24,7 @@ export const servicePages = [
       .map((p) => planLabel(p.id))
       .join(
         "; ",
-      )}. El plan Avanzada se cotiza según los requerimientos. Dominio, hosting, mantenimiento, textos, fotografías, licencias e integraciones adicionales se detallan por separado. El formulario de esta demo prepara un resumen; el envío real requiere conectar el backend.`,
+      )}. El plan Avanzada se cotiza según los requerimientos. Dominio, hosting, mantenimiento, textos, fotografías, licencias e integraciones adicionales se detallan por separado. Puedes consultar el alcance y cotizar directamente por WhatsApp.`,
     questions: [
       {
         q: "¿Landing o web multipágina?",
@@ -41,6 +41,32 @@ export const servicePages = [
     ],
     article: "cuanto-cuesta-pagina-web-peru",
     type: "Desarrollo de páginas web",
+  },
+  {
+    id: "ecommerce",
+    slug: "tiendas-online-peru",
+    title: "Desarrollo de tiendas online en Perú",
+    description: "Creamos tiendas online para negocios en Perú: catálogo, fichas de producto y una compra clara en móvil. Cotiza tu ecommerce y sus integraciones por WhatsApp.",
+    eyebrow: "ECOMMERCE / TIENDAS ONLINE EN PERÚ",
+    headline: "Tu catálogo, convertido en una experiencia de compra.",
+    art: "web" as const,
+    intro: "Una tienda online debe ayudar a encontrar el producto, entender su valor y dar el siguiente paso con confianza. Diseñamos ecommerce para negocios en Perú con categorías claras, fichas de producto útiles y recorridos de compra adaptados al celular. Definimos contigo si conviene recibir pedidos por WhatsApp o integrar una pasarela de pago.",
+    deliverables: [
+      "Organización del catálogo, categorías y navegación según tus productos.",
+      "Fichas con fotografías, descripción, precio y variantes acordadas.",
+      "Diseño responsive para descubrir y comparar productos desde el celular.",
+      "Carrito y canal de pedidos por WhatsApp o checkout según el alcance.",
+      "Metadatos y contenido descriptivo para las páginas de producto.",
+      "Pruebas del recorrido de compra y documentación de las integraciones contratadas.",
+    ],
+    considerations: "Las tiendas online se cotizan a medida dentro del plan Avanzada. Número de productos, inventario compartido, usuarios, pagos, envíos y administración requieren definir las herramientas o servicios correspondientes. Dominio, hosting, comisiones y mantenimiento se detallan por separado. El diseño puede facilitar la compra; las ventas también dependen de tu oferta, precios, atención y captación de clientes.",
+    questions: [
+      { q: "¿Puedo empezar recibiendo pedidos por WhatsApp?", a: "Sí. Podemos plantear un catálogo con selección de productos y un mensaje de pedido para que confirmes disponibilidad, entrega y pago con el cliente. Esa opción no confirma pagos ni actualiza inventario automáticamente." },
+      { q: "¿Qué hace falta para cobrar dentro de la tienda?", a: "Debemos acordar e integrar una pasarela de pago y los servicios que gestionarán pedidos e inventario. Sus requisitos, comisiones y costes operativos se revisan antes de cotizar; una web estática por sí sola no procesa pagos." },
+      { q: "¿Una tienda online garantiza más ventas?", a: "No. Trabajamos la claridad del catálogo, la confianza y la facilidad para comprar. El resultado también depende del producto, el tráfico, la logística y el seguimiento comercial. Podemos definir qué acciones medir para mejorar el recorrido." },
+    ],
+    article: "cuanto-cuesta-pagina-web-peru",
+    type: "Tiendas online",
   },
   {
     id: "automation",
