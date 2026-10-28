@@ -43,6 +43,8 @@ El contenido comercial se centra en desarrollo web para negocios en Perú, tiend
 
 Search Console todavía requiere verificar una propiedad de prefijo de URL: `https://sjaiback.github.io/JAIAX-Labs/`. Después se puede enviar `https://sjaiback.github.io/JAIAX-Labs/sitemap.xml` y solicitar inspección de las páginas principales. El despliegue no constituye verificación ni garantiza que Google ya las haya indexado.
 
+Las portadas indexables son `/es/`, `/en/`, `/de/` y `/it/`. La raíz actúa como entrada de idioma con `noindex` y canónica española `/es/`. Las páginas comerciales traducidas tienen `hreflang` recíproco ES/EN/DE/IT y `x-default`, HTML con su idioma desde el servidor y canónicas independientes. El sitemap incluye las portadas y doce páginas internacionales de servicio, además de las cuatro españolas. Las URLs explícitas no cambian según la ubicación ni la preferencia del visitante. Artículos y demos conservan su idioma original, indicado en sus enlaces.
+
 Cuando el dominio esté bajo tu control y el sitio esté preparado para publicarse:
 
 ```dotenv

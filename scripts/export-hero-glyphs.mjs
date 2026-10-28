@@ -9,7 +9,7 @@ const font = createFont(
     require.resolve("next/dist/next-devtools/server/font/geist-latin.woff2"),
   ),
 );
-const text = "Creamos tecnología.Impulsamos negocios.";
+const text = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÁÉÍÓÚÜÑáéíóúüñÄÖäößÀÈÌÒÙàèìòù.?!,’'–—";
 const glyphs = Object.fromEntries(
   [...new Set(text)]
     .filter((c) => c !== " ")

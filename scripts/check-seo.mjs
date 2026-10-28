@@ -38,6 +38,10 @@ const serviceSlugs = [
 ];
 const paths = [
   "/",
+  "/es/",
+  "/en/",
+  "/de/",
+  "/it/",
   "/blog",
   "/contacto?plan=negocio",
   "/web-desde-70",
@@ -57,7 +61,7 @@ const results = await Promise.all(
       /<link[^>]+rel="canonical"[^>]+href="([^"]+)"/,
     );
     assert(canonical, `Canonical: ${path}`);
-    assert.equal(new URL(canonical[1]).pathname.replace(/\/$/, ""), `${new URL(base).pathname.replace(/\/$/, "")}${path.split("?")[0]}`.replace(/\/$/, ""));
+    assert.equal(new URL(canonical[1]).pathname.replace(/\/$/, ""), `${new URL(base).pathname.replace(/\/$/, "")}${path === "/" ? "/es/" : path.split("?")[0]}`.replace(/\/$/, ""));
     assert.equal(
       (html.match(/<link[^>]+rel="canonical"/g) || []).length,
       1,
@@ -73,7 +77,7 @@ const results = await Promise.all(
     );
     const robots = html.match(/<meta name="robots" content="([^"]+)"/)?.[1];
     assert(robots, `Robots: ${path}`);
-    assert.equal(robots.includes("noindex"), !indexable || path.startsWith("/ejemplos/"), `Indexation: ${path}`);
+    assert.equal(robots.includes("noindex"), !indexable || path === "/" || path.startsWith("/ejemplos/"), `Indexation: ${path}`);
     const blocks = [
       ...html.matchAll(
         /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g,

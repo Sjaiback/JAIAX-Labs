@@ -3,8 +3,13 @@ import { Geist } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { site } from "@/data/site";
-import "./globals.css";
-import "./experience.css";
+import "@/app/globals.css";
+import "@/app/experience.css";
+import "@/components/i18n/language.css";
+import { LanguageEntry } from "@/components/i18n/LanguageEntry";
+import { copy } from "@/i18n/copy";
+import { international } from "@/i18n/international";
+import { ogLocales, type Locale } from "@/i18n/config";
 import "@/components/pricing/pricing.css";
 import { ExperienceMotion } from "@/components/motion/ExperienceMotion";
 import { canIndex, JsonLd } from "@/lib/seo";
@@ -37,19 +42,26 @@ export const metadata: Metadata = {
   },
 };
 export const viewport: Viewport = { themeColor: "#050505" };
-export default function RootLayout({
+export function rootMetadata(locale: Locale): Metadata {
+  const content = copy[locale];
+  return { ...metadata, description: locale === "es" ? site.description : international[locale].description, openGraph: { ...metadata.openGraph, locale: ogLocales[locale], title: `JAIAX Labs — ${content.hero[1]} ${content.hero[2]}` } };
+}
+export function RootShell({
   children,
+  locale,
 }: {
   children: React.ReactNode;
+  locale: Locale;
 }) {
   return (
-    <html lang="es" data-scroll-behavior="smooth">
+    <html lang={locale} data-scroll-behavior="smooth">
+      <head><LanguageEntry /></head>
       <body className={geist.variable}>
         <noscript>
           <style>{`.reveal-item{opacity:1!important;transform:none!important}`}</style>
         </noscript>
-        <Header />
-        <ExperienceMotion />
+        <Header locale={locale} />
+        <ExperienceMotion backLabel={{ es: "Volver al inicio de la página", en: "Back to top", de: "Zurück zum Seitenanfang", it: "Torna all'inizio della pagina" }[locale]} />
         <JsonLd
           data={{
             "@context": "https://schema.org",
@@ -67,7 +79,7 @@ export default function RootLayout({
                   "@type": "ContactPoint",
                   telephone: `+${site.whatsapp}`,
                   contactType: "sales",
-                  availableLanguage: ["es"],
+                  availableLanguage: ["es", "en", "de", "it"],
                 },
               },
               {
@@ -75,14 +87,14 @@ export default function RootLayout({
                 "@id": `${site.url}/#website`,
                 url: site.url,
                 name: site.name,
-                inLanguage: "es-PE",
+                inLanguage: locale,
                 publisher: { "@id": `${site.url}/#organization` },
               },
             ],
           }}
         />
         {children}
-        <Footer />
+        <Footer locale={locale} />
       </body>
     </html>
   );

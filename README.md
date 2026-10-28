@@ -38,7 +38,17 @@ npm run start -- --port 3108
 
 Las variables `NEXT_PUBLIC_` son públicas y se incorporan a la compilación. Reiniciar el servidor de desarrollo o recompilar después de cambiarlas. No guardar claves privadas en ellas.
 
-## Rutas
+## Idiomas
+
+La portada general detecta la preferencia del navegador y abre `/es/`, `/en/`, `/de/` o `/it/`. No consulta servicios de IP ni solicita ubicación. El selector de la cabecera permite elegir otro idioma y guarda únicamente esa preferencia en `localStorage`; la opción Automático la elimina. Si el almacenamiento está bloqueado, el cambio de idioma sigue funcionando. Las URLs con idioma explícito nunca se redirigen automáticamente y los parámetros de campaña y fragmentos se conservan.
+
+Portada, navegación, planes, mensajes de WhatsApp y las cuatro páginas de servicio están disponibles en los cuatro idiomas. Artículos, demos interactivas, proyectos de detalle y el formulario opcional conservan su versión original en español; los enlaces de las versiones internacionales lo indican. Cambiar el idioma desde una página sin traducción abre la portada elegida.
+
+Las versiones se generan como HTML estático con `lang`, canónica propia, `hreflang` recíproco, `x-default` y entradas en el sitemap. La entrada general `/` lleva `noindex` y apunta a `/es/` para no duplicar la portada española. Los idiomas no cambian precios ni moneda: los importes siguen en US$.
+
+Catálogos en `src/i18n/copy.ts` y `src/i18n/international.ts`; configuración y rutas en `src/i18n/config.ts`. Las rutas originales en español se agrupan en `src/app/(spanish)` sin cambiar sus URL. `scripts/check-i18n.mjs` verifica detección, preferencia, rutas explícitas, `lang`, alternancias, mensajes y servicios. El workflow ejecuta esa comprobación antes de publicar.
+
+## Páginas
 
 | Ruta                                              | Contenido                                                                                                            |
 | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |

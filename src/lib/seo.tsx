@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/data/site";
 import { isIndexableSite } from "./publication";
+import { languageAlternates, ogLocales, type Locale } from "@/i18n/config";
 
 export const canIndex = isIndexableSite(
   site.url,
@@ -12,18 +13,19 @@ export function pageMetadata(
   path: string,
   type: "website" | "article" = "website",
   image = "/social/site.png",
+  locale: Locale = "es",
 ): Metadata {
-  const canonical = `${site.url}${path === "/" ? "/" : `${path.replace(/\/$/, "")}/`}`;
+  const canonical = `${site.url}${path === "/" ? "/es/" : `${path.replace(/\/$/, "")}/`}`;
   return {
     title: { absolute: `${title} | JAIAX Labs` },
     description,
-    alternates: { canonical },
+    alternates: { canonical, languages: languageAlternates(path) },
     openGraph: {
       type,
       title,
       description,
       url: canonical,
-      locale: "es_PE",
+      locale: ogLocales[locale],
       siteName: site.name,
       images: [
         {

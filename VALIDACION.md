@@ -151,3 +151,14 @@ No se verificó la composición global de la web contra una captura de referenci
 - SEO, sitemap, robots, tarjetas sociales PNG y precios comprobados en la exportación local.
 - Search Console queda pendiente de verificación por el propietario; habilitar indexación no acredita posiciones ni inclusión actual en Google.
 
+
+## Idiomas estáticos — 28/10/2026
+
+- Portadas ES/EN/DE/IT y doce páginas internacionales de servicio exportadas; 43 HTML y 1291 referencias locales correctas.
+- Detección por preferencias del navegador, persistencia manual, modo Automático, bloqueo de almacenamiento, fallback y conservación de query/hash comprobados.
+- Verificados lang SSR, hreflang recíproco, x-default, metadatos, canónicas y 16 mensajes de plan traducidos con el destinatario correcto.
+- Selector probado en navegador: inglés a alemán; retorno por la raíz conserva alemán; servicio alemán a italiano mantiene la ruta; italiano a español vuelve al servicio original; Automático vuelve a la preferencia del navegador.
+- ES/EN/DE/IT comprobados a 390 px sin desbordamiento. Escritorio inglés a 1440 px sin desbordamiento ni errores de consola.
+- Ajustadas tarjetas y altura del hero para el texto alemán; se conservan el dibujo del logo y las interacciones.
+- Demos, artículos y páginas originales auxiliares conservan español, indicado en los enlaces internacionales. No se usa geolocalización IP ni servicios de traducción externos.
+

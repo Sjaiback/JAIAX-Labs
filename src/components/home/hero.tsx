@@ -3,6 +3,8 @@ import Link from "@/components/ui/site-link";
 import { HeroEntrance } from "@/components/motion/HeroEntrance";
 import { AnimatedJaiaxLogo } from "@/components/brand/AnimatedJaiaxLogo";
 import { basicPlan } from "@/data/pricing";
+import { copy } from "@/i18n/copy";
+import { localePath, type Locale } from "@/i18n/config";
 export function Orb({ small = false }: { small?: boolean }) {
   return (
     <div className={`orb-scene ${small ? "orb-small" : ""}`} aria-hidden>
@@ -38,13 +40,14 @@ export function Orb({ small = false }: { small?: boolean }) {
     </div>
   );
 }
-export function Hero() {
+export function Hero({ locale = "es" }: { locale?: Locale }) {
+  const text = copy[locale].hero;
   return (
     <HeroEntrance>
       <Orb />
       <div className="hero-coordinate" aria-hidden data-hero-copy>
         12°02′ S &nbsp; 77°01′ O<br />
-        <span>LIMA, PERÚ · ESTUDIO DIGITAL</span>
+        <span>LIMA, PERÚ · JAIAX LABS</span>
       </div>
       <div className="hero-content container">
         <div className="hero-brand">
@@ -52,44 +55,41 @@ export function Hero() {
         </div>
         <div>
           <span className="eyebrow hero-eyebrow" data-hero-copy>
-            <span className="status-dot" /> DESARROLLO WEB EN PERÚ · SOFTWARE ·
-            INTELIGENCIA ARTIFICIAL
+            <span className="status-dot" /> {text[0]}
           </span>
           <h1>
             <span className="hero-title-light" data-hero-ink>
-              Creamos tecnología.
+              {text[1]}
             </span>
             <br />
-            <span data-hero-ink>Impulsamos negocios.</span>
+            <span data-hero-ink>{text[2]}</span>
           </h1>
           <p className="hero-description" data-hero-copy>
-            Diseñamos páginas web y tiendas online en Perú para atraer clientes.
-            <br className="desktop-break" /> Tecnología y automatización para
-            convertir visitas en oportunidades de venta.
+            {text[3]}
           </p>
           <div className="hero-offer" data-hero-copy>
-            <span className="tiny-line" /> TU PÁGINA WEB PROFESIONAL POR{" "}
+            <span className="tiny-line" /> {text[4]}{" "}
             <strong>US$ {basicPlan.price}</strong>
           </div>
           <div className="hero-actions">
-            <Link href="/contacto?plan=basica" className="button button-gold">
-              Crear mi página web
+            <Link href={`/contacto?plan=basica&lang=${locale}`} className="button button-gold">
+              {text[5]}
               <ArrowUpRight size={18} />
             </Link>
-            <Link href="#proyectos" className="button button-outline">
-              Explorar proyectos
+            <Link href={`${localePath(locale)}#proyectos`} className="button button-outline">
+              {text[6]}
               <ArrowUpRight size={18} />
             </Link>
           </div>
         </div>
       </div>
       <div className="hero-bottom container" data-hero-copy>
-        <span>ESTRATEGIA. DISEÑO. CÓDIGO.</span>
-        <Link href="#proyectos">
-          DESLIZA PARA EXPLORAR
+        <span>{text[9]}</span>
+        <Link href={`${localePath(locale)}#proyectos`}>
+          {text[7]}
           <ArrowDown size={14} />
         </Link>
-        <span>INDEPENDIENTES POR NATURALEZA.</span>
+        <span>{text[8]}</span>
       </div>
     </HeroEntrance>
   );

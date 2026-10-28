@@ -6,6 +6,8 @@ import { ArrowDown, ArrowUpRight, Monitor, Smartphone } from "lucide-react";
 import { examples } from "@/data/examples";
 import { ExampleSite } from "./ExampleSite";
 import styles from "./examples.module.css";
+import { copy } from "@/i18n/copy";
+import type { Locale } from "@/i18n/config";
 
 const featured = examples[0];
 
@@ -15,7 +17,8 @@ const smooth = (value: number) => {
   return t * t * (3 - 2 * t);
 };
 
-export function ExampleShowcase() {
+export function ExampleShowcase({ locale = "es" }: { locale?: Locale }) {
+  const text = copy[locale].showcase;
   const root = useRef<HTMLElement>(null);
   const progress = useRef<HTMLSpanElement>(null);
   const id = useId();
@@ -117,19 +120,19 @@ export function ExampleShowcase() {
           <div>
             <span className="eyebrow">
               <span className="tiny-line" />
-              UNA WEB, TODAS TUS PANTALLAS
+              {text[0]}
             </span>
             <h2 id={`${id}-title`}>
-              Primero, en tu mano.
+              {text[1]}
               <br />
-              <span>Después, en grande.</span>
+              <span>{text[2]}</span>
             </h2>
           </div>
           <p>
-            Recorre la experiencia.
+            {text[3]}
             <br />
             <span className={styles.scrollHint}>
-              Desliza para transformarla <ArrowDown size={14} />
+              {text[4]} <ArrowDown size={14} />
             </span>
           </p>
         </div>
@@ -161,9 +164,9 @@ export function ExampleShowcase() {
           </div>
 
           <div className={styles.phaseLabel}>
-            <span data-step="mobile">01 · DISEÑADO PARA TU MÓVIL</span>
-            <span data-step="morph">02 · CAMBIA DE DIMENSIÓN</span>
-            <span data-step="desktop">03 · CONTINÚA EN ESCRITORIO</span>
+            <span data-step="mobile">01 · {text[5]}</span>
+            <span data-step="morph">02 · {text[6]}</span>
+            <span data-step="desktop">03 · {text[7]}</span>
           </div>
         </div>
 
@@ -172,16 +175,16 @@ export function ExampleShowcase() {
             <span className={styles.count}>PULSO / RESPONSIVE</span>
             <div>
               <h3>
-                La misma experiencia.
-                <span> / Sin perder contexto</span>
+                {text[8]}
+                <span> / {text[9]}</span>
               </h3>
               <p>
-                El contenido se adapta al dispositivo, pero la intención se mantiene.
+                {text[10]}
               </p>
             </div>
           </div>
           <Link className="button button-gold" href="/ejemplos/control-logistico">
-            Explorar demo <ArrowUpRight size={16} />
+            {text[11]} <ArrowUpRight size={16} />
           </Link>
         </div>
 
@@ -192,9 +195,9 @@ export function ExampleShowcase() {
         <div className={styles.bottom}>
           <span>
             <Monitor size={14} />
-            <Smartphone size={13} /> Diseño responsive
+            <Smartphone size={13} /> {text[12]}
           </span>
-          <nav className={styles.chapterLinks} aria-label="Abrir demos de los proyectos">
+          <nav className={styles.chapterLinks} aria-label={text[13]}>
             {examples.map((example, index) => (
               <Link key={example.slug} href={`/ejemplos/${example.slug}`}>
                 <span>0{index + 1}</span> {example.name}

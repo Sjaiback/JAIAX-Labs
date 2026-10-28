@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { navigation } from "@/data/site";
 import { JaiaxBrand } from "@/components/brand/JaiaxBrand";
+import { LanguageSelector } from "@/components/i18n/LanguageSelector";
+import { copy } from "@/i18n/copy";
+import { localePath, type Locale } from "@/i18n/config";
 export function Logo() {
   return (
     <span className="brand">
@@ -12,11 +15,13 @@ export function Logo() {
     </span>
   );
 }
-export function Header() {
+export function Header({ locale = "es" }: { locale?: Locale }) {
+  const text = copy[locale];
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("inicio");
   const path = usePathname();
+  const isHome = path === "/" || path.replace(/\/$/, "") === localePath(locale).replace(/\/$/, "");
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
@@ -80,24 +85,24 @@ export function Header() {
   return (
     <>
       <a href="#main" className="skip-link">
-        Ir al contenido
+        {text.skip}
       </a>
       <header className={`header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="nav-wrap">
           <Link
-            href="/"
-            aria-label="JAIAX Labs, inicio"
+            href={localePath(locale)}
+            aria-label={text.home}
             onClick={() => setOpen(false)}
           >
             <Logo />
           </Link>
-          <nav className="desktop-nav" aria-label="Navegación principal">
-            {navigation.map(([id, label]) => (
+          <nav className="desktop-nav" aria-label={text.navigation}>
+            {navigation.map(([id], index) => (
               <Link
                 key={id}
-                href={id === "contacto" ? "/contacto" : id === "blog" ? "/blog" : `/#${id}`}
+                href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : `${localePath(locale)}#${id}`}
                 className={
-                  (path === "/" && active === id) ||
+                  (isHome && active === id) ||
                   (id === "blog" && path.startsWith("/blog"))
                     ? "active"
                     : ""
@@ -105,25 +110,26 @@ export function Header() {
                 aria-current={
                   id === "blog" && path.startsWith("/blog")
                     ? "page"
-                    : path === "/" && active === id
+                    : isHome && active === id
                       ? "location"
                       : undefined
                 }
               >
-                {label}
+                {text.nav[index]}
               </Link>
             ))}
           </nav>
-          <Link className="nav-cta" href="/contacto">
-            Hablemos de tu proyecto
+          <Link className="nav-cta" href={`/contacto?lang=${locale}`}>
+            {text.talk}
             <ArrowUpRight size={15} />
           </Link>
+          <LanguageSelector locale={locale} />
           <button
             id="menu-toggle"
             className="menu-toggle"
             aria-expanded={open}
             aria-controls="mobile-nav"
-            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-label={open ? text.close : text.open}
             onClick={() => setOpen(!open)}
           >
             {open ? <X /> : <Menu />}
@@ -134,25 +140,25 @@ export function Header() {
         <nav
           id="mobile-nav"
           className="mobile-nav"
-          aria-label="Navegación móvil"
+          aria-label={text.mobile}
         >
-          {navigation.map(([id, label], i) => (
+          {navigation.map(([id], i) => (
             <Link
               key={id}
-              href={id === "contacto" ? "/contacto" : id === "blog" ? "/blog" : `/#${id}`}
+              href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : `${localePath(locale)}#${id}`}
               onClick={() => setOpen(false)}
             >
               <span>0{i + 1}</span>
-              {label}
+              {text.nav[i]}
               <ArrowUpRight size={22} />
             </Link>
           ))}
           <Link
             className="button button-gold"
-            href="/contacto"
+            href={`/contacto?lang=${locale}`}
             onClick={() => setOpen(false)}
           >
-            Hablemos de tu proyecto
+            {text.talk}
             <ArrowUpRight size={18} />
           </Link>
         </nav>

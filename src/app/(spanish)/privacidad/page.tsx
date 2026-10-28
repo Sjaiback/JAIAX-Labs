@@ -36,6 +36,7 @@ export default function Privacy() {
         financieros u otra información innecesaria para cotizar el proyecto.
       </p>
       <h2>Analítica y publicidad</h2>
+      <p>El selector de idioma guarda únicamente tu preferencia en este navegador. La detección automática utiliza los idiomas del navegador, sin geolocalizar tu IP ni solicitar tu ubicación. Puedes cambiar la selección o volver a Automático desde la cabecera.</p>
       <p>
         Esta web no instala píxeles publicitarios ni cookies de analítica. Se
         preparan eventos locales de interacción y lectura de parámetros UTM sin

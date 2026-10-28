@@ -1,27 +1,30 @@
 import Link from "@/components/ui/site-link";
 import { ArrowUpRight } from "lucide-react";
 import { Logo } from "./header";
-export function Footer() {
+import { copy } from "@/i18n/copy";
+import { localePath, type Locale } from "@/i18n/config";
+export function Footer({ locale = "es" }: { locale?: Locale }) {
+  const text = copy[locale];
   return (
     <footer className="footer container">
       <div className="footer-top">
-        <Link href="/" aria-label="JAIAX Labs, inicio">
+        <Link href={localePath(locale)} aria-label={text.home}>
           <Logo />
         </Link>
         <p>
-          Ideas ambiciosas.
+          {text.footer[0]}
           <br />
-          Tecnología con propósito.
+          {text.footer[1]}
         </p>
-        <Link href="/contacto">
-          Construyamos algo juntos <ArrowUpRight size={16} />
+        <Link href={`/contacto?lang=${locale}`}>
+          {text.footer[2]} <ArrowUpRight size={16} />
         </Link>
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} JAIAX Labs.</span>
-        <span>Desde Perú. Para el mundo.</span>
-        <Link href="/blog">Ideas en órbita / Blog</Link>
-        <Link href="/privacidad">Privacidad</Link>
+        <span>{text.footer[3]}</span>
+        <Link href="/blog">{text.footer[4]}</Link>
+        <Link href="/privacidad">{text.footer[5]}</Link>
       </div>
     </footer>
   );

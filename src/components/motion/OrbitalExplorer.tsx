@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useId, useRef } from "react";
 
-export function OrbitalExplorer() {
+export function OrbitalExplorer({ label = "EL LABORATORIO / INTERACTIVO" }: { label?: string }) {
   const host = useRef<HTMLDivElement>(null);
   const id = useId().replace(/[^a-z0-9_-]/gi, "");
   useEffect(() => {
@@ -41,7 +41,7 @@ export function OrbitalExplorer() {
       data-orbit-renderer="svg"
       data-orbit-active="false"
     >
-      <span className="orbit-kicker">EL LABORATORIO / INTERACTIVO</span>
+      <span className="orbit-kicker">{label}</span>
       <div className="orbital-viewport">
         <svg
           viewBox="0 0 500 390"

@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { ArrowUp } from "lucide-react";
 
 /** Delegated interactions: one pointer handler and one RAF, with no per-frame React renders. */
-export function ExperienceMotion() {
+export function ExperienceMotion({ backLabel = "Volver al inicio de la página" }: { backLabel?: string }) {
   const pathname = usePathname();
   const progress = useRef<HTMLDivElement>(null);
   const back = useRef<HTMLButtonElement>(null);
@@ -145,7 +145,7 @@ export function ExperienceMotion() {
         ref={back}
         className="back-top"
         hidden
-        aria-label="Volver al inicio de la página"
+        aria-label={backLabel}
         onClick={() =>
           window.scrollTo({
             top: 0,
