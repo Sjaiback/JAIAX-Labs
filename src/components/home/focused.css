@@ -65,5 +65,3 @@
 @media(prefers-reduced-motion:reduce) { .solution-card,.demo-preview img { transition:none; } }
 
 .service-plans-link { display:flex; width:fit-content; margin-top:24px; padding-block:10px; }
-
-

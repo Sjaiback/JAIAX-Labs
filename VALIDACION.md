@@ -189,3 +189,11 @@ No se verificó la composición global de la web contra una captura de referenci
 - Se eliminan las tarjetas duplicadas de servicios y demos y se acorta la cabecera para dar prioridad a las imágenes.
 - Comprobación visual a 390 px, ancho a 320 px y escritorio; imágenes cargadas, un solo panel visible y sin desbordamiento horizontal.
 - Build/TypeScript, exportación estática, idiomas, SEO y enlaces de precios/WhatsApp correctos. Lint sin errores (tres avisos previos).
+
+## 2026-10-28 — Menos rótulos y más interacción
+- Portada sin eyebrows; eliminados encabezados pequeños redundantes también en planes, estudio y sistemas.
+- Selector Inspirar / Vender / Organizar en ES, con equivalentes EN/DE/IT. Ejemplos titulados UMBRAL, SOMA y NODO.
+- Indicador del selector con desplazamiento por resorte; transiciones suaves entre ejemplos y respuesta de flechas/botones al hover.
+- Profundidad de dispositivos al mover el mouse con retorno amortiguado; touch mantiene su scroll normal.
+- Celulares con movimientos de distinta duración, solo en el panel activo y cerca de la pantalla. Reduced motion desactiva movimiento continuo, transiciones y respuesta al mouse.
+- Build/TypeScript, exportación, idiomas y precios correctos; lint de los archivos modificados sin avisos ni errores. Teclado y movimiento comprobados en navegador; 320/390 px sin desbordamiento.

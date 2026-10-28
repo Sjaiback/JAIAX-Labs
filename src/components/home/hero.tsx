@@ -51,9 +51,6 @@ export function Hero({ locale = "es" }: { locale?: Locale }) {
           <AnimatedJaiaxLogo size={112} />
         </div>
         <div>
-          <span className="eyebrow hero-eyebrow" data-hero-copy>
-            <span className="status-dot" /> JAIAX LABS · DIGITAL STUDIO
-          </span>
           <h1>
             <span className="hero-title-light" data-hero-ink>
               {text[1]}
