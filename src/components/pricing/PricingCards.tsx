@@ -19,7 +19,7 @@ export function PricingCards({ locale = "es", compact = false }: { locale?: Loca
             aria-labelledby={`${id}-${plan.id}`}
             data-plan={plan.id}
           >
-            {plan.featured && (
+            {plan.featured && !compact && (
               <span className="price-recommended">{text.planUi[0]}</span>
             )}
             <div className="price-plan-heading">

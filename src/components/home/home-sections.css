@@ -50,3 +50,5 @@
 .plan-more[open] summary::before { content:"−"; }
 .plan-more summary::-webkit-details-marker { display:none; }
 .home-prices .plan-more ul { padding-block:10px 0; color:#bdb5a8; }
+
+@media(min-width:701px) { .home-prices .price-card>p { min-height:3.4em; } }
