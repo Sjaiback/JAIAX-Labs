@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui";
 import { copy } from "@/i18n/copy";
 import type { Locale } from "@/i18n/config";
 
-export function PricingCards({ locale = "es" }: { locale?: Locale }) {
+export function PricingCards({ locale = "es", compact = false }: { locale?: Locale; compact?: boolean }) {
   const id = useId();
   const text = copy[locale];
   return (
@@ -40,13 +40,14 @@ export function PricingCards({ locale = "es" }: { locale?: Locale }) {
             <span className="plan-billing">{text.planUi[plan.id === "avanzada" ? 2 : 1]}</span>
             <div className="price-divider" />
             <ul>
-              {text.plans[index].slice(2).map((feature) => (
+              {text.plans[index].slice(2, compact ? 5 : undefined).map((feature) => (
                 <li key={feature}>
                   <Check size={15} aria-hidden="true" />
                   {feature}
                 </li>
               ))}
             </ul>
+            {compact && <details className="plan-more"><summary>{{es:'Ver todo lo incluido',en:'See everything included',de:'Alle Leistungen ansehen',it:'Vedi tutto ciò che è incluso'}[locale]}</summary><ul>{text.plans[index].slice(5).map(feature => <li key={feature}><Check size={15} aria-hidden="true"/>{feature}</li>)}</ul></details>}
             <Link
               href={`/contacto?plan=${plan.id}&lang=${locale}`}
               className={`button ${plan.featured ? "button-gold" : "button-outline"}`}

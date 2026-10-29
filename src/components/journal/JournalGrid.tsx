@@ -96,7 +96,7 @@ export function JournalGrid({ posts }: { posts: PostSummary[] }) {
       </div>
       {!filtered.length && (
         <div className="journal-empty">
-          <span className="eyebrow">UN NUEVO PUNTO DE PARTIDA</span>
+
           <h2>Todavía no hay una idea con ese nombre.</h2>
           <p>Prueba otro término o explora todos los temas.</p>
           <button

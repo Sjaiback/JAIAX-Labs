@@ -13,10 +13,7 @@ export default function Projects() {
     <main id="main" className="inner-main">
       <div className="container section" style={{ paddingTop: 0 }}>
         <div className="page-intro">
-          <span className="eyebrow">
-            <span className="tiny-line" />
-            DISEÑO CON INTENCIÓN
-          </span>
+
           <h1>Ideas que toman forma.</h1>
           <p>
             Una selección de exploraciones visuales. Cada concepto imagina una

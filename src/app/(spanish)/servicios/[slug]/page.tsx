@@ -56,7 +56,7 @@ export default async function Service({
       </Link>
       <div className="service-page-hero">
         <div>
-          <span className="eyebrow">{s.eyebrow}</span>
+
           <h1>{s.headline}</h1>
           <p>{s.intro}</p>
           <Link
@@ -106,7 +106,7 @@ export default async function Service({
       </section>
       <div className="service-reading">
         <div>
-          <span className="eyebrow">UNA IDEA PARA SEGUIR EXPLORANDO</span>
+
           <h2>{article.title}</h2>
         </div>
         <Link href={`/blog/${article.slug}`} className="button button-outline">

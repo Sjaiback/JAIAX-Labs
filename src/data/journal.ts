@@ -21,6 +21,58 @@ export interface JournalPost {
 export type PostSummary = Omit<JournalPost, "sections" | "sources">;
 const journalEntries: Omit<JournalPost, "minutes">[] = [
   {
+    slug: "como-una-web-ayuda-a-vender",
+    title: "Tu cliente tiene dudas. Tu web puede ayudarle a decidir.",
+    description: "Cómo una página clara conecta tus redes con consultas mejor informadas: servicios, ejemplos, confianza y un siguiente paso fácil.",
+    category: "Negocios y ventas", date: "2026-10-28", art: "web",
+    takeaway: "Una web ayuda cuando responde lo que el cliente necesita saber antes de escribirte. El diseño tiene que facilitar esa decisión.",
+    relatedService: "desarrollo-web-peru", sources: [],
+    sections: [
+      { id: "decidir", title: "Piensa en la última consulta que recibiste", paragraphs: [
+        "¿Qué vendes? ¿Atiendes mi zona? ¿Cómo puedo pedirlo? Si estas preguntas llegan una y otra vez por chat, ahí tienes el contenido más útil para tu página. Una persona que descubre tu negocio no conoce tu proceso: necesita entender rápidamente si puedes ayudarla y qué hacer después.",
+        "Imagina un taller que publica buenos trabajos en Instagram, pero no explica qué servicios ofrece ni cómo reservar. Una web puede reunir esos servicios, fotografías propias, ubicación, horarios y un botón para solicitar una cita. Ese recorrido permite llegar al chat con más contexto, aunque no garantiza que cada visita termine en una venta."
+      ], points: ["Explica qué haces y para quién en la primera pantalla.", "Muestra ejemplos reales y con permiso de publicación.", "Responde las dudas que suelen frenar una consulta."] },
+      { id: "redes", title: "Dales un destino a tus redes y campañas", paragraphs: [
+        "Las redes permiten descubrirte y conversar. La web puede ser el lugar donde desarrollas tu propuesta con orden. En vez de enviar al cliente a buscar información entre publicaciones, comparte una página dedicada al servicio por el que preguntó.",
+        "Si ofreces servicios y productos, evita mezclar todos los recorridos. Quien busca una cotización necesita información distinta de quien quiere comprar un artículo. Una entrada clara para cada necesidad permite profundizar sin llenar la portada de texto."
+      ] },
+      { id: "contacto", title: "Haz que preguntar sea fácil desde el celular", paragraphs: [
+        "El botón de contacto debe aparecer donde la persona ya tiene información para decidir. Un mensaje de WhatsApp que mencione el servicio elegido le ahorra explicaciones. Antes de publicar, prueba el recorrido con un teléfono: lee el texto, abre los ejemplos y comprueba que el enlace llega al número correcto.",
+        "No necesitas empezar con un sitio enorme. Una página con una propuesta clara, buenos ejemplos, preguntas frecuentes y contacto puede ser un primer alcance razonable. Si necesitas pagos, reservas o un catálogo administrable, define esas funciones aparte para elegir la herramienta adecuada."
+      ] },
+      { id: "medir", title: "Mira qué pasa después de publicar", paragraphs: [
+        "Recoge las preguntas que siguen apareciendo por chat: pueden revelar información que falta en el sitio. Cuando configures una medición apropiada y el consentimiento que corresponda, revisa visitas a servicios y clics de contacto junto con la calidad de las consultas recibidas.",
+        "La web acompaña a tu oferta, atención y capacidad de entrega. Para evaluar su utilidad, acuerda qué quieres mejorar y compara períodos similares. Más animaciones o más páginas por sí solas no sustituyen una propuesta que se entiende."
+      ] }
+    ]
+  },
+  {
+    slug: "excel-o-sistema-para-mi-negocio",
+    title: "¿Excel o un sistema? Mira dónde se atasca tu negocio.",
+    description: "Señales para decidir si seguir con hojas de cálculo, conectar herramientas o crear un sistema que organice ventas, inventario y trabajo en equipo.",
+    category: "Operaciones", date: "2026-10-28", art: "automation",
+    takeaway: "El cambio tiene sentido cuando resuelve un problema concreto del trabajo diario. Empieza por un proceso y comprueba el resultado antes de ampliarlo.",
+    relatedService: "automatizacion-n8n", sources: [],
+    sections: [
+      { id: "excel", title: "Excel puede seguir siendo una buena herramienta", paragraphs: [
+        "Una hoja de cálculo resulta práctica para explorar datos, preparar presupuestos o llevar un registro sencillo. Si una persona mantiene un archivo claro y el equipo encuentra lo que necesita, quizá el primer paso sea mejorar esa estructura. No todas las empresas necesitan un ERP completo.",
+        "La pregunta útil es qué ocurre alrededor del archivo. ¿Copias el mismo pedido en varias hojas? ¿El almacén y ventas manejan cifras distintas? ¿Necesitas preguntar por chat cuál es la versión vigente? Describe esos casos antes de elegir software."
+      ] },
+      { id: "pedido", title: "Sigue un pedido desde que entra hasta que se entrega", paragraphs: [
+        "Imagina que ventas registra una compra, almacén actualiza las existencias y administración confirma el pago en documentos separados. Si nadie conecta esos pasos, el equipo puede trabajar con información incompleta. El problema es el recorrido de los datos, no necesariamente el formato de la hoja.",
+        "Un sistema diseñado para ese flujo puede compartir registros, validar campos y mostrar estados según el rol de cada persona. Una automatización también puede conectar herramientas existentes. Ambas opciones requieren definir qué se actualiza, quién tiene permisos y cómo se gestionan los errores."
+      ], points: ["¿Cuántas veces se vuelve a escribir el mismo dato?", "¿Quién confirma que un estado cambió?", "¿Qué pasa si dos personas modifican el mismo pedido?", "¿Cómo se detecta y corrige una diferencia de inventario?"] },
+      { id: "piloto", title: "Prueba un módulo antes de cambiar toda la operación", paragraphs: [
+        "Elige un proceso que puedas describir y medir, por ejemplo el seguimiento de pedidos. Acuerda los campos, los estados, las personas responsables y las excepciones. Usa datos de prueba y verifica que el equipo entiende el recorrido antes de incorporar información real.",
+        "Registra una referencia inicial: tiempo dedicado a copiar datos, incidencias o pedidos que requieren aclaraciones. Después del piloto podrás comprobar si el cambio ayudó. Una interfaz atractiva aporta claridad, pero el valor se demuestra en el trabajo que el equipo puede resolver."
+      ] },
+      { id: "continuidad", title: "Incluye la continuidad en la decisión", paragraphs: [
+        "Una demo muestra cómo podría usarse una solución; no demuestra que ya esté conectada a tu empresa. Para ponerla en producción hay que acordar almacenamiento, accesos, copias de seguridad, migración de datos, formación y soporte. Los costos dependen de esos requisitos y del alcance.",
+        "En JAIAX Labs podemos revisar contigo si conviene ordenar una hoja, integrar herramientas o desarrollar un sistema. Podemos comenzar por ventas, inventario o un panel operativo. La meta es que la solución acompañe a tu negocio y que sepas cómo mantenerla."
+      ] }
+    ]
+  },
+  {
     slug: "cuanto-cuesta-pagina-web-peru",
     title: "¿Cuánto cuesta una página web en Perú? Empieza por el alcance.",
     description: `Qué comparar en una cotización web: páginas, contenido, dominio y mantenimiento. Conoce el plan Básica de JAIAX Labs por US$ ${basicPlan.price}, de pago único.`,

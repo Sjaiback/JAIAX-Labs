@@ -7,6 +7,7 @@ import "@/app/globals.css";
 import "@/app/experience.css";
 import "@/components/home/focused.css";
 import "@/components/home/showroom.css";
+import "@/components/home/home-sections.css";
 import "@/components/i18n/language.css";
 import { LanguageEntry } from "@/components/i18n/LanguageEntry";
 import { copy } from "@/i18n/copy";
@@ -76,10 +77,12 @@ export function RootShell({
                 logo: `${site.url}/images/jaiax-logo.svg`,
                 description: site.description,
                 telephone: `+${site.whatsapp}`,
+                email: site.email,
                 areaServed: { "@type": "Country", name: "Perú" },
                 contactPoint: {
                   "@type": "ContactPoint",
                   telephone: `+${site.whatsapp}`,
+                email: site.email,
                   contactType: "sales",
                   availableLanguage: ["es", "en", "de", "it"],
                 },

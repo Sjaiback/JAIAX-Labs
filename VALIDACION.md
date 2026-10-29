@@ -212,3 +212,13 @@ No se verificó la composición global de la web contra una captura de referenci
 - Se incluyen favicon.ico (16/32/48 px) y apple-icon.png (180 px); generación reproducible con node scripts/generate-brand-icons.mjs.
 - Build/TypeScript y lint del generador correctos. SVG, ICO y Apple presentes en las cabeceras de ES/EN/DE/IT con URL versionada; archivos exportados y servidos con HTTP 200.
 - Exportación estática e idiomas correctos. Geometría revisada visualmente en el PNG generado.
+
+
+## Portada orientada a negocios — 28 de octubre de 2026
+
+- Recorrido: presentación breve, ejemplos visuales originales, cuatro precios, cinco preguntas desplegables y contacto.
+- Planes resumidos con el resto del alcance en detalles nativos. Enlaces por plan a WhatsApp +51 924488034; correo atencion.consultas.jaiax@gmail.com.
+- Laptop enlaza a la demo relacionada; conserva imágenes originales, movimiento de puntero y scroll con movimiento reducido. Las demos relacionadas están identificadas como conceptos separados.
+- Blog fuera de la portada: dos guías nuevas sobre una web que facilita consultas y Excel frente a un sistema. Se retiraron eyebrows de encabezados compartidos, servicios, proyectos y blog.
+- Build estático y TypeScript correctos; check-static (57 HTML), check-i18n, check-seo y check-pricing correctos. Lint de componentes modificados correcto.
+- Navegador: pestaña Vender cambia el ejemplo, detalles de planes y FAQ abren correctamente; ES a 390 px y DE a 320 px sin desbordamiento horizontal.

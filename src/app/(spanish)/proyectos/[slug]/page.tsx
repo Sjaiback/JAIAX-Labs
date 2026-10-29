@@ -42,7 +42,7 @@ export default async function ProjectDetail({
           Todos los proyectos
         </Link>
         <div className="page-intro" style={{ marginTop: 35, marginBottom: 25 }}>
-          <span className="eyebrow">{p.category} / CONCEPTO DE ESTUDIO</span>
+
           <h1>{p.name}</h1>
           <p>{p.description}</p>
           <div className="tech-tags">
@@ -65,12 +65,12 @@ export default async function ProjectDetail({
         />
         <div className="detail-columns">
           <div>
-            <span className="eyebrow">01 / EL RETO</span>
+
             <h2>Una oportunidad para explorar.</h2>
             <p>{p.problem}</p>
           </div>
           <div>
-            <span className="eyebrow">02 / LA PROPUESTA</span>
+
             <h2>La idea, hecha experiencia.</h2>
             <p>{p.solution}</p>
           </div>
@@ -93,7 +93,7 @@ export default async function ProjectDetail({
         </div>
         <div className="detail-columns">
           <div>
-            <span className="eyebrow">03 / RESULTADOS</span>
+
             <h2>
               {p.results.length
                 ? "Resultados verificables."

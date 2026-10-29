@@ -1,0 +1,52 @@
+.home-prices,.home-questions,.home-contact { scroll-margin-top:100px; padding-block:65px; }
+.home-section-heading { max-width:680px; }
+.home-section-heading h2,.home-questions h2,.home-contact h2 { font-size:clamp(30px,3.8vw,48px); line-height:1.13; font-weight:400; letter-spacing:-.045em; text-wrap:balance; }
+.home-section-heading p,.home-contact p { font-size:15px; line-height:1.7; color:#bdb5a8; margin-top:18px; max-width:54ch; }
+.home-prices .pricing-grid { margin-top:52px; }
+.home-prices .price-plan-heading h3 { font-size:20px; text-transform:none; letter-spacing:-.025em; color:#eee5d6; }
+.home-prices .price-plan-heading>span { display:none; }
+.home-prices .price-card>p,.home-prices .price-card li { font-size:13px; }
+.home-prices .price-card .button { font-size:10px; text-transform:none; letter-spacing:0; }
+.home-questions { display:grid; grid-template-columns:1fr 1.5fr; gap:70px; border-top:1px solid #302b24; }
+.home-questions details { border-bottom:1px solid #302b24; }
+.home-questions summary { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:24px 0; font-size:17px; line-height:1.45; cursor:pointer; list-style:none; }
+.home-questions summary::-webkit-details-marker { display:none; }
+.home-questions summary svg { flex-shrink:0; color:#c6a16b; transition:transform .2s; }
+.home-questions details[open] summary svg { transform:rotate(45deg); }
+.home-questions details p { color:#bdb5a8; font-size:15px; line-height:1.8; padding-bottom:25px; max-width:65ch; }
+.home-questions summary:hover { color:#dfbe8b; }
+.home-questions summary:focus-visible,.home-email:focus-visible { outline:2px solid #dfbe8b; outline-offset:5px; }
+.home-contact { border-top:1px solid #302b24; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+.home-contact-links { display:flex; flex-direction:column; align-items:flex-start; gap:20px; min-width:0; }
+.home-contact-links .button { font-size:13px; text-transform:none; letter-spacing:0; min-height:54px; }
+.home-email { display:flex; gap:12px; align-items:center; max-width:100%; font-size:15px; color:#dfbe8b; min-height:44px; }
+.home-email svg { flex-shrink:0; }
+.home-email span { overflow-wrap:anywhere; }
+.home-phone { color:#bdb5a8; font-size:14px; }
+.screen-action { position:absolute; inset:auto auto 12% 50%; transform:translate(-50%,6px); display:flex; align-items:center; gap:10px; width:max-content; max-width:90%; padding:12px 18px; border-radius:100px; background:#111a; backdrop-filter:blur(12px); color:white; font-size:12px; opacity:0; transition:opacity .2s,transform .2s; }
+.showroom-laptop:hover .screen-action,.showroom-laptop:focus-visible .screen-action { opacity:1; transform:translate(-50%,0); }
+.showroom-laptop:focus-visible { outline:2px solid #dfbe8b; outline-offset:8px; border-radius:22px; }
+@media(max-width:1000px) { .home-questions { gap:35px; } }
+@media(max-width:680px) {
+  .home-prices,.home-questions,.home-contact { padding-block:40px; }
+  .home-questions,.home-contact { grid-template-columns:1fr; gap:25px; }
+  .home-prices .pricing-grid { margin-top:45px; }
+  .home-prices .price-card { padding:26px; }
+  .home-prices .price-card li { font-size:14px; }
+  .home-prices .price-card .button { font-size:12px; min-height:48px; }
+  .home-questions summary { font-size:16px; padding-block:21px; gap:16px; }
+  .home-questions details p { font-size:14px; }
+  .home-contact-links { gap:12px; }
+  .home-contact-links .button { width:100%; justify-content:space-between; }
+  .home-email { font-size:13px; gap:9px; }
+  .footer-bottom { overflow-wrap:anywhere; }
+}
+@media(prefers-reduced-motion:reduce) { .home-questions summary svg,.screen-action { transition:none; } }
+
+.home-prices .price-card ul { min-height:0; padding-block:22px 15px; }
+.plan-more { margin-bottom:22px; font-size:13px; color:#dfbe8b; }
+.plan-more summary { cursor:pointer; min-height:44px; display:flex; align-items:center; gap:8px; }
+.plan-more summary::before { content:"+"; }
+.plan-more[open] summary::before { content:"−"; }
+.plan-more summary::-webkit-details-marker { display:none; }
+.home-prices .plan-more ul { padding-block:10px 0; color:#bdb5a8; }

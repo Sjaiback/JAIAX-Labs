@@ -26,27 +26,20 @@ export default function Blog() {
         }}
       />
       <div className="journal-intro">
-        <span className="eyebrow">
-          <span className="tiny-line" />
-          JAIAX JOURNAL / DESDE PERÚ
-        </span>
+
         <h1>
-          Ideas que abren
+          Ideas para hacer
           <br />
-          <span>nuevas posibilidades.</span>
+          <span>crecer tu negocio.</span>
         </h1>
         <div className="journal-intro-bottom">
           <p>
-            Desarrollo web, automatización y estrategia digital.
+            Cómo una web ayuda a vender. Cuándo pasar de Excel a un sistema.
             <br />
             {" "}
-            Una mirada clara a las decisiones que hacen avanzar tu negocio.
+            Guías prácticas para decidir tu siguiente paso.
           </p>
-          <span className="journal-edition">
-            VOL. 01 — EL PUNTO DE PARTIDA
-            <br />
-            PENSAR. CONSTRUIR. COMPARTIR.
-          </span>
+
         </div>
       </div>
       <JournalGrid posts={postSummaries} />

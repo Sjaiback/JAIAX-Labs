@@ -1,6 +1,7 @@
 import Link from "@/components/ui/site-link";
 import { ArrowUpRight } from "lucide-react";
 import { Logo } from "./header";
+import { site } from "@/data/site";
 import { experience } from "@/i18n/experience";
 import { copy } from "@/i18n/copy";
 import { localePath, type Locale } from "@/i18n/config";
@@ -23,7 +24,7 @@ export function Footer({ locale = "es" }: { locale?: Locale }) {
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} JAIAX Labs.</span>
-        <span>{text.footer[3]}</span>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
         <Link id="nosotros" href={localePath(locale,"/estudio/")}>{experience[locale].studio}</Link>
         <Link href="/blog">{text.footer[4]}</Link>
         <Link href="/privacidad">{text.footer[5]}</Link>

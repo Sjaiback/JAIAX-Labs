@@ -47,7 +47,6 @@ export function ButtonLink({
   );
 }
 export function SectionTitle({
-  eyebrow,
   title,
   description,
 }: {
@@ -57,10 +56,6 @@ export function SectionTitle({
 }) {
   return (
     <Reveal className="section-heading">
-      <span className="eyebrow">
-        <span className="tiny-line" />
-        {eyebrow}
-      </span>
       <h2>{title}</h2>
       {description && <p>{description}</p>}
     </Reveal>

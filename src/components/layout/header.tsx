@@ -49,8 +49,8 @@ export function Header({ locale = "es" }: { locale?: Locale }) {
   }, []);
   const menuLinks = navigation.map(([id, label]) => ({
     id, label,
-    href: id === "blog" ? "/blog/" : id === "proyectos" ? "/proyectos/" : id === "precios" ? localePath(locale, "/planes/") : `${localePath(locale)}#servicios`,
-    current: id === "blog" ? path.startsWith("/blog") : id === "proyectos" ? path.startsWith("/proyectos") : id === "precios" ? path.replace(/\/$/, "").endsWith("/planes") : (isHome && active === "servicios") || path.includes("/servicios/") || path.replace(/\/$/, "").endsWith("/sistemas"),
+    href: id === "blog" ? "/blog/" : id === "proyectos" ? "/proyectos/" : id === "precios" ? `${localePath(locale)}#precios` : `${localePath(locale)}#servicios`,
+    current: id === "blog" ? path.startsWith("/blog") : id === "proyectos" ? path.startsWith("/proyectos") : id === "precios" ? (isHome && active === "precios") || path.replace(/\/$/, "").endsWith("/planes") : (isHome && active === "servicios") || path.includes("/servicios/") || path.replace(/\/$/, "").endsWith("/sistemas"),
   }));
   return (
     <>
@@ -70,7 +70,7 @@ export function Header({ locale = "es" }: { locale?: Locale }) {
             {navigation.map(([id, label]) => (
               <Link
                 key={id}
-                href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : id === "proyectos" ? "/proyectos/" : id === "precios" ? localePath(locale, "/planes/") : `${localePath(locale)}#${id}`}
+                href={id === "contacto" ? `/contacto?lang=${locale}` : id === "blog" ? "/blog" : id === "proyectos" ? "/proyectos/" : id === "precios" ? `${localePath(locale)}#precios` : `${localePath(locale)}#${id}`}
                 className={
                   (isHome && active === id) ||
                   (id === "blog" && path.startsWith("/blog"))

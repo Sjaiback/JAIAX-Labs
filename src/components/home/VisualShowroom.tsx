@@ -54,7 +54,7 @@ export function VisualShowroom({ locale }: { locale: Locale }) {
     event.currentTarget.parentElement?.querySelectorAll('button')[next]?.focus();
   }
   return <section id="servicios" className="visual-showroom container" aria-labelledby="showroom-title">
-    <span id="proyectos" className="showroom-anchor" /><span id="precios" className="showroom-anchor" />
+    <span id="proyectos" className="showroom-anchor" />
     <div className="showroom-heading"><h2 id="showroom-title">{t.title}</h2></div>
     <div className="showroom-tabs" role="tablist" aria-label={copy.title}>
       {t.tabs.map((label, index) => <button type="button" key={label} id={`solution-tab-${index}`} role="tab" aria-selected={index === active} aria-controls={`solution-panel-${index}`} tabIndex={index === active ? 0 : -1} onClick={()=>{setActive(index); resetPointer();}} onKeyDown={event=>keyboard(event,index)}>{active === index && <motion.i className="showroom-selection" layoutId={`showroom-selection-${locale}`} transition={reduced ? {duration:0} : {type:'spring',stiffness:380,damping:32}} aria-hidden="true"/>}{label}</button>)}
@@ -64,7 +64,7 @@ export function VisualShowroom({ locale }: { locale: Locale }) {
         <motion.div className="device-interaction" style={{rotateY: reduced ? 0 : pointerYaw, rotateX: reduced ? 0 : pointerPitch}}>
         <motion.div className="device-scene" style={{ rotateX: reduced ? 0 : tilt, y: reduced ? 0 : rise }}>
           <div className="device-halo" />
-          <div className="showroom-laptop"><div className="laptop-screen"><span className="laptop-camera"/><Image src={visual.concept} width={1536} height={1024} sizes="(max-width: 680px) 90vw, 70vw" alt={`${visual.name} — ${t.concept}: ${t.tabs[index]}`} loading="lazy"/></div><div className="laptop-deck"><span/></div></div>
+          <Link href={`/ejemplos/${visual.demo.slug}/`} hrefLang="es" aria-label={`${t.demo} — ${visual.name}`} className="showroom-laptop"><div className="laptop-screen"><span className="laptop-camera"/><Image src={visual.concept} width={1536} height={1024} sizes="(max-width: 680px) 90vw, 70vw" alt={`${visual.name} — ${t.concept}: ${t.tabs[index]}`} loading="lazy"/></div><div className="laptop-deck"><span/></div><span className="screen-action">{t.demo}<ArrowUpRight size={16}/></span></Link>
           <motion.div className="showroom-phone phone-left" aria-hidden="true" animate={{y: floating && active === index ? [0,-9,0] : 0, rotateZ:-6, rotateY:8}} transition={floating && active === index ? {duration:5.8, repeat:Infinity, ease:"easeInOut"} : {duration:0}}><Image src={visual.demo.mobileImage} width={390} height={844} sizes="(max-width: 680px) 24vw, 15vw" alt=""/><span className="device-notch"/></motion.div>
           <motion.div className="showroom-phone phone-right" aria-hidden="true" animate={{y: floating && active === index ? [0,8,0] : 0, rotateZ:6, rotateY:-8}} transition={floating && active === index ? {duration:6.6, repeat:Infinity, ease:"easeInOut"} : {duration:0}}><Image src={visual.demo.mobileImage} width={390} height={844} sizes="(max-width: 680px) 24vw, 15vw" alt=""/><span className="device-notch"/></motion.div>
         </motion.div></motion.div>

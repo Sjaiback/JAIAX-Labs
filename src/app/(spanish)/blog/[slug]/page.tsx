@@ -78,7 +78,7 @@ export default async function Article({
           Volver a las ideas
         </Link>
         <header className="article-header">
-          <span className="eyebrow">{p.category} / JAIAX JOURNAL</span>
+
           <h1>{p.title}</h1>
           <p>{p.description}</p>
           <div className="article-byline">
@@ -96,7 +96,7 @@ export default async function Article({
           />
           <article className="article-body" data-reading-body>
             <div className="article-takeaway">
-              <span className="eyebrow">LA IDEA CLAVE</span>
+
               <p>{p.takeaway}</p>
             </div>
             {p.sections.map((s, i) => (
@@ -131,7 +131,7 @@ export default async function Article({
               </section>
             )}
             <div className="article-next-step">
-              <span className="eyebrow">DE LA IDEA AL SIGUIENTE PASO</span>
+
               <h2>¿Lo llevamos a tu negocio?</h2>
               <p>
                 Exploremos el alcance de una solución para lo que necesitas.
@@ -148,7 +148,7 @@ export default async function Article({
         </div>
         <section className="section">
           <div className="section-row">
-            <span className="eyebrow">SIGUE LA ÓRBITA</span>
+
             <Link href="/blog" className="text-link">
               Todas las ideas
               <ArrowUpRight size={16} />
