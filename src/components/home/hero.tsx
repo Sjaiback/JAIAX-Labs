@@ -48,7 +48,14 @@ export function Hero({ locale = "es" }: { locale?: Locale }) {
       <Orb />
       <div className="hero-content container">
         <div className="hero-brand">
-          <AnimatedJaiaxLogo size={112} />
+          <AnimatedJaiaxLogo
+            size="min(44vw, 270px)"
+            variant="symbol"
+            className="hero-jx-mark"
+          />
+          <span className="hero-wordmark" data-hero-copy>
+            JAIAX <small>LABS</small>
+          </span>
         </div>
         <div>
           <h1>

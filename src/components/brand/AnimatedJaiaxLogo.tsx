@@ -13,6 +13,8 @@ export interface AnimatedJaiaxLogoProps {
   onComplete?: () => void;
   /** true forces the static version; the OS preference is always respected. */
   reducedMotion?: boolean;
+  /** Show only the hand-drawn JX monogram. */
+  variant?: "full" | "symbol";
   className?: string;
 }
 
@@ -40,6 +42,7 @@ const strokes = jaiaxLogo.paths.flatMap((glyph, index) => {
     duration: duration - part * 18,
   }));
 });
+const symbolStrokes = strokes.filter((stroke) => stroke.group === "symbol");
 
 /** A centerline SVG reconstruction of the supplied PNG, animated with Anime.js v4. */
 export function AnimatedJaiaxLogo({
@@ -47,6 +50,7 @@ export function AnimatedJaiaxLogo({
   autoplay = true,
   onComplete,
   reducedMotion = false,
+  variant = "full",
   className = "",
 }: AnimatedJaiaxLogoProps) {
   const root = useRef<SVGSVGElement>(null);
@@ -56,6 +60,7 @@ export function AnimatedJaiaxLogo({
   const symbolId = `${id}-symbol`;
   const labsId = `${id}-labs`;
   const glowId = `${id}-glow`;
+  const visibleStrokes = variant === "symbol" ? symbolStrokes : strokes;
 
   useLayoutEffect(() => {
     callback.current = onComplete;
@@ -108,7 +113,7 @@ export function AnimatedJaiaxLogo({
         defaults: { ease: "linear" },
         onComplete: finish,
       });
-      strokes.forEach((stroke) => {
+      visibleStrokes.forEach((stroke) => {
         const main = element.querySelector<SVGPathElement>(
           `[data-logo-stroke="${stroke.key}"]`,
         )!;
@@ -169,7 +174,7 @@ export function AnimatedJaiaxLogo({
         path.style.removeProperty("visibility");
       }
     };
-  }, [autoplay, reducedMotion]);
+  }, [autoplay, reducedMotion, variant, visibleStrokes]);
 
   const style: CSSProperties = {
     width: size,
@@ -181,9 +186,9 @@ export function AnimatedJaiaxLogo({
         ref={root}
         className={`${styles.logo} jaiax-animated-logo ${className}`}
         style={style}
-        width={jaiaxLogo.width}
-        height={jaiaxLogo.height}
-        viewBox={jaiaxLogo.viewBox}
+        width={variant === "symbol" ? 610 : jaiaxLogo.width}
+        height={variant === "symbol" ? 340 : jaiaxLogo.height}
+        viewBox={variant === "symbol" ? "450 230 610 340" : jaiaxLogo.viewBox}
         role="img"
         aria-label="JAIAX Labs"
         data-autoplay={autoplay}
@@ -239,7 +244,7 @@ export function AnimatedJaiaxLogo({
           strokeLinejoin="round"
           filter={`url(#${glowId})`}
         >
-          {strokes.map((stroke) => (
+          {visibleStrokes.map((stroke) => (
             <path
               key={stroke.key}
               data-logo-path
@@ -253,7 +258,7 @@ export function AnimatedJaiaxLogo({
               }
             />
           ))}
-          {strokes.map((stroke) => (
+          {visibleStrokes.map((stroke) => (
             <path
               key={`tip-${stroke.key}`}
               data-logo-path

@@ -6,6 +6,7 @@ import { experience } from '@/i18n/experience';
 import { homeCopy } from '@/i18n/home';
 import { PricingCards } from '@/components/pricing/PricingCards';
 import { site } from '@/data/site';
+import { whatsappContactHref } from '@/lib/whatsapp';
 import type { Locale } from '@/i18n/config';
 
 export function FocusedHome({ locale = 'es' }: { locale?: Locale }) {
@@ -24,7 +25,7 @@ export function FocusedHome({ locale = 'es' }: { locale?: Locale }) {
     </section>
     <section id="contacto" className="container home-contact" aria-labelledby="home-contact-title">
       <div><h2 id="home-contact-title">{home.contact}</h2><p>{home.contactText}</p></div>
-      <div className="home-contact-links"><Link className="button button-gold" href={`/contacto?lang=${locale}`}><MessageCircle size={18}/>{home.whatsapp}<ArrowUpRight size={18}/></Link><a href={`mailto:${site.email}`} className="home-email"><Mail size={18} aria-hidden="true"/><span>{site.email}</span></a><span className="home-phone">+51 924 488 034</span></div>
+      <div className="home-contact-links"><Link className="button button-gold" href={whatsappContactHref(`/contacto?lang=${locale}`)} target="_blank" rel="noopener noreferrer"><MessageCircle size={18}/>{home.whatsapp}<ArrowUpRight size={18}/></Link><a href={`mailto:${site.email}`} className="home-email"><Mail size={18} aria-hidden="true"/><span>{site.email}</span></a><span className="home-phone">+51 924 488 034</span></div>
     </section>
   </main>;
 }

@@ -1,7 +1,10 @@
 /* A short homepage with separate journeys; details live on dedicated routes. */
 .focused-home .hero { height:auto; min-height:0; padding:125px 0 66px; }
 .focused-home .hero-content { padding-top:0; }
-.focused-home .hero-brand { position:relative; inset:auto; margin:0 auto 26px; display:flex; justify-content:center; }
+.focused-home .hero-brand { position:relative; inset:auto; margin:0 auto 26px; display:grid; justify-items:center; }
+.focused-home .hero-jx-mark { height:auto; filter:drop-shadow(0 0 18px #c6a16b2b); }
+.focused-home .hero-wordmark { margin-top:9px; color:#f0e8db; font-size:15px; font-weight:500; line-height:1; letter-spacing:.43em; }
+.focused-home .hero-wordmark small { display:block; margin-top:9px; color:#c6a16b; font-size:6px; font-weight:500; letter-spacing:.72em; }
 .focused-home .hero h1 { font-size:clamp(40px,5.4vw,76px); margin-top:22px; letter-spacing:-.055em; }
 .focused-home .hero-description { max-width:530px; margin:24px auto 0; font-size:16px; line-height:1.6; text-wrap:pretty; }
 .focused-home .hero-actions { margin-top:28px; }
@@ -38,7 +41,7 @@
 @media(max-width:680px) {
   .focused-home .hero { padding:105px 0 44px; }
   .focused-home .hero-brand { margin-bottom:24px; }
-  .focused-home .hero-brand .animated-jaiax-logo { max-width:96px; }
+  .focused-home .hero-brand .animated-jaiax-logo { max-width:min(62vw,215px); }
   .focused-home .hero h1 { font-size:clamp(33px,8.5vw,52px); line-height:1.12; margin-top:18px; }
   .focused-home .hero-description { font-size:15px; line-height:1.6; max-width:34ch; margin-top:20px; }
   .focused-home .hero-actions { flex-direction:column; gap:10px; max-width:360px; margin:24px auto 0; }

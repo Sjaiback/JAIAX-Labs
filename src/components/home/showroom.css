@@ -1,5 +1,5 @@
 .visual-home .hero { padding:125px 0 30px; }
-.visual-home .hero-brand { display:none; }
+.visual-home .hero-brand { display:grid; }
 .visual-home .hero h1 { font-size:clamp(39px,4.8vw,64px); }
 .visual-showroom { position:relative; padding:40px 0 32px; scroll-margin-top:0; }
 .showroom-anchor { position:absolute; top:0; scroll-margin-top:0; }
@@ -43,7 +43,7 @@
 @media(max-width:900px) { .showroom-detail { align-items:flex-start; } .showroom-actions { flex-direction:column; align-items:stretch; gap:4px; } .showroom-actions .text-link { justify-content:center; } }
 @media(max-width:680px) {
   .visual-home .hero { padding:100px 0 28px; }
-  .visual-home .hero-brand { display:none; }
+  .visual-home .hero-brand { display:grid; }
   .visual-home .hero h1 { font-size:clamp(32px,8.7vw,48px); }
   .visual-home .hero-description { font-size:14px; max-width:31ch; }
   .visual-home .hero-actions { flex-direction:row; max-width:none; gap:8px; }
