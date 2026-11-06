@@ -49,7 +49,7 @@ export function Hero({ locale = "es" }: { locale?: Locale }) {
       <div className="hero-content container">
         <div className="hero-brand">
           <AnimatedJaiaxLogo
-            size="min(44vw, 270px)"
+            size="min(40vw, 230px)"
             variant="symbol"
             className="hero-jx-mark"
           />

@@ -41,7 +41,7 @@
 @media(max-width:680px) {
   .focused-home .hero { padding:105px 0 44px; }
   .focused-home .hero-brand { margin-bottom:24px; }
-  .focused-home .hero-brand .animated-jaiax-logo { max-width:min(62vw,215px); }
+  .focused-home .hero-brand .animated-jaiax-logo { max-width:min(58vw,190px); }
   .focused-home .hero h1 { font-size:clamp(33px,8.5vw,52px); line-height:1.12; margin-top:18px; }
   .focused-home .hero-description { font-size:15px; line-height:1.6; max-width:34ch; margin-top:20px; }
   .focused-home .hero-actions { flex-direction:column; gap:10px; max-width:360px; margin:24px auto 0; }

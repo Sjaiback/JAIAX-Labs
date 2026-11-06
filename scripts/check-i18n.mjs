@@ -37,11 +37,12 @@ for (const locale of config.locales) {
   for (const [index,id] of ['basica','profesional','negocio','avanzada'].entries()) {
     const card = pricingHtml.match(new RegExp(`<article[^>]*data-plan="${id}"[\\s\\S]*?</article>`))?.[0];
     assert(card,`${locale} ${id} plan`);
-    const href=card.match(/href="(https:\/\/wa\.me\/[^"\s]+)"/)?.[1];
+    const href=card.match(/href="(https:\/\/api\.whatsapp\.com\/send\?[^"\s]+)"/)?.[1];
     assert(href,`WhatsApp link ${locale} ${id}`);
     const decoded = href.replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code,16))).replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code))).replace(/&amp;/g,'&');
     const url=new URL(decoded);
-    assert.equal(url.pathname,'/51924488034');
+    assert.equal(url.pathname,'/send');
+    assert.equal(url.searchParams.get('phone'),'51924488034');
     assert(url.searchParams.get('text').includes(copy[locale].plans[index][0]),`Localized plan message ${locale} ${id}`);
   }
   if (locale !== 'es') for (const slug of ['desarrollo-web-peru','tiendas-online-peru','automatizacion-n8n','inteligencia-artificial']) {

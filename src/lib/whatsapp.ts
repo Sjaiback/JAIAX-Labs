@@ -21,5 +21,11 @@ export function whatsappContactHref(contactPath = "/contacto"): string {
     : service
       ? `${text.whatsapp[2]} ${service}. ${text.whatsapp[3]}`
       : text.whatsapp[4];
-  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
+  const params = new URLSearchParams({
+    phone: site.whatsapp,
+    text: message,
+    type: "phone_number",
+    app_absent: "0",
+  });
+  return `https://api.whatsapp.com/send?${params.toString()}`;
 }
