@@ -4,6 +4,7 @@ import { Logo } from "./header";
 import { site } from "@/data/site";
 import { experience } from "@/i18n/experience";
 import { copy } from "@/i18n/copy";
+import { labCopy } from "@/i18n/lab";
 import { localePath, type Locale } from "@/i18n/config";
 export function Footer({ locale = "es" }: { locale?: Locale }) {
   const text = copy[locale];
@@ -19,7 +20,7 @@ export function Footer({ locale = "es" }: { locale?: Locale }) {
           {text.footer[1]}
         </p>
         <Link href={`/contacto?lang=${locale}`}>
-          {text.footer[2]} <ArrowUpRight size={16} />
+          {labCopy[locale].quote} <ArrowUpRight size={16} />
         </Link>
       </div>
       <div className="footer-bottom">

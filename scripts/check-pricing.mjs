@@ -13,10 +13,10 @@ for (const [id, price] of [
   )?.[0];
   assert.ok(card, `Missing ${id} card`);
   assert.ok(card.includes(price), `Wrong ${id} price`);
-  const whatsapp = card.match(/href="(https:\/\/wa\.me\/[^"\s]+)"/)?.[1];
+  const whatsapp = card.match(/href="(https:\/\/api\.whatsapp\.com\/send\?[^"\s]+)"/)?.[1];
   assert.ok(whatsapp, `WhatsApp link for ${id}`);
   const destination = new URL(whatsapp.replace(/&amp;/g, '&'));
-  assert.equal(destination.pathname, '/51924488034', `WhatsApp number for ${id}`);
+  assert.equal(destination.searchParams.get('phone'), '51924488034', `WhatsApp number for ${id}`);
   const message = destination.searchParams.get('text');
   const name = { basica: 'Básica', profesional: 'Profesional', negocio: 'Negocio', avanzada: 'Avanzada' }[id];
   assert.ok(message.includes(name) && message.includes(price), `Plan and price in ${id} message`);

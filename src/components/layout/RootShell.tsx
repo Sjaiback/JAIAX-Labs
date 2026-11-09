@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Funnel_Display, Funnel_Sans, DM_Mono } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { site } from "@/data/site";
@@ -14,13 +14,12 @@ import { copy } from "@/i18n/copy";
 import { international } from "@/i18n/international";
 import { ogLocales, type Locale } from "@/i18n/config";
 import "@/components/pricing/pricing.css";
+import "@/components/home/lab.css";
 import { ExperienceMotion } from "@/components/motion/ExperienceMotion";
 import { canIndex, JsonLd } from "@/lib/seo";
-const geist = Geist({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-geist",
-});
+const display = Funnel_Display({ subsets: ["latin"], display: "swap", variable: "--font-funnel-display" });
+const text = Funnel_Sans({ subsets: ["latin"], display: "swap", variable: "--font-funnel-sans" });
+const mono = DM_Mono({ subsets: ["latin"], weight: "400", display: "swap", variable: "--font-dm-mono" });
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
     googleBot: { index: canIndex, follow: true, "max-image-preview": "large" },
   },
 };
-export const viewport: Viewport = { themeColor: "#050505" };
+export const viewport: Viewport = { themeColor: "#090b0b" };
 export function rootMetadata(locale: Locale): Metadata {
   const content = copy[locale];
   return { ...metadata, description: locale === "es" ? site.description : international[locale].description, openGraph: { ...metadata.openGraph, locale: ogLocales[locale], title: `JAIAX Labs — ${content.hero[1]} ${content.hero[2]}` } };
@@ -57,9 +56,9 @@ export function RootShell({
   locale: Locale;
 }) {
   return (
-    <html lang={locale} data-scroll-behavior="smooth">
-      <head><LanguageEntry /></head>
-      <body className={geist.variable}>
+    <html lang={locale} data-scroll-behavior="smooth" data-type="software" data-radius="soft" data-buttons="solid">
+      <head><LanguageEntry /><meta name="page-type" content="software"/><meta name="site-kind" content="software"/></head>
+      <body className={`${display.variable} ${text.variable} ${mono.variable}`}>
         <noscript>
           <style>{`.reveal-item{opacity:1!important;transform:none!important}`}</style>
         </noscript>

@@ -1,5 +1,17 @@
 # JAIAX Labs
 
+## Portada del estudio
+
+La portada actual usa grafito, blanco cálido y latón, tipografías Funnel Display/Funnel Sans y DM Mono autoalojadas, proyectos navegables y secciones numeradas. El sistema visual está documentado en `design-system/jaiax-labs/MASTER.md`.
+
+Al entrar en la portada se reproduce automáticamente la reconstrucción con tres cursores, en cada visita o recarga. Al terminar se desvanece y deja la web disponible. Se puede pausar, cambiar velocidad, repetir o salir con Escape. No hay botón para iniciar la experiencia. Con movimiento reducido se entra directamente a la web sin la introducción. La implementación clona únicamente el hero de JAIAX como vista inerte y anima sus elementos con Web Animations; no necesita servidor, audio, APIs ni paquetes nuevos.
+
+`LabHome.tsx`, `LabPricing.tsx`, `BuildExperience.tsx` y `lab.css` contienen la nueva portada. Los textos están en `src/i18n/lab.ts`. El momento `word-highlight` conserva su fuente y licencia de Taste Skill en `public/studio/`.
+
+La exportación para GitHub Pages sigue siendo `npm run build` → `out/`, con el workflow existente. Para verificar las interacciones en navegador, `node scripts/prepare-lab-qa.mjs` genera una página temporal en `out/__lab-qa.html` que ejecuta las comprobaciones sobre la portada exportada. No se debe publicar esa página: la siguiente compilación la elimina; también se puede borrar antes del despliegue. Las capturas y perfiles de prueba quedan excluidos de Git y ESLint.
+
+Los enlaces internos compartidos usan navegación HTML nativa con el prefijo de `NEXT_PUBLIC_BASE_PATH`. Así GitHub Pages sirve cada página exportada directamente y no recibe solicitudes de precarga de segmentos del router de Next. Los enlaces de contacto siguen abriendo WhatsApp.
+
 Repositorio público: [Sjaiback/JAIAX-Labs](https://github.com/Sjaiback/JAIAX-Labs).
 
 Web: https://jaiax.com/ — dominio registrado en Cloudflare y alojamiento estático en GitHub Pages, con publicación automática desde `main` mediante GitHub Actions. El panel `/admin` y su código se han eliminado.

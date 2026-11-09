@@ -7,3 +7,6 @@ public/social/
 *.tsbuildinfo
 next-env.d.ts
 work/
+
+.taste-skill/
+shots/

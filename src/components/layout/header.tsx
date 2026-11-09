@@ -8,6 +8,7 @@ import { JaiaxBrand } from "@/components/brand/JaiaxBrand";
 import { MobileMenu, menuWords } from "./MobileMenu";
 import { LanguageSelector } from "@/components/i18n/LanguageSelector";
 import { copy } from "@/i18n/copy";
+import { labCopy } from "@/i18n/lab";
 import { localePath, type Locale } from "@/i18n/config";
 export function Logo() {
   return (
@@ -57,7 +58,7 @@ export function Header({ locale = "es" }: { locale?: Locale }) {
       <a href="#main" className="skip-link">
         {text.skip}
       </a>
-      <header className={`header ${scrolled ? "is-scrolled" : ""}`}>
+      <header className={`header nav ${scrolled ? "is-scrolled" : ""}`}>
         <div className="nav-wrap">
           <Link
             href={localePath(locale)}
@@ -90,7 +91,7 @@ export function Header({ locale = "es" }: { locale?: Locale }) {
             ))}
           </nav>
           <Link className="nav-cta" href={`/contacto?lang=${locale}`}>
-            {text.talk}
+            {labCopy[locale].quote}
             <ArrowUpRight size={15} />
           </Link>
           <LanguageSelector locale={locale} />

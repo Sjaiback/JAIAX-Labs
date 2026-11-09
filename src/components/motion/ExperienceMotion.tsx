@@ -60,7 +60,7 @@ export function ExperienceMotion({ backLabel = "Volver al inicio de la página" 
         reset(current);
         current = target;
       }
-      if (!target) return;
+      if (!target || target.closest(".lab-home")) return;
       x = event.clientX;
       y = event.clientY;
       touched.add(target);
