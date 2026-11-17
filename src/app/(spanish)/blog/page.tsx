@@ -22,6 +22,7 @@ export default function Blog() {
             "@type": "BlogPosting",
             headline: p.title,
             url: `${site.url}/blog/${p.slug}`,
+            image: `${site.url}${p.image.src}`,
           })),
         }}
       />

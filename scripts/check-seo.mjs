@@ -116,6 +116,17 @@ const results = await Promise.all(
       assert(Number.isFinite(Date.parse(post.dateModified)), `Article modification date: ${path}`);
       assert(Date.parse(post.dateModified) >= Date.parse(post.datePublished), `Article date order: ${path}`);
       assert(html.includes(`<time dateTime="${post.dateModified.slice(0, 10)}"`) || html.includes(`<time datetime="${post.dateModified.slice(0, 10)}"`), `Visible article date: ${path}`);
+      const cover = html.match(/<meta property="og:image" content="([^"]+)"/)?.[1];
+      assert(cover?.includes("/images/blog/") && cover.endsWith(".webp"), `Editorial share image: ${path}`);
+      assert(post.image.includes(cover), `Schema and share image agree: ${path}`);
+      const coverPath = new URL(cover).pathname;
+      assert(html.includes(`src="${coverPath}"`), `Visible editorial image: ${path}`);
+      const coverResponse = await fetch(new URL(coverPath, base));
+      assert.equal(coverResponse.status, 200, `Editorial image response: ${path}`);
+      assert(coverResponse.headers.get("content-type")?.includes("image/webp"), `WebP type: ${path}`);
+      const coverBytes = Buffer.from(await coverResponse.arrayBuffer());
+      assert.equal(coverBytes.toString("ascii", 8, 12), "WEBP", `WebP file: ${path}`);
+      assert(coverBytes.length < 200_000, `Editorial image weight: ${path}`);
     }
     if (path.startsWith("/servicios/"))
       assert(

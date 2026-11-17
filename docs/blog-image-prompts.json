@@ -1,0 +1,42 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-11-17",
+  "style": "Original conceptual paper-cut editorial illustrations; charcoal, ivory and brass; no logos or embedded text.",
+  "images": [
+    {
+      "key": "sales",
+      "slug": "como-una-web-ayuda-a-vender",
+      "prompt": "Use case: stylized-concept. Create one original landscape editorial illustration for JAIAX Labs blog article about how a clear website helps a customer decide and contact a business. A minimalist tactile paper-cut collage: a single ivory browser-like window made of folded paper, with three clean content blocks and a small brass action rectangle; a thin brass path connects the window to one small speech bubble, suggesting a visitor becoming an enquiry. Rich charcoal near-black background, warm ivory paper and restrained matte brass accent, very subtle natural paper texture and directional studio shadows. Refined Swiss editorial art direction, simple but clever visual metaphor, substantial central subject, strong negative space, wide 3:2 landscape composition with all important shapes inside the central 65% so it can crop to a wide banner. No words, letters, numbers, brand marks, currency, logos, watermarks, people, neon, purple, glossy 3D, charts or clutter. This is conceptual editorial art, not a screenshot of a real product. Produce a finished image, not a moodboard or multi-panel grid.",
+      "asset": "public/images/blog/como-una-web-ayuda-a-vender.webp",
+      "thumbnail": "public/images/blog/como-una-web-ayuda-a-vender-thumb.webp"
+    },
+    {
+      "key": "systems",
+      "slug": "excel-o-sistema-para-mi-negocio",
+      "prompt": "Use case: stylized-concept. Generate one finished original minimalist editorial illustration for JAIAX Labs blog. Cohesive tactile paper-cut collage art direction: warm ivory cut paper with fine natural fibers, matte brass accents, deep charcoal near-black background, directional studio light and delicate physical shadows. Quiet, clever, precise composition with generous negative space. Wide 3:2 landscape. Main composition stays inside central 65% horizontally and central 50% vertically to survive a wide blog banner crop. No words, letters, numbers, logos, watermarks, people, purple, neon, glossy 3D, screens full of tiny data, or decorative clutter. This is conceptual editorial art, not a product screenshot. One composition, not a moodboard or grid. Article: deciding between Excel spreadsheets and a custom business system. Subject: on one side a tidy but disconnected fan of three small ivory paper spreadsheet sheets with a few square cutout cells; those sheets converge through three thin matte brass paths into one neatly organized larger ivory modular grid on the other side. Visual metaphor of scattered records becoming one coordinated operation. Do not use Excel logo or show text.",
+      "asset": "public/images/blog/excel-o-sistema-para-mi-negocio.webp",
+      "thumbnail": "public/images/blog/excel-o-sistema-para-mi-negocio-thumb.webp"
+    },
+    {
+      "key": "pricing",
+      "slug": "cuanto-cuesta-pagina-web-peru",
+      "prompt": "Use case: stylized-concept. Generate one finished original minimalist editorial illustration for JAIAX Labs blog. Cohesive tactile paper-cut collage art direction: warm ivory cut paper with fine natural fibers, matte brass accents, deep charcoal near-black background, directional studio light and delicate physical shadows. Quiet, clever, precise composition with generous negative space. Wide 3:2 landscape. Main composition stays inside central 65% horizontally and central 50% vertically to survive a wide blog banner crop. No words, letters, numbers, logos, watermarks, people, purple, neon, glossy 3D, screens full of tiny data, or decorative clutter. This is conceptual editorial art, not a product screenshot. One composition, not a moodboard or grid. Article: how much a website costs and how to compare scope. Subject: three ivory folded architectural paper webpage panels of subtly increasing height standing on a charcoal surface, each with only a few embossed content blocks. A single small blank matte brass price tag with a round hole rests in front, connected with a thin paper cord. A refined tabletop still life of scope and pricing. No coin piles, currency symbols, prices or written labels.",
+      "asset": "public/images/blog/cuanto-cuesta-pagina-web-peru.webp",
+      "thumbnail": "public/images/blog/cuanto-cuesta-pagina-web-peru-thumb.webp"
+    },
+    {
+      "key": "n8n",
+      "slug": "automatizacion-n8n-negocios",
+      "prompt": "Use case: stylized-concept. Generate one finished original minimalist editorial illustration for JAIAX Labs blog. Cohesive tactile paper-cut collage art direction: warm ivory cut paper with fine natural fibers, matte brass accents, deep charcoal near-black background, directional studio light and delicate physical shadows. Quiet, clever, precise composition with generous negative space. Wide 3:2 landscape. Main composition stays inside central 65% horizontally and central 50% vertically to survive a wide blog banner crop. No words, letters, numbers, logos, watermarks, people, purple, neon, glossy 3D, screens full of tiny data, or decorative clutter. This is conceptual editorial art, not a product screenshot. One composition, not a moodboard or grid. Article: what n8n is and how it automates business tasks. Subject: a handmade ivory paper workflow made of exactly five square folded-paper nodes joined by thin matte brass tracks, one input node branching into two intermediate tasks then reuniting in a single output node; use a fifth node as a small review step. Each node has a single simple embossed geometric inset. Clear visual flow, quiet balanced composition, no brand icon, labels, arrows filled with text or code.",
+      "asset": "public/images/blog/automatizacion-n8n-negocios.webp",
+      "thumbnail": "public/images/blog/automatizacion-n8n-negocios-thumb.webp"
+    },
+    {
+      "key": "seo",
+      "slug": "seo-para-web-de-servicios",
+      "prompt": "Use case: stylized-concept. Generate one finished original minimalist editorial illustration for JAIAX Labs blog. Cohesive tactile paper-cut collage art direction: warm ivory cut paper with fine natural fibers, matte brass accents, deep charcoal near-black background, directional studio light and delicate physical shadows. Quiet, clever, precise composition with generous negative space. Wide 3:2 landscape. Main composition stays inside central 65% horizontally and central 50% vertically to survive a wide blog banner crop. No words, letters, numbers, logos, watermarks, people, purple, neon, glossy 3D, screens full of tiny data, or decorative clutter. This is conceptual editorial art, not a product screenshot. One composition, not a moodboard or grid. Article: SEO for a service business website. Subject: a large precise circular matte brass magnifying glass hovering at a slight angle over one ivory cut-paper webpage sheet with three horizontal raised content strips. The lens cleanly frames one small embossed ivory content block, with one discreet brass dot on it, suggesting being found in search. Quiet editorial still life, all subject clearly visible. No growth charts, search engine logos, words or numbers.",
+      "asset": "public/images/blog/seo-para-web-de-servicios.webp",
+      "thumbnail": "public/images/blog/seo-para-web-de-servicios-thumb.webp"
+    }
+  ]
+}

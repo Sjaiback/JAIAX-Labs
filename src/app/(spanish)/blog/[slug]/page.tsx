@@ -4,10 +4,11 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { journalPosts, postSummaries, publishedDate } from "@/data/journal";
 import { site } from "@/data/site";
 import { servicePages } from "@/data/service-pages";
-import { JournalArt } from "@/components/journal/JournalArt";
+import Image from "@/components/ui/site-image";
 import { ArticleTools } from "@/components/journal/ArticleTools";
 import { JournalCard } from "@/components/journal/JournalGrid";
 import { JsonLd, breadcrumbs, pageMetadata } from "@/lib/seo";
+import { assetPath } from "@/lib/paths";
 export function generateStaticParams() {
   return journalPosts.map((p) => ({ slug: p.slug }));
 }
@@ -24,12 +25,13 @@ export async function generateMetadata({
     p.description,
     `/blog/${p.slug}`,
     "article",
-    `/social/${p.slug}.png`,
+    p.image.src,
   );
   return {
     ...base,
     openGraph: {
       ...base.openGraph,
+      images: [{ url: `${site.url}${p.image.src}`, width: p.image.width, height: p.image.height, alt: p.image.alt }],
       publishedTime: `${p.date}T12:00:00-05:00`,
       modifiedTime: `${p.updated || p.date}T12:00:00-05:00`,
       authors: [`${site.url}/estudio/`],
@@ -65,7 +67,7 @@ export default async function Article({
               url: `${site.url}/estudio/`,
             },
             publisher: { "@id": `${site.url}/#organization` },
-            image: [`${site.url}/social/${p.slug}.png`],
+            image: [`${site.url}${p.image.src}`],
           }}
         />
         <JsonLd
@@ -91,7 +93,10 @@ export default async function Article({
           </div>
         </header>
         <div className="article-visual">
-          <JournalArt variant={p.art} />
+          <picture>
+            <source media="(max-width: 700px)" srcSet={assetPath(p.image.thumbnail)} />
+            <Image className="journal-illustration" src={p.image.src} alt={p.image.alt} width={p.image.width} height={p.image.height} loading="eager" fetchPriority="high" />
+          </picture>
         </div>
         <div className="article-layout">
           <ArticleTools

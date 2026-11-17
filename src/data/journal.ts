@@ -15,15 +15,24 @@ export interface JournalPost {
   updated?: string;
   minutes: number;
   art: "web" | "automation" | "seo";
+  image: { src: string; thumbnail: string; alt: string; width: number; height: number };
   takeaway: string;
   sections: ArticleSection[];
   relatedService: string;
   sources: { title: string; url: string }[];
 }
 export type PostSummary = Omit<JournalPost, "sections" | "sources">;
+const editorialImage = (slug: string, alt: string) => ({
+  src: `/images/blog/${slug}.webp`,
+  thumbnail: `/images/blog/${slug}-thumb.webp`,
+  alt,
+  width: 1440,
+  height: 960,
+});
 const journalEntries: Omit<JournalPost, "minutes">[] = [
   {
     slug: "como-una-web-ayuda-a-vender",
+    image: editorialImage("como-una-web-ayuda-a-vender", "Ilustración de una página web de papel conectada a una conversación mediante una línea de latón."),
     title: "Tu cliente tiene dudas. Tu web puede ayudarle a decidir.",
     description: "Cómo una página clara conecta tus redes con consultas mejor informadas: servicios, ejemplos, confianza y un siguiente paso fácil.",
     category: "Negocios y ventas", date: "2026-10-28", art: "web",
@@ -50,6 +59,7 @@ const journalEntries: Omit<JournalPost, "minutes">[] = [
   },
   {
     slug: "excel-o-sistema-para-mi-negocio",
+    image: editorialImage("excel-o-sistema-para-mi-negocio", "Ilustración de hojas de cálculo de papel que convergen en un único sistema organizado."),
     title: "¿Excel o un sistema? Mira dónde se atasca tu negocio.",
     description: "Señales para decidir si seguir con hojas de cálculo, conectar herramientas o crear un sistema que organice ventas, inventario y trabajo en equipo.",
     category: "Operaciones", date: "2026-10-28", art: "automation",
@@ -76,6 +86,7 @@ const journalEntries: Omit<JournalPost, "minutes">[] = [
   },
   {
     slug: "cuanto-cuesta-pagina-web-peru",
+    image: editorialImage("cuanto-cuesta-pagina-web-peru", "Ilustración de tres páginas web de papel con distintos alcances y una etiqueta de precio sin cifras."),
     title: "¿Cuánto cuesta una página web en Perú? Precios y planes",
     description: `Compara planes de JAIAX desde US$ ${basicPlan.price}: landing o web corporativa. Revisa qué incluyen y qué se paga aparte por dominio, hosting y mantenimiento.`,
     category: "Desarrollo web",
@@ -160,6 +171,7 @@ const journalEntries: Omit<JournalPost, "minutes">[] = [
   },
   {
     slug: "automatizacion-n8n-negocios",
+    image: editorialImage("automatizacion-n8n-negocios", "Ilustración de cinco nodos de papel unidos por caminos de latón que representan un flujo de automatización."),
     title:
       "¿Qué es n8n y para qué sirve? Ejemplos para negocios",
     description:
@@ -249,6 +261,7 @@ const journalEntries: Omit<JournalPost, "minutes">[] = [
   },
   {
     slug: "seo-para-web-de-servicios",
+    image: editorialImage("seo-para-web-de-servicios", "Ilustración de una lupa de latón que destaca un resultado dentro de una página web de papel."),
     title:
       "SEO para una web de servicios: ayuda a que te encuentren y te entiendan.",
     description:
@@ -340,6 +353,7 @@ export const postSummaries: PostSummary[] = journalPosts.map((p) => ({
   updated: p.updated,
   minutes: p.minutes,
   art: p.art,
+  image: p.image,
   takeaway: p.takeaway,
   relatedService: p.relatedService,
 }));

@@ -2,7 +2,7 @@
 import Link from "@/components/ui/site-link";
 import { ArrowUpRight, Search, X } from "lucide-react";
 import { useState } from "react";
-import { JournalArt } from "./JournalArt";
+import Image from "@/components/ui/site-image";
 import type { PostSummary } from "@/data/journal";
 export function JournalCard({
   post,
@@ -14,7 +14,7 @@ export function JournalCard({
   return (
     <Link href={`/blog/${post.slug}`} className="journal-card">
       <div className="journal-cover">
-        <JournalArt variant={post.art} />
+        <Image className="journal-illustration" src={post.image.thumbnail} width={640} height={427} alt="" loading="lazy" />
         <span className="journal-index">0{index + 1}</span>
         <span className="journal-arrow">
           <ArrowUpRight size={21} />
