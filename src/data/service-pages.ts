@@ -1,16 +1,16 @@
-import { plans, planLabel } from "./pricing";
+import { basicPlan, plans, planLabel } from "./pricing";
 export const servicePages = [
   {
     id: "web",
     slug: "desarrollo-web-peru",
-    title: "Desarrollo de páginas web en Perú",
+    title: "Diseño de páginas web en Perú desde US$ " + basicPlan.price,
     description:
-      "Diseñamos y desarrollamos páginas web para presentar tu negocio, comunicar tus servicios y facilitar el contacto. Landing pages y webs corporativas con alcance claro.",
+      `Diseño y desarrollo web en Perú: landing desde US$ ${basicPlan.price}, pago único de desarrollo. Compara planes, alcance y costos adicionales. Cotiza por WhatsApp.`,
     eyebrow: "DESARROLLO WEB / PERÚ",
-    headline: "Desarrollo web para impulsar tu negocio.",
+    headline: "Diseño y desarrollo de páginas web en Perú.",
     art: "web" as const,
     intro:
-      "Una web clara para presentar tu negocio y recibir consultas. Diseñada para celular, con contacto directo por WhatsApp.",
+      `Landing pages desde US$ ${basicPlan.price} y webs corporativas para presentar tu negocio y recibir consultas. Diseño responsive y contacto por WhatsApp. Pago único de desarrollo; dominio, hosting y mantenimiento por separado.`,
     deliverables: [
       "Estructura de contenido y llamadas a la acción acordes al objetivo.",
       "Diseño responsive y navegación accesible.",
@@ -26,6 +26,14 @@ export const servicePages = [
         "; ",
       )}. El plan Avanzada se cotiza según los requerimientos. Dominio, hosting, mantenimiento, textos, fotografías, licencias e integraciones adicionales se detallan por separado. Puedes consultar el alcance y cotizar directamente por WhatsApp.`,
     questions: [
+      {
+        q: "¿Cuánto cuesta crear una página web?",
+        a: `Nuestros planes publicados son ${plans.map((plan) => planLabel(plan.id)).join("; ")}. Básica y Profesional son landings; Negocio incluye hasta cinco páginas. Consulta las características de cada plan y los costos adicionales antes de contratar.`,
+      },
+      {
+        q: "¿Cuánto demora el desarrollo?",
+        a: "Acordamos la fecha de entrega después de revisar las secciones, funciones y materiales disponibles. La propuesta especifica las etapas y revisiones; no hay un plazo único para todos los proyectos.",
+      },
       {
         q: "¿Landing o web multipágina?",
         a: "Una landing puede concentrar una oferta o servicio. Una web multipágina permite desarrollar varias áreas del negocio. Lo elegimos a partir de tu contenido y objetivo.",
@@ -71,11 +79,11 @@ export const servicePages = [
   {
     id: "automation",
     slug: "automatizacion-n8n",
-    title: "Automatización con n8n y Python para negocios",
+    title: "Automatización con n8n para empresas en Perú",
     description:
-      "Evaluamos procesos repetitivos y diseñamos automatizaciones con n8n o Python. Integraciones, validaciones y tratamiento de errores según tus herramientas y operación.",
+      "Conecta herramientas y reduce tareas repetitivas con n8n o Python. Evaluamos tu proceso, definimos un piloto y cotizamos sus integraciones y mantenimiento.",
     eyebrow: "AUTOMATIZACIÓN / N8N + PYTHON",
-    headline: "Menos pasos repetidos. Más espacio para avanzar.",
+    headline: "Automatización con n8n para tu negocio.",
     art: "automation" as const,
     intro:
       "Primero entendemos el proceso; después conectamos las herramientas. Diseñamos flujos con entradas, reglas, salidas y responsables claros, empezando por un piloto que puedas revisar.",

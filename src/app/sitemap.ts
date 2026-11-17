@@ -19,10 +19,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...servicePages.map((s) => `/servicios/${s.slug}`),
     ...internationalLocales.flatMap(locale => servicePages.map(service => `/${locale}/servicios/${service.slug}`)),
     ...publicProjects.map((p) => `/proyectos/${p.slug}`),
-  ].map((path) => ({
-    url: `${site.url}${path}/`,
-    changeFrequency: "monthly",
-    priority: locales.some(locale => path === `/${locale}`) ? 1 : 0.7,
-    alternates: { languages: languageAlternates(`${path}/`) },
-  }));
+  ].map((path) => {
+    const post = journalPosts.find(post => path === `/blog/${post.slug}`);
+    return {
+      url: `${site.url}${path}/`,
+      lastModified: post ? post.updated || post.date : undefined,
+      changeFrequency: "monthly",
+      priority: locales.some(locale => path === `/${locale}`) ? 1 : 0.7,
+      alternates: { languages: languageAlternates(`${path}/`) },
+    };
+  });
 }

@@ -4,6 +4,7 @@ export interface ArticleSection {
   title: string;
   paragraphs: string[];
   points?: string[];
+  links?: { label: string; href: string }[];
 }
 export interface JournalPost {
   slug: string;
@@ -11,6 +12,7 @@ export interface JournalPost {
   description: string;
   category: string;
   date: string;
+  updated?: string;
   minutes: number;
   art: "web" | "automation" | "seo";
   takeaway: string;
@@ -74,16 +76,29 @@ const journalEntries: Omit<JournalPost, "minutes">[] = [
   },
   {
     slug: "cuanto-cuesta-pagina-web-peru",
-    title: "¿Cuánto cuesta una página web en Perú? Empieza por el alcance.",
-    description: `Qué comparar en una cotización web: páginas, contenido, dominio y mantenimiento. Conoce el plan Básica de JAIAX Labs por US$ ${basicPlan.price}, de pago único.`,
+    title: "¿Cuánto cuesta una página web en Perú? Precios y planes",
+    description: `Compara planes de JAIAX desde US$ ${basicPlan.price}: landing o web corporativa. Revisa qué incluyen y qué se paga aparte por dominio, hosting y mantenimiento.`,
     category: "Desarrollo web",
     date: "2026-10-26",
+    updated: "2026-11-17",
     art: "web",
     takeaway:
-      "El precio solo tiene sentido cuando sabes qué vas a recibir, qué debes aportar y qué se cotiza por separado.",
+      `En JAIAX Labs, una landing empieza en US$ ${basicPlan.price}, de pago único de desarrollo. El costo depende de las páginas, las funciones y los materiales del proyecto. Dominio, hosting y mantenimiento se cotizan por separado.`,
     relatedService: "desarrollo-web-peru",
     sources: [],
     sections: [
+      {
+        id: "precios",
+        title: "Precios de páginas web en JAIAX Labs",
+        paragraphs: [
+          "Estos son nuestros precios publicados para negocios en Perú, expresados en dólares estadounidenses. Son propuestas de JAIAX Labs; no representan un promedio del mercado ni incluyen automáticamente todos los gastos de publicación.",
+        ],
+        points: plans.map((plan) => `${planLabel(plan.id)}: ${plan.features[0]}. ${plan.billing}.`),
+        links: [
+          { label: "Comparar todos los planes y sus características", href: "/planes/" },
+          { label: `Ver la landing Básica por US$ ${basicPlan.price}`, href: "/web-desde-70/" },
+        ],
+      },
       {
         id: "objetivo",
         title: "Primero define qué necesita conseguir tu web",
@@ -136,20 +151,25 @@ const journalEntries: Omit<JournalPost, "minutes">[] = [
           "No necesitas un documento técnico. Prepara una descripción del negocio, el público, el objetivo de la página, las secciones que imaginas y los materiales disponibles. Añade dos o tres referencias explicando qué te interesa de cada una, sin pedir una copia literal.",
           "Con esa base podemos conversar sobre prioridades y preparar una propuesta con alcance, condiciones y fechas acordadas. El resultado útil de la cotización no es solo un precio: es una decisión compartida sobre lo que construiremos primero.",
         ],
+        links: [
+          { label: "Conocer el servicio de desarrollo web en Perú", href: "/servicios/desarrollo-web-peru/" },
+          { label: "Cotizar mi página web por WhatsApp", href: "/contacto?tipo=Desarrollo%20de%20p%C3%A1ginas%20web" },
+        ],
       },
     ],
   },
   {
     slug: "automatizacion-n8n-negocios",
     title:
-      "Automatización con n8n: encuentra el primer proceso que vale la pena conectar.",
+      "¿Qué es n8n y para qué sirve? Ejemplos para negocios",
     description:
-      "Una guía para elegir un proceso repetitivo, definir entradas y salidas, tratar errores y probar una automatización antes de usar datos reales.",
+      "Descubre qué es n8n, cómo funciona y qué puedes automatizar en tu negocio. Ejemplos de solicitudes, reportes y avisos, y cómo empezar con un piloto.",
     category: "Automatización",
     date: "2026-10-26",
+    updated: "2026-11-17",
     art: "automation",
     takeaway:
-      "Empieza con un flujo pequeño, medible y reversible. Define quién lo supervisa y qué debe ocurrir cuando algo falla.",
+      "n8n permite conectar herramientas y automatizar tareas mediante flujos de trabajo formados por nodos. Sirve para mover y transformar información entre servicios siguiendo reglas definidas, con supervisión de una persona cuando hace falta.",
     relatedService: "automatizacion-n8n",
     sources: [
       {
@@ -158,6 +178,27 @@ const journalEntries: Omit<JournalPost, "minutes">[] = [
       },
     ],
     sections: [
+      {
+        id: "que-es-n8n",
+        title: "¿Qué es n8n y cómo funciona?",
+        paragraphs: [
+          "En n8n, un flujo de trabajo conecta nodos que ejecutan pasos de un proceso. Un evento inicia el flujo; después, los nodos consultan, transforman o envían datos según las conexiones y reglas que hayas definido. Por ejemplo, recibir una solicitud, comprobar sus campos y avisar al equipo responsable.",
+          "La herramienta ayuda a conectar servicios, pero no decide por sí sola cómo debe funcionar tu negocio. Antes de usarla hay que confirmar qué integraciones están disponibles, qué permisos necesitan y quién revisará los errores o los casos excepcionales.",
+        ],
+      },
+      {
+        id: "ejemplos",
+        title: "¿Para qué sirve n8n en un negocio?",
+        paragraphs: [
+          "Estos son ejemplos de procesos que se pueden evaluar. No son integraciones activas en esta web ni resultados de clientes; su viabilidad depende de las herramientas, sus API y los accesos disponibles.",
+        ],
+        points: [
+          "Solicitudes comerciales: validar un formulario, registrar la consulta y avisar a la persona que atenderá al cliente.",
+          "Reportes: reunir datos de herramientas compatibles y preparar un resumen para revisión del equipo.",
+          "Seguimiento operativo: detectar un cambio de estado y enviar un aviso interno, evitando notificaciones duplicadas.",
+        ],
+        links: [{ label: "Evaluar una automatización con n8n para mi negocio", href: "/servicios/automatizacion-n8n/" }],
+      },
       {
         id: "detectar",
         title: "Busca repetición antes que complejidad",
@@ -296,6 +337,7 @@ export const postSummaries: PostSummary[] = journalPosts.map((p) => ({
   description: p.description,
   category: p.category,
   date: p.date,
+  updated: p.updated,
   minutes: p.minutes,
   art: p.art,
   takeaway: p.takeaway,

@@ -3,6 +3,7 @@ import Link from "@/components/ui/site-link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { journalPosts, postSummaries, publishedDate } from "@/data/journal";
 import { site } from "@/data/site";
+import { servicePages } from "@/data/service-pages";
 import { JournalArt } from "@/components/journal/JournalArt";
 import { ArticleTools } from "@/components/journal/ArticleTools";
 import { JournalCard } from "@/components/journal/JournalGrid";
@@ -30,7 +31,7 @@ export async function generateMetadata({
     openGraph: {
       ...base.openGraph,
       publishedTime: `${p.date}T12:00:00-05:00`,
-      modifiedTime: `${p.date}T12:00:00-05:00`,
+      modifiedTime: `${p.updated || p.date}T12:00:00-05:00`,
       authors: [`${site.url}/estudio/`],
       section: p.category,
     },
@@ -44,6 +45,7 @@ export default async function Article({
   const { slug } = await params;
   const p = journalPosts.find((p) => p.slug === slug);
   if (!p) notFound();
+  const service = servicePages.find((item) => item.slug === p.relatedService)!;
   return (
     <main id="main" className="inner-main article-page">
       <div className="container">
@@ -54,7 +56,7 @@ export default async function Article({
             headline: p.title,
             description: p.description,
             datePublished: `${p.date}T12:00:00-05:00`,
-            dateModified: `${p.date}T12:00:00-05:00`,
+            dateModified: `${p.updated || p.date}T12:00:00-05:00`,
             inLanguage: "es-PE",
             mainEntityOfPage: `${site.url}/blog/${p.slug}`,
             author: {
@@ -68,7 +70,7 @@ export default async function Article({
         />
         <JsonLd
           data={breadcrumbs([
-            { name: "Inicio", path: "/" },
+            { name: "Inicio", path: "/es/" },
             { name: "Blog", path: "/blog" },
             { name: p.title, path: `/blog/${p.slug}` },
           ])}
@@ -80,10 +82,11 @@ export default async function Article({
         <header className="article-header">
 
           <h1>{p.title}</h1>
-          <p>{p.description}</p>
+          <p>{p.takeaway}</p>
           <div className="article-byline">
             <span>POR JAIAX LABS</span>
             <time dateTime={p.date}>{publishedDate(p.date)}</time>
+            {p.updated && <span>Actualizado el <time dateTime={p.updated}>{publishedDate(p.updated)}</time></span>}
             <span>{p.minutes} min de lectura</span>
           </div>
         </header>
@@ -95,10 +98,6 @@ export default async function Article({
             sections={p.sections.map((s) => ({ id: s.id, title: s.title }))}
           />
           <article className="article-body" data-reading-body>
-            <div className="article-takeaway">
-
-              <p>{p.takeaway}</p>
-            </div>
             {p.sections.map((s, i) => (
               <section id={s.id} key={s.id}>
                 <span className="article-section-number">0{i + 1} /</span>
@@ -113,6 +112,9 @@ export default async function Article({
                     ))}
                   </ul>
                 )}
+                {s.links && <ul>{s.links.map((link) => (
+                  <li key={link.href}><Link className="text-link" href={link.href}>{link.label}<ArrowUpRight size={14} /></Link></li>
+                ))}</ul>}
               </section>
             ))}
             {p.sources.length > 0 && (
@@ -132,17 +134,18 @@ export default async function Article({
             )}
             <div className="article-next-step">
 
-              <h2>¿Lo llevamos a tu negocio?</h2>
+              <h2>{service.id === "web" ? "¿Necesitas una web para tu negocio?" : "¿Quieres automatizar un proceso?"}</h2>
               <p>
-                Exploremos el alcance de una solución para lo que necesitas.
+                {service.intro}
               </p>
               <Link
                 href={`/servicios/${p.relatedService}`}
                 className="button button-gold"
               >
-                Conocer el servicio
+                {service.id === "web" ? "Ver el servicio de desarrollo web" : "Ver el servicio de automatización con n8n"}
                 <ArrowUpRight size={16} />
               </Link>
+              <p><Link className="text-link" href={`/contacto?tipo=${encodeURIComponent(service.type)}`}>Cotizar por WhatsApp <ArrowUpRight size={14} /></Link></p>
             </div>
           </article>
         </div>

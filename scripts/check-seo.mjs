@@ -26,6 +26,8 @@ assert.equal(isIndexableSite("https://example.test", false), false);
 assert.equal(isIndexableSite("https://example.test", true), true);
 
 const articleSlugs = [
+  "excel-o-sistema-para-mi-negocio",
+  "como-una-web-ayuda-a-vender",
   "cuanto-cuesta-pagina-web-peru",
   "automatizacion-n8n-negocios",
   "seo-para-web-de-servicios",
@@ -46,6 +48,9 @@ const paths = [
   "/blog",
   "/contacto?plan=negocio",
   "/web-desde-70",
+  "/proyectos/",
+  ...["nodo", "soma", "umbral"].map(slug => `/proyectos/${slug}/`),
+  "/de/servicios/automatizacion-n8n/",
   ...["control-logistico", "ecommerce", "blog-editorial"].map(
     (s) => `/ejemplos/${s}`,
   ),
@@ -108,6 +113,9 @@ const results = await Promise.all(
         html.includes("data-reading-body"),
         "Server-rendered article body",
       );
+      assert(Number.isFinite(Date.parse(post.dateModified)), `Article modification date: ${path}`);
+      assert(Date.parse(post.dateModified) >= Date.parse(post.datePublished), `Article date order: ${path}`);
+      assert(html.includes(`<time dateTime="${post.dateModified.slice(0, 10)}"`) || html.includes(`<time datetime="${post.dateModified.slice(0, 10)}"`), `Visible article date: ${path}`);
     }
     if (path.startsWith("/servicios/"))
       assert(
@@ -126,6 +134,16 @@ assert.equal(
 );
 const sitemap = await (await fetch(base + "/sitemap.xml")).text();
 assert.equal(sitemap.includes("<loc>"), indexable, "Sitemap publication gate");
+if (indexable) {
+  const entries = [...sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(match => match[1]);
+  for (const path of ["/web-desde-70/", "/proyectos/nodo/", "/proyectos/soma/", "/proyectos/umbral/", "/blog/excel-o-sistema-para-mi-negocio/", "/contacto/", "/de/servicios/automatizacion-n8n/"]) {
+    assert(entries.some(entry => entry.match(/<loc>([^<]+)<\/loc>/)?.[1].endsWith(path)), `Discovered URL in sitemap: ${path}`);
+  }
+  for (const slug of articleSlugs) {
+    const entry = entries.find(entry => entry.includes(`/blog/${slug}/</loc>`));
+    assert(entry?.includes("<lastmod>"), `Article update in sitemap: ${slug}`);
+  }
+}
 for (const slug of articleSlugs) {
   const response = await fetch(`${base}/social/${slug}.png`);
   assert.equal(response.status, 200);

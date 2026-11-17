@@ -25,10 +25,9 @@ export default function BasicLanding() {
               TU NEGOCIO MERECE UNA GRAN WEB
             </span>
             <h1 className="ad-title">
-              De una buena idea
-              <br />a tu próxima
+              Tu página web
               <br />
-              <span className="muted-heading">gran oportunidad.</span>
+              <span className="muted-heading">desde US$ {basicPlan.price}.</span>
             </h1>
             <div className="ad-price">
               <span>US$</span>
