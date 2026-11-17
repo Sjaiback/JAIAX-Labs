@@ -15,6 +15,7 @@ async function visit(dir) {
 await visit(root);
 assert(files.length > 20, 'Exported routes');
 assert(!(await readdir(root)).includes('admin'), 'Admin must not be exported');
+assert(!(await readdir(root)).some(name => /^__.*qa.*\.html$/.test(name)), 'Temporary QA fixtures must not be published');
 let checked = 0;
 for (const file of files) {
   const html = await readFile(file, 'utf8');

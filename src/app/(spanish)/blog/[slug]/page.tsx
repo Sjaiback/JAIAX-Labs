@@ -6,6 +6,8 @@ import { site } from "@/data/site";
 import { servicePages } from "@/data/service-pages";
 import Image from "@/components/ui/site-image";
 import { ArticleTools } from "@/components/journal/ArticleTools";
+import { ArticlePlayground } from "@/components/journal/ArticlePlayground";
+import { articleExperiences } from "@/data/article-experiences";
 import { JournalCard } from "@/components/journal/JournalGrid";
 import { JsonLd, breadcrumbs, pageMetadata } from "@/lib/seo";
 import { assetPath } from "@/lib/paths";
@@ -85,6 +87,7 @@ export default async function Article({
 
           <h1>{p.title}</h1>
           <p>{p.takeaway}</p>
+          <a className="text-link article-try-link" href="#ejemplo-interactivo">Probar el ejemplo interactivo <ArrowUpRight size={15} aria-hidden="true" /></a>
           <div className="article-byline">
             <span>POR JAIAX LABS</span>
             <time dateTime={p.date}>{publishedDate(p.date)}</time>
@@ -100,9 +103,10 @@ export default async function Article({
         </div>
         <div className="article-layout">
           <ArticleTools
-            sections={p.sections.map((s) => ({ id: s.id, title: s.title }))}
+            sections={[{ id: "ejemplo-interactivo", title: articleExperiences[p.experience].title }, ...p.sections.map((s) => ({ id: s.id, title: s.title }))]}
           />
           <article className="article-body" data-reading-body>
+            <ArticlePlayground kind={p.experience} />
             {p.sections.map((s, i) => (
               <section id={s.id} key={s.id}>
                 <span className="article-section-number">0{i + 1} /</span>

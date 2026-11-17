@@ -1,4 +1,5 @@
 import { basicPlan, planLabel, plans } from "./pricing";
+import type { ExperienceKind } from "./article-experiences";
 export interface ArticleSection {
   id: string;
   title: string;
@@ -15,6 +16,7 @@ export interface JournalPost {
   updated?: string;
   minutes: number;
   art: "web" | "automation" | "seo";
+  experience: ExperienceKind;
   image: { src: string; thumbnail: string; alt: string; width: number; height: number };
   takeaway: string;
   sections: ArticleSection[];
@@ -32,9 +34,11 @@ const editorialImage = (slug: string, alt: string) => ({
 const journalEntries: Omit<JournalPost, "minutes">[] = [
   {
     slug: "como-una-web-ayuda-a-vender",
+    experience: "website",
+    updated: "2026-11-17",
     image: editorialImage("como-una-web-ayuda-a-vender", "Ilustración de una página web de papel conectada a una conversación mediante una línea de latón."),
     title: "Tu cliente tiene dudas. Tu web puede ayudarle a decidir.",
-    description: "Cómo una página clara conecta tus redes con consultas mejor informadas: servicios, ejemplos, confianza y un siguiente paso fácil.",
+    description: "Compara una oferta vaga con una clara y prueba cómo podría cambiar una consulta. Ideas para que tu web ayude al cliente a entender tus servicios.",
     category: "Negocios y ventas", date: "2026-10-28", art: "web",
     takeaway: "Una web ayuda cuando responde lo que el cliente necesita saber antes de escribirte. El diseño tiene que facilitar esa decisión.",
     relatedService: "desarrollo-web-peru", sources: [],
@@ -59,9 +63,11 @@ const journalEntries: Omit<JournalPost, "minutes">[] = [
   },
   {
     slug: "excel-o-sistema-para-mi-negocio",
+    experience: "systems",
+    updated: "2026-11-17",
     image: editorialImage("excel-o-sistema-para-mi-negocio", "Ilustración de hojas de cálculo de papel que convergen en un único sistema organizado."),
     title: "¿Excel o un sistema? Mira dónde se atasca tu negocio.",
-    description: "Señales para decidir si seguir con hojas de cálculo, conectar herramientas o crear un sistema que organice ventas, inventario y trabajo en equipo.",
+    description: "¿Ordenar Excel, conectar herramientas o evaluar un sistema? Marca las situaciones de tu equipo y explora por dónde empezar con una guía interactiva.",
     category: "Operaciones", date: "2026-10-28", art: "automation",
     takeaway: "El cambio tiene sentido cuando resuelve un problema concreto del trabajo diario. Empieza por un proceso y comprueba el resultado antes de ampliarlo.",
     relatedService: "automatizacion-n8n", sources: [],
@@ -86,9 +92,10 @@ const journalEntries: Omit<JournalPost, "minutes">[] = [
   },
   {
     slug: "cuanto-cuesta-pagina-web-peru",
+    experience: "pricing",
     image: editorialImage("cuanto-cuesta-pagina-web-peru", "Ilustración de tres páginas web de papel con distintos alcances y una etiqueta de precio sin cifras."),
     title: "¿Cuánto cuesta una página web en Perú? Precios y planes",
-    description: `Compara planes de JAIAX desde US$ ${basicPlan.price}: landing o web corporativa. Revisa qué incluyen y qué se paga aparte por dominio, hosting y mantenimiento.`,
+    description: `Prueba el selector de planes de JAIAX desde US$ ${basicPlan.price}: landing o web corporativa. Compara alcances y costos de dominio, hosting y mantenimiento.`,
     category: "Desarrollo web",
     date: "2026-10-26",
     updated: "2026-11-17",
@@ -171,11 +178,12 @@ const journalEntries: Omit<JournalPost, "minutes">[] = [
   },
   {
     slug: "automatizacion-n8n-negocios",
+    experience: "automation",
     image: editorialImage("automatizacion-n8n-negocios", "Ilustración de cinco nodos de papel unidos por caminos de latón que representan un flujo de automatización."),
     title:
       "¿Qué es n8n y para qué sirve? Ejemplos para negocios",
     description:
-      "Descubre qué es n8n, cómo funciona y qué puedes automatizar en tu negocio. Ejemplos de solicitudes, reportes y avisos, y cómo empezar con un piloto.",
+      "Qué es n8n y para qué sirve. Recorre un flujo interactivo y compara solicitudes completas, datos faltantes, duplicados y avisos fallidos.",
     category: "Automatización",
     date: "2026-10-26",
     updated: "2026-11-17",
@@ -261,11 +269,13 @@ const journalEntries: Omit<JournalPost, "minutes">[] = [
   },
   {
     slug: "seo-para-web-de-servicios",
+    experience: "seo",
+    updated: "2026-11-17",
     image: editorialImage("seo-para-web-de-servicios", "Ilustración de una lupa de latón que destaca un resultado dentro de una página web de papel."),
     title:
       "SEO para una web de servicios: ayuda a que te encuentren y te entiendan.",
     description:
-      "Contenido útil, páginas de servicio claras, enlaces internos y SEO técnico. Una base para mejorar la visibilidad sin prometer posiciones en Google.",
+      "Prueba un título y una descripción con una vista previa interactiva. Aprende a organizar servicios, enlaces y contenido útil para Google y tus clientes.",
     category: "Estrategia digital",
     date: "2026-10-26",
     art: "seo",
@@ -353,6 +363,7 @@ export const postSummaries: PostSummary[] = journalPosts.map((p) => ({
   updated: p.updated,
   minutes: p.minutes,
   art: p.art,
+  experience: p.experience,
   image: p.image,
   takeaway: p.takeaway,
   relatedService: p.relatedService,

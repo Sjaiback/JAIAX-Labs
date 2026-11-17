@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
     "seo:check": "node scripts/check-seo.mjs",
-    "pricing:check": "node scripts/check-pricing.mjs"
+    "pricing:check": "node scripts/check-pricing.mjs",
+    "blog:check": "node scripts/check-article-experiences.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

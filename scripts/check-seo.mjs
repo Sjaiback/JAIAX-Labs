@@ -113,6 +113,8 @@ const results = await Promise.all(
         html.includes("data-reading-body"),
         "Server-rendered article body",
       );
+      assert(html.includes('id="ejemplo-interactivo"'), `Interactive article example: ${path}`);
+      assert(html.includes('href="#ejemplo-interactivo"'), `Direct example link: ${path}`);
       assert(Number.isFinite(Date.parse(post.dateModified)), `Article modification date: ${path}`);
       assert(Date.parse(post.dateModified) >= Date.parse(post.datePublished), `Article date order: ${path}`);
       assert(html.includes(`<time dateTime="${post.dateModified.slice(0, 10)}"`) || html.includes(`<time datetime="${post.dateModified.slice(0, 10)}"`), `Visible article date: ${path}`);

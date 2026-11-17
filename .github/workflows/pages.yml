@@ -30,6 +30,7 @@ jobs:
       - run: npm run build
       - run: node scripts/check-static.mjs
       - run: node scripts/check-i18n.mjs
+      - run: npm run blog:check
       - uses: actions/upload-pages-artifact@v4
         with:
           path: out
